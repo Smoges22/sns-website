@@ -30,7 +30,7 @@ export default function NurseDelegationPage() {
       </SectionContainer>
 
       <SectionContainer>
-        <div className="rounded-[26px] border border-teal/20 bg-[#EDF6FA] p-6 sm:p-8">
+        <div className="rounded-[24px] border border-teal/20 bg-[#EDF6FA] p-6 sm:p-7">
           <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Current status</p>
           <h2 className="mt-3 text-3xl font-black text-navy">Launching Soon, not available for booking yet.</h2>
           <p className="mt-4 max-w-3xl leading-7 text-slate">For currently available services, request RN assessment or care-plan documentation support.</p>

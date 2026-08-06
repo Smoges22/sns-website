@@ -20,18 +20,18 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-3 z-40 px-3 sm:px-5 lg:px-8">
+    <header className="sticky top-2 z-40 px-3 sm:px-5 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex min-h-[76px] items-center justify-between gap-4 rounded-[22px] border border-navy/10 bg-white/92 px-4 shadow-[0_18px_54px_rgba(23,50,77,0.11)] backdrop-blur-2xl sm:px-5">
+        <div className="flex min-h-[72px] items-center justify-between gap-3 rounded-[20px] border border-navy/10 bg-white/94 px-4 shadow-[0_16px_48px_rgba(23,50,77,0.105)] backdrop-blur-2xl sm:px-5">
           <BrandMark />
-          <nav aria-label="Primary navigation" className="hidden items-center gap-1 rounded-full border border-navy/10 bg-soft/80 p-1 text-sm font-bold text-slate shadow-inner lg:flex">
+          <nav aria-label="Primary navigation" className="hidden items-center gap-0.5 rounded-full border border-navy/10 bg-soft/80 p-1 text-sm font-bold text-slate shadow-inner lg:flex">
             {navItems.map((item) => {
               const active = isActive(pathname, item.href);
 
               return (
                 <Link
                   aria-current={active ? "page" : undefined}
-                  className={`rounded-full px-4 py-2 transition duration-200 ${active ? "bg-navy text-white shadow-sm" : "hover:-translate-y-0.5 hover:bg-white hover:text-navy"}`}
+                  className={`rounded-full px-3.5 py-2 transition duration-200 ${active ? "bg-[#102A43] text-white shadow-sm" : "hover:-translate-y-0.5 hover:bg-white hover:text-navy"}`}
                   href={item.href}
                   key={item.href}
                 >
@@ -50,7 +50,7 @@ export function SiteHeader() {
             aria-controls="mobile-menu"
             aria-expanded={menuOpen}
             aria-label="Toggle navigation menu"
-            className="grid h-11 w-11 place-items-center rounded-full border border-navy/10 bg-white text-navy shadow-sm transition hover:-translate-y-0.5 hover:border-teal/40 lg:hidden"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-navy/10 bg-white text-navy shadow-sm transition hover:-translate-y-0.5 hover:border-teal/40 lg:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             type="button"
           >
@@ -63,12 +63,12 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
-      <div className={`${menuOpen ? "block" : "hidden"} mx-auto mt-2 max-w-7xl rounded-[22px] border border-navy/10 bg-white/98 p-2 shadow-[0_24px_70px_rgba(23,50,77,0.14)] backdrop-blur-2xl lg:hidden`} id="mobile-menu">
+      <div className={`${menuOpen ? "block" : "hidden"} mx-auto mt-2 max-w-7xl rounded-[20px] border border-navy/10 bg-white/98 p-2 shadow-[0_22px_64px_rgba(23,50,77,0.13)] backdrop-blur-2xl lg:hidden`} id="mobile-menu">
         <nav aria-label="Mobile navigation" className="grid gap-1 text-sm font-bold text-navy">
           {navItems.map((item) => (
             <Link
               aria-current={isActive(pathname, item.href) ? "page" : undefined}
-              className={`rounded-lg px-3 py-3 ${isActive(pathname, item.href) ? "bg-soft text-navy" : "hover:bg-soft"}`}
+              className={`rounded-xl px-3 py-3 ${isActive(pathname, item.href) ? "bg-soft text-navy" : "hover:bg-soft"}`}
               href={item.href}
               key={item.href}
               onClick={() => setMenuOpen(false)}
@@ -76,8 +76,8 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <PortalLink className="rounded-lg px-3 py-3 hover:bg-soft" comingSoonClassName="rounded-lg px-3 py-3 text-navy" />
-          <Link className="mt-2 inline-flex min-h-11 items-center justify-center rounded-lg bg-navy px-4 py-2 text-sm font-extrabold text-white" href="/request-assessment" onClick={() => setMenuOpen(false)}>
+          <PortalLink className="rounded-xl px-3 py-3 hover:bg-soft" comingSoonClassName="rounded-xl px-3 py-3 text-navy" />
+          <Link className="mt-2 inline-flex min-h-11 items-center justify-center rounded-xl bg-navy px-4 py-2 text-sm font-extrabold text-white" href="/request-assessment" onClick={() => setMenuOpen(false)}>
             Request an Assessment
           </Link>
         </nav>

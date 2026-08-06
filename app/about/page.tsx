@@ -18,7 +18,7 @@ export default function AboutPage() {
       >
         <Card className="flex min-w-0 flex-col items-start gap-4 sm:flex-row sm:items-center">
           <Image
-            alt="SNS — Sosena Nursing Solutions"
+            alt="SNS - Sosena Nursing Solutions"
             className="h-16 w-28 shrink-0 rounded-xl object-contain"
             height={96}
             src="/images/branding/sns-logo-horizontal.png"
@@ -33,8 +33,8 @@ export default function AboutPage() {
 
       <SectionContainer>
         <SplitPanel className="lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
-          <div className="rounded-[26px] border border-navy/10 bg-soft p-4">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-soft ring-1 ring-navy/10">
+          <div className="rounded-[24px] border border-navy/10 bg-soft p-4">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-soft ring-1 ring-navy/10">
               <Image
                 alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
                 className="h-full w-full object-cover object-[57%_center]"

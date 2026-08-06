@@ -17,20 +17,20 @@ export function ClinicalWorkflowMockup() {
   ];
 
   return (
-    <div className="relative mx-auto w-full min-w-0 max-w-2xl">
-      <div className="absolute -inset-6 rounded-[32px] bg-[radial-gradient(circle_at_30%_20%,rgba(24,183,201,0.2),transparent_34%),radial-gradient(circle_at_80%_60%,rgba(16,42,67,0.18),transparent_38%)] blur-2xl" />
-      <div className="relative overflow-hidden rounded-[28px] border border-[#C8D8E2] bg-white shadow-[0_28px_90px_rgba(16,42,67,0.2)]">
-        <div className="flex items-center justify-between gap-4 border-b border-[#D9E3EA] bg-[#FBFCFD] px-4 py-3">
+    <div className="relative mx-auto w-full min-w-0 max-w-[42rem]">
+      <div className="absolute -inset-5 rounded-[30px] bg-[radial-gradient(circle_at_30%_20%,rgba(24,183,201,0.18),transparent_34%),radial-gradient(circle_at_80%_60%,rgba(16,42,67,0.16),transparent_38%)] blur-2xl" />
+      <div className="relative overflow-hidden rounded-[26px] border border-[#C8D8E2] bg-white shadow-[0_24px_76px_rgba(16,42,67,0.18)]">
+        <div className="flex items-center justify-between gap-3 border-b border-[#D9E3EA] bg-[#FBFCFD] px-3 py-2.5 sm:px-4 sm:py-3">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-alert/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#F3C95B]" />
             <span className="h-2.5 w-2.5 rounded-full bg-teal" />
           </div>
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-teal">SNS Clinical Portal</p>
-          <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-slate ring-1 ring-navy/10">Demo</span>
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-teal sm:text-xs sm:tracking-[0.18em]">SNS Clinical Portal</p>
+          <span className="hidden rounded-full bg-white px-3 py-1 text-xs font-bold text-slate ring-1 ring-navy/10 sm:inline-flex">Demo</span>
         </div>
 
-        <div className="grid min-h-[440px] grid-cols-1 bg-white sm:grid-cols-[128px_minmax(0,1fr)]">
+        <div className="grid min-h-[390px] grid-cols-1 bg-white sm:min-h-[440px] sm:grid-cols-[128px_minmax(0,1fr)]">
           <aside className="hidden border-r border-navy/10 bg-[#102A43] px-2 py-4 text-white sm:block sm:px-3">
             <div className="mx-auto mb-5 grid h-9 w-9 place-items-center rounded-lg bg-white text-navy shadow-sm">SNS</div>
             <div className="grid gap-2">
@@ -42,7 +42,7 @@ export function ClinicalWorkflowMockup() {
             </div>
           </aside>
 
-          <div className="min-w-0 p-4 sm:p-5">
+          <div className="min-w-0 p-3 sm:p-5">
             <div className="flex min-w-0 flex-col gap-3 border-b border-[#D9E3EA] pb-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0">
                 <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-teal">Assessment Workspace</p>
@@ -53,7 +53,7 @@ export function ClinicalWorkflowMockup() {
             </div>
 
             <div className="mt-4 grid min-w-0 gap-3 lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="rounded-xl border border-[#D9E3EA] bg-white p-3 shadow-sm">
+              <div className="rounded-[18px] border border-[#D9E3EA] bg-white p-3 shadow-sm">
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <p className="text-sm font-black text-navy">Assessment Builder</p>
                   <span className="rounded-full bg-soft px-2.5 py-1 text-xs font-bold text-slate">RN draft</span>
@@ -75,16 +75,16 @@ export function ClinicalWorkflowMockup() {
               </div>
 
               <div className="grid gap-3">
-                <div className="min-w-0 rounded-xl bg-[#102A43] p-4 text-white shadow-sm">
+                <div className="min-w-0 rounded-[18px] bg-[#102A43] p-4 text-white shadow-sm">
                   <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">RN Review</p>
                   <p className="mt-2 break-words text-xl font-black sm:text-2xl">Clinical narrative checked</p>
                   <p className="mt-2 text-sm leading-6 text-[#D6E1EA]">Generated comments remain draft until reviewed and finalized by the RN.</p>
                 </div>
-                <div className="rounded-xl border border-teal/30 bg-[#EFF9FA] p-4">
+                <div className="rounded-[18px] border border-teal/30 bg-[#EFF9FA] p-4">
                   <p className="text-sm font-black text-navy">Negotiated Care Plan</p>
                   <p className="mt-2 text-xs leading-5 text-slate">Assessment findings mapped to caregiver interventions, abilities, and preferences.</p>
                 </div>
-                <div className="rounded-xl bg-white p-4 ring-1 ring-navy/10">
+                <div className="rounded-[18px] bg-white p-4 ring-1 ring-navy/10">
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-black text-navy">Professional PDF</p>
                     <span className="text-xs font-bold text-slate">30 pages</span>
@@ -119,11 +119,11 @@ export function ClinicalWorkflowMockup() {
 
 export function WorkflowTimeline() {
   return (
-    <div className="relative overflow-hidden rounded-[26px] border border-[#C8D8E2] bg-[linear-gradient(135deg,#ffffff_0%,#FBFCFD_50%,#EDF6FA_100%)] p-4 shadow-[0_18px_58px_rgba(23,50,77,0.09)] sm:p-5">
+    <div className="relative overflow-hidden rounded-[24px] border border-[#C8D8E2] bg-[linear-gradient(135deg,#ffffff_0%,#FBFCFD_50%,#EDF6FA_100%)] p-4 shadow-[0_16px_50px_rgba(23,50,77,0.085)] sm:p-5">
       <div className="pointer-events-none absolute left-8 right-8 top-[3.75rem] hidden h-px bg-gradient-to-r from-transparent via-teal/35 to-transparent lg:block" />
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {howItWorks.map((step, index) => (
-          <article className="relative rounded-2xl border border-[#D9E3EA] bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.08)] transition duration-200 hover:-translate-y-1 hover:border-teal/45 hover:shadow-[0_22px_58px_rgba(23,50,77,0.13)]" key={step.title}>
+          <article className="relative rounded-[20px] border border-[#D9E3EA] bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.075)] transition duration-200 hover:-translate-y-0.5 hover:border-teal/45 hover:shadow-[0_18px_52px_rgba(23,50,77,0.12)]" key={step.title}>
             <div className="flex items-center gap-3">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#EDF6FA] text-sm font-black text-teal ring-1 ring-teal/20">0{index + 1}</span>
               <h3 className="font-extrabold text-navy">{step.title}</h3>
@@ -147,7 +147,7 @@ export function ServiceGroups() {
   return (
     <div className="grid min-w-0 gap-5 lg:grid-cols-2">
       {serviceGroups.map((group) => (
-        <article className="min-w-0 overflow-hidden rounded-[26px] border border-[#D9E3EA] bg-white p-5 shadow-[0_16px_50px_rgba(23,50,77,0.09)] transition duration-200 hover:-translate-y-1 hover:border-teal/45 sm:p-6" key={group.title}>
+        <article className="min-w-0 overflow-hidden rounded-[24px] border border-[#D9E3EA] bg-white p-5 shadow-[0_14px_46px_rgba(23,50,77,0.085)] transition duration-200 hover:-translate-y-0.5 hover:border-teal/45 sm:p-6" key={group.title}>
           <div className="flex items-start gap-4">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#EDF6FA] text-teal ring-1 ring-teal/20">
               <OutlineIcon className="h-5 w-5" name={iconByGroup[group.title] ?? "document"} />
@@ -160,7 +160,7 @@ export function ServiceGroups() {
           <p className="mt-3 max-w-[28ch] break-words text-sm leading-6 text-slate sm:max-w-none">{group.description}</p>
           <div className="mt-6 space-y-4">
             {group.services.map((service) => (
-              <div className="min-w-0 overflow-hidden rounded-2xl border border-[#D9E3EA] bg-[#FBFCFD] p-4 transition duration-200 hover:border-teal/45 hover:bg-white" key={service.name}>
+              <div className="min-w-0 overflow-hidden rounded-[20px] border border-[#D9E3EA] bg-[#FBFCFD] p-4 transition duration-200 hover:border-teal/45 hover:bg-white" key={service.name}>
                 <p className="break-words font-extrabold text-navy">{service.name}</p>
                 <p className="mt-2 max-w-[28ch] break-words text-sm leading-6 text-slate sm:max-w-none">{service.text}</p>
               </div>
@@ -174,8 +174,8 @@ export function ServiceGroups() {
 
 export function DocumentationShowcase() {
   return (
-    <div className="grid gap-6 rounded-[28px] border border-[#C8D8E2] bg-[linear-gradient(135deg,#ffffff_0%,#FBFCFD_100%)] p-4 shadow-[0_18px_58px_rgba(23,50,77,0.09)] sm:p-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-      <div className="rounded-[24px] bg-[#102A43] p-6 text-white shadow-soft">
+    <div className="grid gap-6 rounded-[24px] border border-[#C8D8E2] bg-[linear-gradient(135deg,#ffffff_0%,#FBFCFD_100%)] p-4 shadow-[0_16px_50px_rgba(23,50,77,0.085)] sm:p-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <div className="rounded-[22px] bg-[#102A43] p-5 text-white shadow-soft sm:p-6">
         <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Documentation workflow</p>
         <h3 className="mt-3 text-3xl font-black tracking-tight">Assessment work becomes clear clinical documentation.</h3>
         <p className="mt-4 leading-7 text-[#D6E1EA]">
@@ -188,7 +188,7 @@ export function DocumentationShowcase() {
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         {documentationStages.map((stage, index) => (
-          <article className="rounded-2xl border border-[#D9E3EA] bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.08)] transition duration-200 hover:-translate-y-1 hover:border-teal/45" key={stage.title}>
+          <article className="rounded-[20px] border border-[#D9E3EA] bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.075)] transition duration-200 hover:-translate-y-0.5 hover:border-teal/45" key={stage.title}>
             <div className="mb-4 flex items-center justify-between gap-3">
               <span className="rounded-full bg-[#EDF6FA] px-3 py-1 text-xs font-black text-teal ring-1 ring-teal/20">0{index + 1}</span>
               <span className="h-2 w-2 rounded-full bg-teal" />

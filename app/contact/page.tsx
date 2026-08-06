@@ -24,30 +24,30 @@ export default function ContactPage() {
             <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Contact details</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-navy">Start with minimum coordination details.</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
-              <div className="rounded-2xl bg-soft p-5 ring-1 ring-navy/10">
+              <div className="rounded-[20px] bg-soft p-5 ring-1 ring-navy/10">
                 <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Phone</p>
                 <a className="mt-2 block text-xl font-black text-navy transition hover:text-teal" href={`tel:${site.phone.replaceAll("-", "")}`}>{site.phone}</a>
               </div>
-              <div className="rounded-2xl bg-soft p-5 ring-1 ring-navy/10">
+              <div className="rounded-[20px] bg-soft p-5 ring-1 ring-navy/10">
                 <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Email</p>
                 <a className="mt-2 block break-all text-lg font-black text-navy transition hover:text-teal" href={`mailto:${site.primaryEmail}`}>{site.primaryEmail}</a>
               </div>
-              <div className="rounded-2xl bg-soft p-5 ring-1 ring-navy/10">
+              <div className="rounded-[20px] bg-soft p-5 ring-1 ring-navy/10">
                 <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Service area</p>
                 <p className="mt-2 text-xl font-black text-navy">Washington Adult Family Homes</p>
               </div>
-              <div className="rounded-2xl bg-[#EDF6FA] p-5 ring-1 ring-teal/20">
+              <div className="rounded-[20px] bg-[#EDF6FA] p-5 ring-1 ring-teal/20">
                 <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Typical response</p>
                 <p className="mt-2 text-xl font-black text-navy">Within one business day</p>
               </div>
             </div>
-            <div className="mt-6 rounded-2xl border border-alert/25 bg-[#fff8f8] p-4 text-sm font-semibold leading-6 text-alert">
+            <div className="mt-6 rounded-[20px] border border-alert/25 bg-[#fff8f8] p-4 text-sm font-semibold leading-6 text-alert">
               Please do not send detailed clinical records through public email until SNS provides secure next steps.
             </div>
           </Card>
 
           <Card className="!bg-[#102A43] p-5 text-white">
-            <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-[28px] bg-white/8 shadow-soft ring-1 ring-white/12">
+            <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-[24px] bg-white/8 shadow-soft ring-1 ring-white/12">
               <Image
                 alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
                 className="h-full w-full object-cover object-[58%_center]"
@@ -57,7 +57,7 @@ export default function ContactPage() {
               />
               <div className="absolute left-4 top-4 rounded-xl bg-white p-2 shadow-sm">
                 <Image
-                  alt="SNS — Sosena Nursing Solutions"
+                  alt="SNS - Sosena Nursing Solutions"
                   className="h-10 w-20 object-contain"
                   height={80}
                   src="/images/branding/sns-logo-horizontal.png"

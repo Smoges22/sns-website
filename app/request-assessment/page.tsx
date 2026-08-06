@@ -20,21 +20,21 @@ export default function RequestAssessmentPage() {
 
       <SectionContainer className="bg-[#F5F7F9]">
         <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr]">
-          <aside className="rounded-[26px] bg-[#102A43] p-6 text-white shadow-soft sm:p-8">
+          <aside className="rounded-[24px] bg-[#102A43] p-6 text-white shadow-soft sm:p-7">
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Public form safety</p>
             <h2 className="mt-3 text-2xl font-black">Minimum coordination details only.</h2>
             <p className="mt-4 leading-7 text-[#D6E1EA]">
               This form routes to the contact step and does not collect or upload clinical records. SNS will provide secure instructions when records are needed.
             </p>
-            <div className="mt-6 rounded-2xl border border-white/15 bg-white/9 p-4 text-sm leading-6 text-[#D6E1EA]">
+            <div className="mt-6 rounded-[20px] border border-white/15 bg-white/9 p-4 text-sm leading-6 text-[#D6E1EA]">
               Do not include diagnoses, medications, Social Security numbers, insurance identifiers, or detailed resident medical information.
             </div>
             <Link className="mt-6 inline-flex font-extrabold text-teal transition hover:text-white" href="/contact">
               Prefer direct contact?
             </Link>
           </aside>
-          <form className="grid gap-5 rounded-[26px] border border-navy/10 bg-white p-5 shadow-[0_18px_58px_rgba(23,50,77,0.08)] sm:p-6" method="get" action="/contact">
-            <div className="rounded-2xl border border-alert/25 bg-[#fff8f8] p-4 text-sm font-semibold leading-6 text-alert">
+          <form className="grid gap-5 rounded-[24px] border border-navy/10 bg-white p-5 shadow-[0_16px_50px_rgba(23,50,77,0.075)] sm:p-6" method="get" action="/contact">
+            <div className="rounded-[20px] border border-alert/25 bg-[#fff8f8] p-4 text-sm font-semibold leading-6 text-alert">
               Please do not submit detailed medical information through this public form. SNS will provide secure next steps when clinical records are needed.
             </div>
             <div className="grid gap-5 md:grid-cols-2">

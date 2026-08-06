@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/images/branding/sns-logo-horizontal.png",
         width: 1536,
         height: 1024,
-        alt: "SNS — Sosena Nursing Solutions"
+        alt: "SNS - Sosena Nursing Solutions"
       }
     ]
   },
@@ -40,6 +40,11 @@ export const metadata: Metadata = {
     description: "Professional RN assessments and practical care planning for Adult Family Homes.",
     images: ["/images/branding/sns-logo-horizontal.png"]
   }
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1
 };
 
 const organizationJsonLd = {

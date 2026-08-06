@@ -9,8 +9,8 @@ import { differentiation, trustPoints } from "@/lib/site";
 export default function HomePage() {
   return (
     <PageShell>
-      <section className="bg-white px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-14">
-        <div className="mx-auto grid max-w-7xl min-w-0 gap-10 overflow-hidden rounded-[32px] border border-[#D9E3EA] bg-[radial-gradient(circle_at_82%_12%,rgba(24,183,201,0.16),transparent_28%),linear-gradient(135deg,#ffffff_0%,#FBFCFD_58%,#EDF6FA_100%)] p-5 shadow-[0_24px_80px_rgba(23,50,77,0.12)] sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:p-10">
+      <section className="bg-white px-4 pb-10 pt-7 sm:px-6 sm:pt-8 lg:px-8 lg:pb-14">
+        <div className="mx-auto grid max-w-7xl min-w-0 gap-8 overflow-hidden rounded-[30px] border border-[#D9E3EA] bg-[radial-gradient(circle_at_82%_12%,rgba(24,183,201,0.16),transparent_28%),linear-gradient(135deg,#ffffff_0%,#FBFCFD_58%,#EDF6FA_100%)] p-5 shadow-[0_22px_72px_rgba(23,50,77,0.11)] sm:p-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:p-9">
           <div className="min-w-0">
             <p className="break-words text-xs font-black uppercase tracking-[0.12em] text-teal sm:text-sm sm:tracking-[0.18em]">
               <span className="sm:hidden">RN-Led Clinical Services</span>
@@ -39,7 +39,7 @@ export default function HomePage() {
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {trustPoints.map((point) => (
-                <div className="rounded-2xl border border-[#C8D8E2] bg-white px-4 py-3 text-sm font-extrabold text-navy shadow-sm" key={point}>
+                <div className="rounded-[20px] border border-[#C8D8E2] bg-white px-4 py-3 text-sm font-extrabold text-navy shadow-sm" key={point}>
                   {point}
                 </div>
               ))}
@@ -51,7 +51,7 @@ export default function HomePage() {
 
       <SectionContainer className="bg-[#F5F7F9]" eyebrow="Why Adult Family Homes Choose SNS" title="A clinical partner with modern documentation discipline.">
         <div className="grid min-w-0 gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-          <div className="rounded-[24px] bg-[#102A43] p-7 text-white shadow-soft">
+          <div className="rounded-[22px] bg-[#102A43] p-6 text-white shadow-soft sm:p-7">
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical partner</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight">Clinical expertise connected to a real documentation platform.</h2>
             <p className="mt-4 leading-7 text-[#D6E1EA]">
@@ -86,8 +86,8 @@ export default function HomePage() {
 
       <SectionContainer className="bg-[#F5F7F9]" eyebrow="Meet Your Clinical Partner" title="Sosena Mekuria, RN" intro="Founder and Clinical Director of Sosena Nursing Solutions LLC.">
         <SplitPanel className="bg-[linear-gradient(135deg,#ffffff_0%,#f8fbfc_100%)] lg:grid-cols-[0.68fr_1.32fr] lg:items-center">
-          <div className="rounded-[26px] border border-navy/10 bg-soft p-4 shadow-inner">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-soft ring-1 ring-navy/10">
+          <div className="rounded-[24px] border border-navy/10 bg-soft p-4 shadow-inner">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-soft ring-1 ring-navy/10">
               <Image
                 alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
                 className="h-full w-full object-cover object-[57%_center]"
