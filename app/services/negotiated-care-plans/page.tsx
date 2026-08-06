@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { DocumentationShowcase } from "@/components/clinical-visuals";
-import { Card, FinalCta, PageHero, Section } from "@/components/section";
+import { DocumentationShowcase, WorkflowTimeline } from "@/components/clinical-visuals";
+import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
 
 export const metadata: Metadata = {
   title: "Negotiated Care Plans",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NegotiatedCarePlansPage() {
   return (
-    <main>
+    <PageShell>
       <PageHero
         eyebrow="Care Planning"
         title="Negotiated care-plan documentation shaped around assessed needs"
@@ -21,20 +21,24 @@ export default function NegotiatedCarePlansPage() {
         </Card>
       </PageHero>
 
-      <Section>
+      <SectionContainer eyebrow="What clients receive" title="Care-plan services that connect assessment findings to action.">
         <div className="grid gap-5 md:grid-cols-2">
           <Card><h2 className="text-xl font-black text-navy">Preliminary negotiated service plans</h2><p className="mt-3 leading-7 text-slate">Early planning support that connects assessment findings to care-team coordination and next steps.</p></Card>
           <Card><h2 className="text-xl font-black text-navy">Negotiated care plans</h2><p className="mt-3 leading-7 text-slate">Resident-centered documentation for caregiver interventions, preferences, abilities, and support needs.</p></Card>
           <Card><h2 className="text-xl font-black text-navy">Care-plan reviews</h2><p className="mt-3 leading-7 text-slate">Review support when care plans need to reflect reassessments, changing needs, or external documentation.</p></Card>
           <Card><h2 className="text-xl font-black text-navy">External assessment review</h2><p className="mt-3 leading-7 text-slate">RN-guided review to identify documentation priorities and care-planning implications.</p></Card>
         </div>
-      </Section>
+      </SectionContainer>
 
-      <Section className="bg-white" eyebrow="Documentation flow" title="Assessment findings become practical care-plan language.">
+      <SectionContainer eyebrow="Documentation flow" title="Assessment findings become practical care-plan language.">
         <DocumentationShowcase />
-      </Section>
+      </SectionContainer>
+
+      <SectionContainer eyebrow="Process" title="A clear path from request to final documentation.">
+        <WorkflowTimeline />
+      </SectionContainer>
 
       <FinalCta title="Request care-plan support" />
-    </main>
+    </PageShell>
   );
 }

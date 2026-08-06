@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceGroups } from "@/components/clinical-visuals";
-import { Card, FinalCta, PageHero, Section } from "@/components/section";
+import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main>
+    <PageShell>
       <PageHero
         eyebrow="Services"
         title="Clinical services for Adult Family Homes"
@@ -22,11 +22,11 @@ export default function ServicesPage() {
         </Card>
       </PageHero>
 
-      <Section>
+      <SectionContainer>
         <ServiceGroups />
-      </Section>
+      </SectionContainer>
 
-      <Section className="bg-white" eyebrow="Service detail" title="Choose the path that matches your documentation need.">
+      <SectionContainer eyebrow="Service detail" title="Choose the path that matches your documentation need.">
         <div className="grid gap-5 md:grid-cols-2">
           <Card>
             <h2 className="text-xl font-black text-navy">RN assessment support</h2>
@@ -39,9 +39,9 @@ export default function ServicesPage() {
             <Link className="mt-5 inline-flex font-extrabold text-teal" href="/services/negotiated-care-plans">View care-plan services</Link>
           </Card>
         </div>
-      </Section>
+      </SectionContainer>
 
       <FinalCta />
-    </main>
+    </PageShell>
   );
 }

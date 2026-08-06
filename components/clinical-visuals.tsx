@@ -119,16 +119,19 @@ export function ClinicalWorkflowMockup() {
 
 export function WorkflowTimeline() {
   return (
-    <div className="grid gap-4 lg:grid-cols-6">
-      {howItWorks.map((step, index) => (
-        <article className="relative rounded-xl border border-navy/10 bg-white p-5 shadow-soft" key={step.title}>
-          <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-[#EDF6FA] text-sm font-black text-teal">0{index + 1}</span>
-            <h3 className="font-extrabold text-navy">{step.title}</h3>
-          </div>
-          <p className="mt-4 text-sm leading-6 text-slate">{step.text}</p>
-        </article>
-      ))}
+    <div className="relative overflow-hidden rounded-[26px] border border-navy/10 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbfc_58%,#edf6fa_100%)] p-4 shadow-[0_18px_58px_rgba(23,50,77,0.08)] sm:p-5">
+      <div className="pointer-events-none absolute left-8 right-8 top-[3.75rem] hidden h-px bg-gradient-to-r from-transparent via-teal/35 to-transparent lg:block" />
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+        {howItWorks.map((step, index) => (
+          <article className="relative rounded-2xl border border-navy/10 bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.07)] transition duration-200 hover:-translate-y-1 hover:border-teal/35 hover:shadow-[0_22px_58px_rgba(23,50,77,0.12)]" key={step.title}>
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#EDF6FA] text-sm font-black text-teal ring-1 ring-teal/20">0{index + 1}</span>
+              <h3 className="font-extrabold text-navy">{step.title}</h3>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-slate">{step.text}</p>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
@@ -144,7 +147,7 @@ export function ServiceGroups() {
   return (
     <div className="grid min-w-0 gap-5 lg:grid-cols-2">
       {serviceGroups.map((group) => (
-        <article className="min-w-0 overflow-hidden rounded-2xl border border-navy/10 bg-white p-6 shadow-soft" key={group.title}>
+        <article className="min-w-0 overflow-hidden rounded-[26px] border border-navy/10 bg-white p-5 shadow-[0_16px_50px_rgba(23,50,77,0.08)] transition duration-200 hover:-translate-y-1 hover:border-teal/35 sm:p-6" key={group.title}>
           <div className="flex items-start gap-4">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#EDF6FA] text-teal ring-1 ring-teal/20">
               <OutlineIcon className="h-5 w-5" name={iconByGroup[group.title] ?? "document"} />
@@ -157,7 +160,7 @@ export function ServiceGroups() {
           <p className="mt-3 max-w-[28ch] break-words text-sm leading-6 text-slate sm:max-w-none">{group.description}</p>
           <div className="mt-6 space-y-4">
             {group.services.map((service) => (
-              <div className="min-w-0 overflow-hidden rounded-xl bg-soft p-4 ring-1 ring-navy/5" key={service.name}>
+              <div className="min-w-0 overflow-hidden rounded-2xl border border-navy/10 bg-soft p-4 transition duration-200 hover:border-teal/35 hover:bg-white" key={service.name}>
                 <p className="break-words font-extrabold text-navy">{service.name}</p>
                 <p className="mt-2 max-w-[28ch] break-words text-sm leading-6 text-slate sm:max-w-none">{service.text}</p>
               </div>
@@ -171,8 +174,8 @@ export function ServiceGroups() {
 
 export function DocumentationShowcase() {
   return (
-    <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-      <div className="rounded-2xl bg-navy p-6 text-white shadow-soft">
+    <div className="grid gap-6 rounded-[28px] border border-navy/10 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbfc_100%)] p-4 shadow-[0_18px_58px_rgba(23,50,77,0.08)] sm:p-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <div className="rounded-[24px] bg-navy p-6 text-white shadow-soft">
         <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Documentation workflow</p>
         <h3 className="mt-3 text-3xl font-black tracking-tight">Assessment work becomes clear clinical documentation.</h3>
         <p className="mt-4 leading-7 text-white/70">
@@ -184,8 +187,12 @@ export function DocumentationShowcase() {
         </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
-        {documentationStages.map((stage) => (
-          <article className="rounded-2xl border border-navy/10 bg-white p-5 shadow-soft" key={stage.title}>
+        {documentationStages.map((stage, index) => (
+          <article className="rounded-2xl border border-navy/10 bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.07)] transition duration-200 hover:-translate-y-1 hover:border-teal/35" key={stage.title}>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <span className="rounded-full bg-[#EDF6FA] px-3 py-1 text-xs font-black text-teal ring-1 ring-teal/20">0{index + 1}</span>
+              <span className="h-2 w-2 rounded-full bg-teal" />
+            </div>
             <h3 className="text-xl font-black text-navy">{stage.title}</h3>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-slate">
               {stage.items.map((item) => (

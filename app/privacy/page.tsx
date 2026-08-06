@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Card, PageHero, Section } from "@/components/section";
+import { Card, PageHero, PageShell, SectionContainer } from "@/components/section";
 
 export const metadata: Metadata = {
   title: "Privacy",
@@ -8,21 +8,30 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main>
+    <PageShell>
       <PageHero
         eyebrow="Privacy"
         title="Public Website Privacy Notice"
         intro="This public website is for general business information and minimum intake coordination."
       />
-      <Section>
-        <Card className="max-w-4xl">
-          <div className="space-y-5 leading-7 text-slate">
-            <p>This public website is not intended for submitting detailed medical information.</p>
-            <p>SNS does not use third-party trackers by default on this website. Information submitted through the public request flow should be limited to contact and scheduling details.</p>
-            <p>When clinical records are needed, SNS will provide secure next steps. Do not submit diagnoses, medications, Social Security numbers, insurance identifiers, or uploaded clinical documents through the public website.</p>
+      <SectionContainer>
+        <Card className="max-w-4xl p-6 sm:p-8">
+          <div className="space-y-6 leading-7 text-slate">
+            <section>
+              <h2 className="text-xl font-black text-navy">Public website use</h2>
+              <p className="mt-3">This public website is not intended for submitting detailed medical information.</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-black text-navy">Tracking and intake</h2>
+              <p className="mt-3">SNS does not use third-party trackers by default on this website. Information submitted through the public request flow should be limited to contact and scheduling details.</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-black text-navy">Secure next steps</h2>
+              <p className="mt-3">When clinical records are needed, SNS will provide secure next steps. Do not submit diagnoses, medications, Social Security numbers, insurance identifiers, or uploaded clinical documents through the public website.</p>
+            </section>
           </div>
         </Card>
-      </Section>
-    </main>
+      </SectionContainer>
+    </PageShell>
   );
 }

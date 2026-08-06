@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { DocumentationShowcase } from "@/components/clinical-visuals";
-import { Card, FinalCta, PageHero, Section } from "@/components/section";
+import { Card, FeatureBox, FinalCta, PageHero, PageShell, SectionContainer, SplitPanel } from "@/components/section";
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main>
+    <PageShell>
       <PageHero
         eyebrow="Meet Your Clinical Partner"
         title="Meet Your Clinical Partner"
@@ -19,10 +19,10 @@ export default function AboutPage() {
         <Card className="flex min-w-0 flex-col items-start gap-4 sm:flex-row sm:items-center">
           <Image
             alt="SNS — Sosena Nursing Solutions"
-            className="h-16 w-24 shrink-0 rounded-xl object-cover"
+            className="h-16 w-28 shrink-0 rounded-xl object-contain"
             height={96}
             src="/images/branding/sns-logo-horizontal.png"
-            width={144}
+            width={168}
           />
           <div>
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">SNS approach</p>
@@ -31,9 +31,9 @@ export default function AboutPage() {
         </Card>
       </PageHero>
 
-      <Section>
-        <div className="grid min-w-0 gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
-          <div className="rounded-2xl border border-navy/10 bg-white p-6 shadow-soft">
+      <SectionContainer>
+        <SplitPanel className="lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <div className="rounded-[26px] border border-navy/10 bg-soft p-4">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-soft ring-1 ring-navy/10">
               <Image
                 alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
@@ -44,30 +44,36 @@ export default function AboutPage() {
               />
             </div>
           </div>
-          <div className="space-y-8 text-lg leading-8 text-slate">
+          <div className="space-y-7 text-lg leading-8 text-slate">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.18em] text-teal">Founder</p>
               <h2 className="mt-3 text-4xl font-black tracking-tight text-navy">Sosena Mekuria, RN</h2>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {["Founder", "Registered Nurse", "Clinical Director"].map((role) => (
-                  <span className="rounded-full border border-navy/10 bg-white px-3 py-1 text-sm font-black text-navy shadow-sm" key={role}>
-                    {role}
-                  </span>
-                ))}
-              </div>
+              <p className="mt-2 text-xl font-extrabold text-navy">Founder & Clinical Director</p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {["Founder", "Registered Nurse", "Clinical Director"].map((role) => (
+                <FeatureBox className="text-sm font-black text-navy" key={role}>{role}</FeatureBox>
+              ))}
             </div>
             <p>Sosena brings registered nurse leadership and Adult Family Home operating experience to clinical documentation and care planning.</p>
             <p>SNS emphasizes practical understanding of resident care, individualized assessment, and collaboration with residents, representatives, providers, and AFH teams.</p>
-            <p>The work is designed to produce clear documentation that supports review, care planning, and next-step coordination.</p>
           </div>
-        </div>
-      </Section>
+        </SplitPanel>
+      </SectionContainer>
 
-      <Section className="bg-white" eyebrow="Documentation standards" title="Assessment and care-plan work stays organized from request to final PDF.">
+      <SectionContainer eyebrow="Care philosophy" title="Clear documentation should support real care decisions.">
+        <div className="grid gap-5 md:grid-cols-3">
+          <Card><h2 className="font-black text-navy">Practical AFH experience</h2><p className="mt-3 text-slate">Services are shaped around the real coordination needs of Adult Family Homes.</p></Card>
+          <Card><h2 className="font-black text-navy">Resident-centered planning</h2><p className="mt-3 text-slate">Care-plan language stays focused on preferences, abilities, risks, and caregiver interventions.</p></Card>
+          <Card><h2 className="font-black text-navy">Collaborative review</h2><p className="mt-3 text-slate">SNS works with providers, representatives, and care teams through clear next steps.</p></Card>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer eyebrow="Documentation standards" title="Assessment and care-plan work stays organized from request to final PDF.">
         <DocumentationShowcase />
-      </Section>
+      </SectionContainer>
 
       <FinalCta />
-    </main>
+    </PageShell>
   );
 }
