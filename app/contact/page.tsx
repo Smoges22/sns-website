@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Card, PageHero, Section } from "@/components/section";
 import { site } from "@/lib/site";
 
@@ -18,7 +19,16 @@ export default function ContactPage() {
 
       <Section>
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <Card className="bg-navy text-white">
+          <Card className="!bg-navy text-white">
+            <div className="mb-6 inline-flex rounded-xl bg-white p-2 shadow-sm">
+              <Image
+                alt="SNS — Sosena Nursing Solutions"
+                className="h-16 w-24 rounded-lg object-cover"
+                height={96}
+                src="/images/branding/sns-logo-transparent.png"
+                width={144}
+              />
+            </div>
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical Director</p>
             <h2 className="mt-3 text-3xl font-black">Sosena Mekuria, RN</h2>
             <p className="mt-2 text-white/70">{site.legalName}</p>

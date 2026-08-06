@@ -17,11 +17,11 @@ export function Section({
 }) {
   return (
     <section className={`px-5 py-20 sm:px-6 lg:px-8 ${className}`}>
-      <div className={`mx-auto max-w-7xl ${innerClassName}`}>
+      <div className={`mx-auto max-w-7xl min-w-0 ${innerClassName}`}>
         {eyebrow || title || intro ? (
           <div className="mb-12 max-w-3xl">
             {eyebrow ? <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">{eyebrow}</p> : null}
-            {title ? <h2 className="mt-3 text-3xl font-black tracking-tight text-navy sm:text-4xl">{title}</h2> : null}
+            {title ? <h2 className="mt-3 break-words text-3xl font-black tracking-tight text-navy sm:text-4xl">{title}</h2> : null}
             {intro ? <p className="mt-4 text-lg leading-8 text-slate">{intro}</p> : null}
           </div>
         ) : null}
@@ -52,13 +52,13 @@ export function PageHero({
 }) {
   return (
     <section className="border-b border-navy/10 bg-[linear-gradient(180deg,#ffffff_0%,#f5f7f9_100%)] px-5 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_0.55fr] lg:items-end">
-        <div className="max-w-4xl">
+      <div className="mx-auto grid max-w-7xl min-w-0 gap-8 lg:grid-cols-[0.9fr_0.55fr] lg:items-end">
+        <div className="min-w-0 max-w-4xl">
           <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <h1 className="mt-4 text-4xl font-black tracking-tight text-navy sm:text-5xl">{title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate">{intro}</p>
+          <h1 className="mt-4 max-w-[12ch] break-words text-4xl font-black tracking-tight text-navy sm:max-w-none sm:text-5xl">{title}</h1>
+          <p className="mt-5 max-w-[28ch] text-lg leading-8 text-slate sm:max-w-3xl">{intro}</p>
         </div>
-        {children ? <div>{children}</div> : null}
+        {children ? <div className="min-w-0">{children}</div> : null}
       </div>
     </section>
   );

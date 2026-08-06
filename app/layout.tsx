@@ -13,18 +13,32 @@ export const metadata: Metadata = {
   },
   description: "Premium RN-led assessments, negotiated care planning, and clinical documentation support for Adult Family Homes.",
   alternates: { canonical: "/" },
+  icons: {
+    icon: "/images/branding/sns-icon.png",
+    shortcut: "/images/branding/sns-icon.png",
+    apple: "/images/branding/sns-icon.png"
+  },
   openGraph: {
     title: "SNS | RN-Led Clinical Services for Adult Family Homes",
     description: "Professional RN assessments, negotiated care plans, and clinical documentation support.",
     url: site.url,
     siteName: "Sosena Nursing Solutions",
     locale: "en_US",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "/images/branding/sns-logo.png",
+        width: 1254,
+        height: 1254,
+        alt: "SNS — Sosena Nursing Solutions"
+      }
+    ]
   },
   twitter: {
     card: "summary",
     title: "SNS | RN-Led Clinical Services",
-    description: "Professional RN assessments and practical care planning for Adult Family Homes."
+    description: "Professional RN assessments and practical care planning for Adult Family Homes.",
+    images: ["/images/branding/sns-logo.png"]
   }
 };
 

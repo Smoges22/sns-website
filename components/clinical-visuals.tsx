@@ -8,14 +8,14 @@ export function ClinicalWorkflowMockup() {
   ];
 
   return (
-    <div className="relative mx-auto max-w-xl rounded-2xl border border-navy/10 bg-white p-3 shadow-[0_28px_80px_rgba(23,50,77,0.16)]">
+    <div className="relative mx-auto w-full min-w-0 max-w-xl overflow-hidden rounded-2xl border border-navy/10 bg-white p-3 shadow-[0_28px_80px_rgba(23,50,77,0.16)]">
       <div className="rounded-xl border border-navy/10 bg-soft p-4">
-        <div className="flex items-center justify-between gap-4 border-b border-navy/10 pb-3">
-          <div>
+        <div className="flex min-w-0 flex-col gap-3 border-b border-navy/10 pb-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+          <div className="min-w-0">
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-teal">SNS Clinical Portal</p>
             <p className="mt-1 text-sm font-bold text-navy">Assessment workflow preview</p>
           </div>
-          <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-slate ring-1 ring-navy/10">Demo data</span>
+          <span className="w-fit rounded-full bg-white px-3 py-1 text-xs font-bold text-slate ring-1 ring-navy/10">Demo data</span>
         </div>
         <div className="mt-4 grid gap-3 sm:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-xl bg-white p-4 ring-1 ring-navy/10">
@@ -26,7 +26,7 @@ export function ClinicalWorkflowMockup() {
             <div className="space-y-3">
               {rows.map(([section, state, note]) => (
                 <div className="rounded-lg border border-navy/10 p-3" key={section}>
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex min-w-0 items-center justify-between gap-2">
                     <p className="text-sm font-bold text-navy">{section}</p>
                     <span className="text-xs font-bold text-slate">{state}</span>
                   </div>
@@ -54,7 +54,7 @@ export function ClinicalWorkflowMockup() {
             </div>
             <div className="rounded-xl border border-teal/30 bg-[#EDF6FA] p-4">
               <p className="text-sm font-extrabold text-navy">Professional PDF</p>
-              <p className="mt-1 text-xs leading-5 text-slate">Assessment → RN Review → Care Plan → PDF</p>
+              <p className="mt-1 text-xs leading-5 text-slate">Assessment - RN Review - Care Plan - PDF</p>
             </div>
           </div>
         </div>

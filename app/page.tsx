@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ClinicalWorkflowMockup, DocumentationShowcase, ServiceGroups, WorkflowTimeline } from "@/components/clinical-visuals";
 import { PortalLink } from "@/components/portal-link";
@@ -8,13 +9,17 @@ export default function HomePage() {
   return (
     <main>
       <section className="overflow-hidden border-b border-navy/10 bg-[radial-gradient(circle_at_80%_10%,#edf6fa_0%,transparent_30%),linear-gradient(180deg,#ffffff_0%,#f5f7f9_100%)] px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
+        <div className="mx-auto grid max-w-7xl min-w-0 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="min-w-0">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-teal">RN-Led Clinical Services for Adult Family Homes</p>
-            <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-tight text-navy sm:text-6xl">
-              Professional RN Assessments and Practical Care Planning for Adult Family Homes
+            <h1 className="mt-5 max-w-[13ch] break-words text-4xl font-black tracking-tight text-navy sm:max-w-4xl sm:text-6xl">
+              <span className="block">Professional RN</span>
+              <span className="block">Assessments and</span>
+              <span className="block">Practical Care</span>
+              <span className="block">Planning for</span>
+              <span className="block">Adult Family Homes</span>
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate">
+            <p className="mt-6 max-w-[28ch] text-lg leading-8 text-slate sm:max-w-3xl">
               Sosena Nursing Solutions provides comprehensive nursing assessments, negotiated care plans, and clinical documentation support built around the practical needs of residents, providers, families, and Adult Family Home teams.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -41,7 +46,7 @@ export default function HomePage() {
       </section>
 
       <Section eyebrow="Why Adult Family Homes Choose SNS" title="RN-led documentation support designed for practical AFH workflows.">
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="rounded-2xl bg-navy p-8 text-white shadow-soft">
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical partner</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight">Clear assessment-to-care-plan continuity.</h2>
@@ -72,14 +77,16 @@ export default function HomePage() {
       </Section>
 
       <Section eyebrow="Meet Your Clinical Partner" title="Sosena Mekuria, RN" intro="Founder and Clinical Director of Sosena Nursing Solutions LLC.">
-        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
           <div className="rounded-2xl border border-navy/10 bg-white p-6 shadow-soft">
-            <div className="grid aspect-[4/5] place-items-center rounded-xl bg-[linear-gradient(145deg,#edf6fa,#ffffff)] ring-1 ring-navy/10">
-              <div className="text-center">
-                <div className="mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-navy text-2xl font-black tracking-[0.16em] text-white">SM</div>
-                <p className="mt-4 font-extrabold text-navy">Professional portrait placeholder</p>
-                <p className="mt-1 text-sm text-slate">Recommended image: 1200×1500px</p>
-              </div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-soft ring-1 ring-navy/10">
+              <Image
+                alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
+                className="h-full w-full object-cover object-[57%_center]"
+                fill
+                sizes="(min-width: 1024px) 30vw, 90vw"
+                src="/images/team/sosena-mekuria-rn.png"
+              />
             </div>
           </div>
           <div className="space-y-5 text-lg leading-8 text-slate">

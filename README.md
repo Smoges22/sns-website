@@ -32,12 +32,14 @@ Required public variable:
 
 ## Branding Assets
 
-The current site preserves the temporary SNS monogram placeholder because no finalized logo asset was found locally. When approved assets are available, place them in `public/brand/` using:
+Final SNS assets are stored in `public/images/branding/` and `public/images/team/`.
 
-- `sns-logo-horizontal.png` for the full header/footer logo
-- `sns-logo-mark.png` for compact icon and favicon use
+- `public/images/branding/sns-logo-transparent.png` for the header and footer wordmark treatment
+- `public/images/branding/sns-logo.png` for Open Graph and larger brand placements
+- `public/images/branding/sns-icon.png` for favicon, app icon, compact navigation, and avatar-style uses
+- `public/images/team/sosena-mekuria-rn.png` for the professional founder portrait
 
-Use transparent-background navy/teal exports.
+Use Next.js image optimization for rendered brand assets and preserve the supplied aspect ratios.
 
 ## Public Form Safety
 

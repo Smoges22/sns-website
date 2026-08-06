@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { DocumentationShowcase } from "@/components/clinical-visuals";
 import { Card, FinalCta, PageHero, Section } from "@/components/section";
 
@@ -12,27 +13,43 @@ export default function AboutPage() {
     <main>
       <PageHero
         eyebrow="Meet Your Clinical Partner"
-        title="Sosena Mekuria, RN"
+        title="Meet Your Clinical Partner"
         intro="Founder and Clinical Director of Sosena Nursing Solutions LLC, providing RN-led assessment and care-planning support for Adult Family Homes."
       >
-        <Card>
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">SNS approach</p>
-          <p className="mt-3 text-2xl font-black text-navy">Clinical judgment with practical AFH context.</p>
+        <Card className="flex min-w-0 flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <Image
+            alt="SNS — Sosena Nursing Solutions"
+            className="h-16 w-24 shrink-0 rounded-xl object-cover"
+            height={96}
+            src="/images/branding/sns-logo-transparent.png"
+            width={144}
+          />
+          <div>
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">SNS approach</p>
+            <p className="mt-2 max-w-[16ch] break-words text-xl font-black text-navy sm:max-w-none sm:text-2xl">Clinical judgment with practical AFH context.</p>
+          </div>
         </Card>
       </PageHero>
 
       <Section>
-        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+        <div className="grid min-w-0 gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
           <div className="rounded-2xl border border-navy/10 bg-white p-6 shadow-soft">
-            <div className="grid aspect-[4/5] place-items-center rounded-xl bg-[linear-gradient(145deg,#edf6fa,#ffffff)] ring-1 ring-navy/10">
-              <div className="text-center">
-                <div className="mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-navy text-2xl font-black tracking-[0.16em] text-white">SM</div>
-                <p className="mt-4 font-extrabold text-navy">Portrait placeholder</p>
-                <p className="mt-1 text-sm text-slate">Use approved 1200×1500px portrait when available.</p>
-              </div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-soft ring-1 ring-navy/10">
+              <Image
+                alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
+                className="h-full w-full object-cover object-[57%_center]"
+                fill
+                sizes="(min-width: 1024px) 34vw, 90vw"
+                src="/images/team/sosena-mekuria-rn.png"
+              />
             </div>
           </div>
-          <div className="space-y-5 text-lg leading-8 text-slate">
+          <div className="space-y-6 text-lg leading-8 text-slate">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-teal">Founder & Clinical Director</p>
+              <h2 className="mt-3 text-4xl font-black tracking-tight text-navy">Sosena Mekuria, RN</h2>
+              <p className="mt-2 text-xl font-extrabold text-slate">Founder & Clinical Director</p>
+            </div>
             <p>Sosena brings registered nurse leadership and Adult Family Home operating experience to clinical documentation and care planning.</p>
             <p>SNS emphasizes practical understanding of resident care, individualized assessment, and collaboration with residents, representatives, providers, and AFH teams.</p>
             <p>The work is designed to produce clear documentation that supports review, care planning, and next-step coordination.</p>
