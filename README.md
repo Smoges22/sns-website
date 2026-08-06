@@ -34,10 +34,9 @@ Required public variable:
 
 Final SNS assets are stored in `public/images/branding/` and `public/images/team/`.
 
-- `public/images/branding/sns-logo-transparent.png` for the header and footer wordmark treatment
-- `public/images/branding/sns-logo.png` for Open Graph and larger brand placements
+- `public/images/branding/sns-logo-horizontal.png` for the header, footer, Open Graph, and larger brand placements
 - `public/images/branding/sns-icon.png` for favicon, app icon, compact navigation, and avatar-style uses
-- `public/images/team/sosena-mekuria-rn.png` for the professional founder portrait
+- `public/images/team/sosena-mekuria-rn.webp` for the professional founder portrait
 
 Use Next.js image optimization for rendered brand assets and preserve the supplied aspect ratios.
 

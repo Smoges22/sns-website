@@ -19,7 +19,7 @@ export function BrandMark({ compact = false, inverse = false }: { compact?: bool
             className="hidden h-12 w-auto object-cover sm:block"
             height={96}
             priority
-            src="/images/branding/sns-logo-transparent.png"
+            src="/images/branding/sns-logo-horizontal.png"
             width={144}
           />
         ) : null}

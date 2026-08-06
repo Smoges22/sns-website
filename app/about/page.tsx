@@ -21,7 +21,7 @@ export default function AboutPage() {
             alt="SNS — Sosena Nursing Solutions"
             className="h-16 w-24 shrink-0 rounded-xl object-cover"
             height={96}
-            src="/images/branding/sns-logo-transparent.png"
+            src="/images/branding/sns-logo-horizontal.png"
             width={144}
           />
           <div>
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 className="h-full w-full object-cover object-[57%_center]"
                 fill
                 sizes="(min-width: 1024px) 34vw, 90vw"
-                src="/images/team/sosena-mekuria-rn.png"
+                src="/images/team/sosena-mekuria-rn.webp"
               />
             </div>
           </div>

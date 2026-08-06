@@ -90,7 +90,7 @@ export default function HomePage() {
                 className="h-full w-full object-cover object-[57%_center]"
                 fill
                 sizes="(min-width: 1024px) 30vw, 90vw"
-                src="/images/team/sosena-mekuria-rn.png"
+                src="/images/team/sosena-mekuria-rn.webp"
               />
             </div>
           </div>

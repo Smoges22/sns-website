@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/branding/sns-logo.png",
-        width: 1254,
-        height: 1254,
+        url: "/images/branding/sns-logo-horizontal.png",
+        width: 1536,
+        height: 1024,
         alt: "SNS — Sosena Nursing Solutions"
       }
     ]
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "SNS | RN-Led Clinical Services",
     description: "Professional RN assessments and practical care planning for Adult Family Homes.",
-    images: ["/images/branding/sns-logo.png"]
+    images: ["/images/branding/sns-logo-horizontal.png"]
   }
 };
 

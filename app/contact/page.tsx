@@ -26,14 +26,14 @@ export default function ContactPage() {
                 className="h-full w-full object-cover object-[58%_center]"
                 fill
                 sizes="(min-width: 1024px) 32vw, 90vw"
-                src="/images/team/sosena-mekuria-rn.png"
+                src="/images/team/sosena-mekuria-rn.webp"
               />
               <div className="absolute left-4 top-4 rounded-xl bg-white p-2 shadow-sm">
                 <Image
                   alt="SNS — Sosena Nursing Solutions"
                   className="h-10 w-16 rounded-lg object-cover"
                   height={80}
-                  src="/images/branding/sns-logo-transparent.png"
+                  src="/images/branding/sns-logo-horizontal.png"
                   width={120}
                 />
               </div>

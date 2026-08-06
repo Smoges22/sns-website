@@ -11,5 +11,11 @@ dist/
 *.jpg
 *.jpeg
 *.webp
+!public/images/
+!public/images/**/
+!public/images/**/*.png
+!public/images/**/*.jpg
+!public/images/**/*.jpeg
+!public/images/**/*.webp
 .vercel/
 
