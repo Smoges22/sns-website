@@ -28,7 +28,7 @@ Copy `.env.example` to `.env.local` for local development when needed.
 
 Required public variable:
 
-- `NEXT_PUBLIC_PORTAL_URL` - secure portal login destination, expected future value `https://portal.sosenanursingsolutions.com`.
+- `NEXT_PUBLIC_PORTAL_URL` - secure portal login destination. Leave blank to show `Secure Portal — Coming Soon` without a clickable link.
 
 ## Public Form Safety
 
@@ -56,4 +56,3 @@ Suggested Vercel project: `sns-website`.
 Initial deployment should be preview-only. Do not connect `sosenanursingsolutions.com` or `www.sosenanursingsolutions.com` until local QA passes and DNS records are reviewed.
 
 Do not disturb Google Workspace MX, SPF, DKIM, DMARC, or verification records.
-

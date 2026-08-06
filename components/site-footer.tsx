@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand";
+import { PortalLink } from "@/components/portal-link";
 import { launchServices, site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -28,7 +29,7 @@ export function SiteFooter() {
             <li><Link href="/contact">Contact</Link></li>
             <li><Link href="/privacy">Privacy</Link></li>
             <li><Link href="/terms">Terms</Link></li>
-            <li><a href={site.portalUrl}>Secure Portal Login</a></li>
+            <li><PortalLink /></li>
           </ul>
         </div>
       </div>
@@ -38,4 +39,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

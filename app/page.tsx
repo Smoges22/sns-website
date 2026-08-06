@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PortalLink } from "@/components/portal-link";
 import { Card, Section } from "@/components/section";
 import { howItWorks, launchServices, site, trustPoints } from "@/lib/site";
 
@@ -20,9 +21,7 @@ export default function HomePage() {
               <Link className="rounded-md bg-navy px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-[#214562]" href="/request-assessment">
                 Request an Assessment
               </Link>
-              <a className="rounded-md border border-navy/15 px-5 py-3 text-center text-sm font-bold text-navy transition hover:border-teal hover:text-teal" href={site.portalUrl}>
-                Secure Portal Login
-              </a>
+              <PortalLink className="rounded-md border border-navy/15 px-5 py-3 text-center text-sm font-bold text-navy transition hover:border-teal hover:text-teal" />
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {trustPoints.map((point) => (
@@ -103,4 +102,3 @@ export default function HomePage() {
     </main>
   );
 }
-

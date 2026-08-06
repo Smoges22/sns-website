@@ -6,7 +6,7 @@ export const site = {
   primaryEmail: "info@sosenanursingsolutions.com",
   generalEmail: "info@sosenanursingsolutions.com",
   phone: "425-246-6220",
-  portalUrl: process.env.NEXT_PUBLIC_PORTAL_URL || "https://portal.sosenanursingsolutions.com",
+  portalUrl: process.env.NEXT_PUBLIC_PORTAL_URL?.trim() || "",
   descriptor: "RN Assessments, Care Planning & Clinical Services",
   tagline: "Professional Assessments. Practical Care Solutions."
 };

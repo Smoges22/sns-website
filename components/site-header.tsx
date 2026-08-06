@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand";
-import { navItems, site } from "@/lib/site";
+import { PortalLink } from "@/components/portal-link";
+import { navItems } from "@/lib/site";
 
 export function SiteHeader() {
   return (
@@ -15,9 +16,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <a className="hidden text-sm font-semibold text-navy transition hover:text-teal sm:inline" href={site.portalUrl}>
-            Portal Login
-          </a>
+          <PortalLink className="hidden text-sm font-semibold text-navy transition hover:text-teal sm:inline" />
           <Link className="rounded-md bg-navy px-4 py-2 text-sm font-bold text-white transition hover:bg-[#214562]" href="/request-assessment">
             Request
           </Link>
@@ -29,9 +28,8 @@ export function SiteHeader() {
             {item.label}
           </Link>
         ))}
-        <a className="shrink-0" href={site.portalUrl}>Portal</a>
+        <PortalLink className="shrink-0" />
       </nav>
     </header>
   );
 }
-
