@@ -8,26 +8,26 @@ export function SiteFooter() {
 
   return (
     <footer className="bg-navy text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.25fr_1fr_0.85fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-6 lg:grid-cols-[1.25fr_1fr_0.85fr] lg:px-8">
         <div>
           <BrandMark inverse />
-          <p className="mt-5 max-w-md text-sm leading-6 text-white/68">
+          <p className="mt-6 max-w-md text-sm leading-6 text-white/68">
             {site.legalName} provides RN-led assessment and care-planning services for Adult Family Homes with practical clinical documentation workflows.
           </p>
-          <div className="mt-6 space-y-2 text-sm">
+          <div className="mt-7 grid gap-2 text-sm">
             <p><a className="font-bold text-white transition hover:text-teal" href={`tel:${site.phone.replaceAll("-", "")}`}>{site.phone}</a></p>
             <p><a className="text-white/72 transition hover:text-teal" href={`mailto:${site.primaryEmail}`}>{site.primaryEmail}</a></p>
           </div>
         </div>
         <div>
           <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Services</p>
-          <ul className="mt-4 grid gap-2 break-words text-sm text-white/72">
+          <ul className="mt-5 grid gap-2.5 break-words text-sm text-white/72">
             {services.map((service) => <li key={service}>{service}</li>)}
           </ul>
         </div>
         <div>
           <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Company</p>
-          <ul className="mt-4 grid gap-2 break-words text-sm text-white/72">
+          <ul className="mt-5 grid gap-2.5 break-words text-sm text-white/72">
             <li><Link className="transition hover:text-white" href="/about">About</Link></li>
             <li><Link className="transition hover:text-white" href="/contact">Contact</Link></li>
             <li><Link className="transition hover:text-white" href="/privacy">Privacy</Link></li>

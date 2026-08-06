@@ -18,7 +18,7 @@ export default function ServicesPage() {
       >
         <Card>
           <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Launch focus</p>
-          <p className="mt-3 text-2xl font-black text-navy">Assessments, care planning, and document review.</p>
+          <p className="mt-3 max-w-[18ch] break-words text-2xl font-black text-navy sm:max-w-none">Assessments, care planning, and document review.</p>
         </Card>
       </PageHero>
 

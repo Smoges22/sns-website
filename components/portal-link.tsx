@@ -11,12 +11,15 @@ export function PortalLink({
   className,
   comingSoonClassName,
   label = "Secure Portal Login",
-  comingSoonLabel = "Secure Portal — Coming Soon"
+  comingSoonLabel = "Launching Soon"
 }: PortalLinkProps) {
   if (!site.portalUrl) {
     return (
-      <span aria-disabled="true" className={comingSoonClassName ?? className}>
-        {comingSoonLabel}
+      <span aria-disabled="true" aria-label="Secure Portal - Coming Soon" className={`inline-flex items-center gap-2 ${comingSoonClassName ?? className ?? ""}`}>
+        <span>Secure Portal</span>
+        <span className="rounded-full border border-teal/25 bg-[#EDF6FA] px-2 py-0.5 text-[11px] font-black uppercase tracking-[0.12em] text-teal">
+          {comingSoonLabel}
+        </span>
       </span>
     );
   }

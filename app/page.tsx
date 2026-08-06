@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ClinicalWorkflowMockup, DocumentationShowcase, ServiceGroups, WorkflowTimeline } from "@/components/clinical-visuals";
+import { OutlineIcon, type OutlineIconName } from "@/components/outline-icon";
 import { PortalLink } from "@/components/portal-link";
 import { Card, FinalCta, Section } from "@/components/section";
-import { differentiation, site, trustPoints } from "@/lib/site";
+import { differentiation, trustPoints } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -45,19 +46,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section eyebrow="Why Adult Family Homes Choose SNS" title="RN-led documentation support designed for practical AFH workflows.">
-        <div className="grid min-w-0 gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <Section eyebrow="Why Adult Family Homes Choose SNS" title="A clinical partner with modern documentation discipline.">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
           <div className="rounded-2xl bg-navy p-8 text-white shadow-soft">
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical partner</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight">Clear assessment-to-care-plan continuity.</h2>
+            <h2 className="mt-3 text-3xl font-black tracking-tight">Clinical expertise connected to a real documentation platform.</h2>
             <p className="mt-4 leading-7 text-white/70">
-              SNS supports professional documentation with RN clinical judgment, AFH operating context, and a structured path from review to care planning.
+              SNS pairs RN judgment with structured assessment, review, care-plan, and PDF workflows built for Adult Family Home documentation.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {differentiation.map((point) => (
-              <Card className="p-5" key={point}>
-                <p className="text-base font-extrabold text-navy">{point}</p>
+              <Card className="p-5" key={point.title}>
+                <span className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-[#EDF6FA] text-teal ring-1 ring-teal/20">
+                  <OutlineIcon className="h-5 w-5" name={point.icon as OutlineIconName} />
+                </span>
+                <p className="text-base font-extrabold text-navy">{point.title}</p>
+                <p className="mt-2 text-sm leading-6 text-slate">{point.text}</p>
               </Card>
             ))}
           </div>
@@ -103,7 +108,7 @@ export default function HomePage() {
         </Card>
       </Section>
 
-      <FinalCta title={`Request assessment support from ${site.brand}`} />
+      <FinalCta />
     </main>
   );
 }

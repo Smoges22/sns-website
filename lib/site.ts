@@ -113,12 +113,36 @@ export const serviceGroups = [
 ];
 
 export const differentiation = [
-  "RN-led clinical judgment",
-  "Adult Family Home operating experience",
-  "Clear, usable documentation",
-  "Resident-centered care planning",
-  "Consistent assessment-to-care-plan workflow",
-  "Secure next steps for clinical records"
+  {
+    title: "RN Leadership",
+    text: "Clinical documentation guided by registered nurse judgment, review, and finalization.",
+    icon: "rn"
+  },
+  {
+    title: "Adult Family Home Expertise",
+    text: "Workflows shaped around provider needs, family communication, and day-to-day care realities.",
+    icon: "shield"
+  },
+  {
+    title: "Professional Documentation",
+    text: "Assessment findings and care-plan language organized for secure review and clean final PDFs.",
+    icon: "document"
+  },
+  {
+    title: "Assessment to Care Plan Workflow",
+    text: "A consistent path from assessment builder to RN review, negotiated care plan, and PDF output.",
+    icon: "workflow"
+  },
+  {
+    title: "Future Nurse Delegation",
+    text: "Planned service expansion only after workflow, documentation, and safeguard readiness.",
+    icon: "calendar"
+  },
+  {
+    title: "Resident-Centered Planning",
+    text: "Care-plan support focused on preferences, abilities, caregiver interventions, and practical next steps.",
+    icon: "carePlan"
+  }
 ];
 
 export const documentationStages = [

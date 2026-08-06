@@ -44,11 +44,17 @@ export default function AboutPage() {
               />
             </div>
           </div>
-          <div className="space-y-6 text-lg leading-8 text-slate">
+          <div className="space-y-8 text-lg leading-8 text-slate">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-teal">Founder & Clinical Director</p>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-teal">Founder</p>
               <h2 className="mt-3 text-4xl font-black tracking-tight text-navy">Sosena Mekuria, RN</h2>
-              <p className="mt-2 text-xl font-extrabold text-slate">Founder & Clinical Director</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {["Founder", "Registered Nurse", "Clinical Director"].map((role) => (
+                  <span className="rounded-full border border-navy/10 bg-white px-3 py-1 text-sm font-black text-navy shadow-sm" key={role}>
+                    {role}
+                  </span>
+                ))}
+              </div>
             </div>
             <p>Sosena brings registered nurse leadership and Adult Family Home operating experience to clinical documentation and care planning.</p>
             <p>SNS emphasizes practical understanding of resident care, individualized assessment, and collaboration with residents, representatives, providers, and AFH teams.</p>

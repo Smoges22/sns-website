@@ -19,15 +19,24 @@ export default function ContactPage() {
 
       <Section>
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <Card className="!bg-navy text-white">
-            <div className="mb-6 inline-flex rounded-xl bg-white p-2 shadow-sm">
+          <Card className="!bg-navy p-5 text-white">
+            <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-[28px] bg-white/8 shadow-soft ring-1 ring-white/12">
               <Image
-                alt="SNS — Sosena Nursing Solutions"
-                className="h-16 w-24 rounded-lg object-cover"
-                height={96}
-                src="/images/branding/sns-logo-transparent.png"
-                width={144}
+                alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
+                className="h-full w-full object-cover object-[58%_center]"
+                fill
+                sizes="(min-width: 1024px) 32vw, 90vw"
+                src="/images/team/sosena-mekuria-rn.png"
               />
+              <div className="absolute left-4 top-4 rounded-xl bg-white p-2 shadow-sm">
+                <Image
+                  alt="SNS — Sosena Nursing Solutions"
+                  className="h-10 w-16 rounded-lg object-cover"
+                  height={80}
+                  src="/images/branding/sns-logo-transparent.png"
+                  width={120}
+                />
+              </div>
             </div>
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical Director</p>
             <h2 className="mt-3 text-3xl font-black">Sosena Mekuria, RN</h2>
@@ -50,6 +59,10 @@ export default function ContactPage() {
               <div>
                 <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Service area</p>
                 <p className="mt-2 text-xl font-black text-navy">Washington Adult Family Homes</p>
+              </div>
+              <div className="rounded-xl border border-teal/20 bg-[#EDF6FA] p-4 sm:col-span-2">
+                <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Typical response</p>
+                <p className="mt-2 text-xl font-black text-navy">Within one business day</p>
               </div>
             </div>
             <div className="mt-8 rounded-xl border border-alert/25 bg-[#fff8f8] p-4 text-sm font-semibold leading-6 text-alert">
