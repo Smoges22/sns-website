@@ -3,7 +3,7 @@ export const site = {
   brand: "SNS",
   domain: "sosenanursingsolutions.com",
   url: "https://sosenanursingsolutions.com",
-  primaryEmail: "sosena@sosenanursingsolutions.com",
+  primaryEmail: "info@sosenanursingsolutions.com",
   generalEmail: "info@sosenanursingsolutions.com",
   phone: "425-246-6220",
   portalUrl: process.env.NEXT_PUBLIC_PORTAL_URL || "https://portal.sosenanursingsolutions.com",
@@ -54,4 +54,3 @@ export const navItems = [
   { href: "/request-assessment", label: "Request" },
   { href: "/contact", label: "Contact" }
 ];
-
