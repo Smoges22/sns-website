@@ -37,7 +37,18 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 px-5 py-5 text-center text-xs leading-6 text-white/58">
-        © {new Date().getFullYear()} {site.legalName}. No detailed medical information should be submitted through public website forms.
+        <p>© {new Date().getFullYear()} {site.legalName}. No detailed medical information should be submitted through public website forms.</p>
+        <p className="mt-2 text-[12px] text-white/45">
+          Website by{" "}
+          <a
+            className="underline decoration-white/25 underline-offset-4 transition hover:text-white/75 hover:decoration-white/55 focus-visible:text-white"
+            href="https://www.afhdesignsbysam.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Web Designs by Sam
+          </a>
+        </p>
       </div>
     </footer>
   );
