@@ -18,15 +18,15 @@ export default function RequestAssessmentPage() {
         intro="Submit minimum intake information only. SNS will provide secure next steps when clinical records are needed."
       />
 
-      <SectionContainer>
+      <SectionContainer className="bg-[#F5F7F9]">
         <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr]">
-          <aside className="rounded-[26px] bg-navy p-6 text-white shadow-soft sm:p-8">
+          <aside className="rounded-[26px] bg-[#102A43] p-6 text-white shadow-soft sm:p-8">
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Public form safety</p>
             <h2 className="mt-3 text-2xl font-black">Minimum coordination details only.</h2>
-            <p className="mt-4 leading-7 text-white/70">
+            <p className="mt-4 leading-7 text-[#D6E1EA]">
               This form routes to the contact step and does not collect or upload clinical records. SNS will provide secure instructions when records are needed.
             </p>
-            <div className="mt-6 rounded-2xl border border-white/12 bg-white/7 p-4 text-sm leading-6 text-white/70">
+            <div className="mt-6 rounded-2xl border border-white/15 bg-white/9 p-4 text-sm leading-6 text-[#D6E1EA]">
               Do not include diagnoses, medications, Social Security numbers, insurance identifiers, or detailed resident medical information.
             </div>
             <Link className="mt-6 inline-flex font-extrabold text-teal transition hover:text-white" href="/contact">

@@ -18,7 +18,7 @@ export default function ContactPage() {
         intro="For assessment requests, send minimum coordination details only. Do not email detailed clinical records until secure next steps are provided."
       />
 
-      <SectionContainer>
+      <SectionContainer className="bg-[#F5F7F9]">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.82fr] lg:items-stretch">
           <Card className="p-6 sm:p-8">
             <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-teal">Contact details</p>
@@ -46,7 +46,7 @@ export default function ContactPage() {
             </div>
           </Card>
 
-          <Card className="!bg-navy p-5 text-white">
+          <Card className="!bg-[#102A43] p-5 text-white">
             <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-[28px] bg-white/8 shadow-soft ring-1 ring-white/12">
               <Image
                 alt="Sosena Mekuria, RN, Founder and Clinical Director of Sosena Nursing Solutions LLC"
@@ -67,7 +67,7 @@ export default function ContactPage() {
             </div>
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical Director</p>
             <h2 className="mt-3 text-3xl font-black">Sosena Mekuria, RN</h2>
-            <p className="mt-2 text-white/70">{site.legalName}</p>
+            <p className="mt-2 text-[#D6E1EA]">{site.legalName}</p>
             <Link className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-teal px-5 py-3 text-sm font-extrabold text-navy transition hover:-translate-y-0.5 hover:bg-white" href="/request-assessment">
               Request an Assessment
             </Link>

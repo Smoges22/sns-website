@@ -22,7 +22,7 @@ export default function ServicesPage() {
         </Card>
       </PageHero>
 
-      <SectionContainer>
+      <SectionContainer className="bg-[#F5F7F9]">
         <ServiceGroups />
       </SectionContainer>
 

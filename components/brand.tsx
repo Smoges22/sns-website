@@ -27,7 +27,7 @@ export function BrandMark({ compact = false, inverse = false }: { compact?: bool
       {!compact ? (
         <span className="hidden min-w-0 leading-tight md:block">
           <span className={`block text-sm font-extrabold ${inverse ? "text-white" : "text-navy"}`}>Sosena Nursing Solutions</span>
-          <span className={`block text-xs font-semibold ${inverse ? "text-white/65" : "text-slate"}`}>RN clinical services</span>
+          <span className={`block text-xs font-semibold ${inverse ? "text-[#D6E1EA]" : "text-slate"}`}>RN clinical services</span>
         </span>
       ) : null}
     </Link>

@@ -61,7 +61,7 @@ export default function AboutPage() {
         </SplitPanel>
       </SectionContainer>
 
-      <SectionContainer eyebrow="Care philosophy" title="Clear documentation should support real care decisions.">
+      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Care philosophy" title="Clear documentation should support real care decisions.">
         <div className="grid gap-5 md:grid-cols-3">
           <Card><h2 className="font-black text-navy">Practical AFH experience</h2><p className="mt-3 text-slate">Services are shaped around the real coordination needs of Adult Family Homes.</p></Card>
           <Card><h2 className="font-black text-navy">Resident-centered planning</h2><p className="mt-3 text-slate">Care-plan language stays focused on preferences, abilities, risks, and caregiver interventions.</p></Card>

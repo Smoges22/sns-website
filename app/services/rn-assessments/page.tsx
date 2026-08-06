@@ -29,7 +29,7 @@ export default function RnAssessmentsPage() {
         </div>
       </SectionContainer>
 
-      <SectionContainer eyebrow="Who it helps" title="Designed for providers who need clearer clinical records.">
+      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Who it helps" title="Designed for providers who need clearer clinical records.">
         <div className="grid gap-5 md:grid-cols-3">
           <Card><h2 className="font-black text-navy">AFH providers</h2><p className="mt-3 text-slate">Support for assessment review, care planning, and documentation readiness.</p></Card>
           <Card><h2 className="font-black text-navy">Families and representatives</h2><p className="mt-3 text-slate">Clearer language around care needs, supports, risks, and preferences.</p></Card>

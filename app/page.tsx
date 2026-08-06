@@ -9,8 +9,8 @@ import { differentiation, trustPoints } from "@/lib/site";
 export default function HomePage() {
   return (
     <PageShell>
-      <section className="px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-14">
-        <div className="mx-auto grid max-w-7xl min-w-0 gap-10 overflow-hidden rounded-[32px] border border-navy/10 bg-[radial-gradient(circle_at_82%_12%,rgba(24,183,201,0.18),transparent_28%),linear-gradient(135deg,#ffffff_0%,#f8fbfc_58%,#edf6fa_100%)] p-5 shadow-[0_24px_80px_rgba(23,50,77,0.11)] sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:p-10">
+      <section className="bg-white px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-14">
+        <div className="mx-auto grid max-w-7xl min-w-0 gap-10 overflow-hidden rounded-[32px] border border-[#D9E3EA] bg-[radial-gradient(circle_at_82%_12%,rgba(24,183,201,0.16),transparent_28%),linear-gradient(135deg,#ffffff_0%,#FBFCFD_58%,#EDF6FA_100%)] p-5 shadow-[0_24px_80px_rgba(23,50,77,0.12)] sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:p-10">
           <div className="min-w-0">
             <p className="break-words text-xs font-black uppercase tracking-[0.12em] text-teal sm:text-sm sm:tracking-[0.18em]">
               <span className="sm:hidden">RN-Led Clinical Services</span>
@@ -26,11 +26,11 @@ export default function HomePage() {
             <p className="mt-6 max-w-[28ch] text-lg leading-8 text-slate sm:max-w-3xl">
               Sosena Nursing Solutions provides comprehensive nursing assessments, negotiated care plans, and clinical documentation support built around the practical needs of residents, providers, families, and Adult Family Home teams.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-navy px-4 py-3 text-center text-xs font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[#214562] sm:w-auto sm:px-5 sm:text-sm" href="/request-assessment">
+            <div className="mt-8 flex max-w-full flex-col items-start gap-3 sm:flex-row">
+              <Link className="inline-flex min-h-12 max-w-full items-center justify-center rounded-xl bg-navy px-4 py-3 text-center text-xs font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[#214562] sm:w-auto sm:px-5 sm:text-sm" href="/request-assessment">
                 Request an Assessment
               </Link>
-              <Link className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-navy/15 bg-white px-4 py-3 text-center text-xs font-extrabold text-navy transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:w-auto sm:px-5 sm:text-sm" href="/services">
+              <Link className="inline-flex min-h-12 max-w-full items-center justify-center rounded-xl border border-navy/15 bg-white px-4 py-3 text-center text-xs font-extrabold text-navy transition hover:-translate-y-0.5 hover:border-teal hover:text-teal sm:w-auto sm:px-5 sm:text-sm" href="/services">
                 Explore Services
               </Link>
             </div>
@@ -39,7 +39,7 @@ export default function HomePage() {
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {trustPoints.map((point) => (
-                <div className="rounded-2xl border border-navy/10 bg-white/86 px-4 py-3 text-sm font-extrabold text-navy shadow-sm backdrop-blur" key={point}>
+                <div className="rounded-2xl border border-[#C8D8E2] bg-white px-4 py-3 text-sm font-extrabold text-navy shadow-sm" key={point}>
                   {point}
                 </div>
               ))}
@@ -49,12 +49,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <SectionContainer eyebrow="Why Adult Family Homes Choose SNS" title="A clinical partner with modern documentation discipline.">
+      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Why Adult Family Homes Choose SNS" title="A clinical partner with modern documentation discipline.">
         <div className="grid min-w-0 gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-          <div className="rounded-[24px] bg-navy p-7 text-white shadow-soft">
+          <div className="rounded-[24px] bg-[#102A43] p-7 text-white shadow-soft">
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical partner</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight">Clinical expertise connected to a real documentation platform.</h2>
-            <p className="mt-4 leading-7 text-white/70">
+            <p className="mt-4 leading-7 text-[#D6E1EA]">
               SNS pairs RN judgment with structured assessment, review, care-plan, and PDF workflows built for Adult Family Home documentation.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function HomePage() {
         <WorkflowTimeline />
       </SectionContainer>
 
-      <SectionContainer eyebrow="Services" title="Assessment, care planning, and document review without generic service-card clutter.">
+      <SectionContainer className="bg-[#EDF6FA]" eyebrow="Services" title="Assessment, care planning, and document review without generic service-card clutter.">
         <ServiceGroups />
       </SectionContainer>
 
@@ -84,7 +84,7 @@ export default function HomePage() {
         <DocumentationShowcase />
       </SectionContainer>
 
-      <SectionContainer eyebrow="Meet Your Clinical Partner" title="Sosena Mekuria, RN" intro="Founder and Clinical Director of Sosena Nursing Solutions LLC.">
+      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Meet Your Clinical Partner" title="Sosena Mekuria, RN" intro="Founder and Clinical Director of Sosena Nursing Solutions LLC.">
         <SplitPanel className="bg-[linear-gradient(135deg,#ffffff_0%,#f8fbfc_100%)] lg:grid-cols-[0.68fr_1.32fr] lg:items-center">
           <div className="rounded-[26px] border border-navy/10 bg-soft p-4 shadow-inner">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-soft ring-1 ring-navy/10">
@@ -110,7 +110,7 @@ export default function HomePage() {
         </SplitPanel>
       </SectionContainer>
 
-      <SectionContainer eyebrow="Future service" title="Nurse Delegation - Coming Soon" intro="Nurse Delegation is planned as a future SNS service. Availability will be announced after the clinical workflows, documentation standards, and operational safeguards are ready.">
+      <SectionContainer className="bg-[#EFF9FA]" eyebrow="Future service" title="Nurse Delegation - Coming Soon" intro="Nurse Delegation is planned as a future SNS service. Availability will be announced after the clinical workflows, documentation standards, and operational safeguards are ready.">
         <Card className="max-w-3xl">
           <p className="text-lg leading-8 text-slate">This service is not currently available for booking, and pricing is not listed during the launch phase.</p>
         </Card>

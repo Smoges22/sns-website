@@ -25,7 +25,7 @@ export default function HowItWorksPage() {
         <WorkflowTimeline />
       </SectionContainer>
 
-      <SectionContainer eyebrow="Safety by design" title="The public workflow is intentionally limited.">
+      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Safety by design" title="The public workflow is intentionally limited.">
         <div className="grid gap-5 md:grid-cols-3">
           <Card><h2 className="font-black text-navy">Minimum intake</h2><p className="mt-3 text-slate">The request form asks for contact, service, location, timing, and general coordination notes only.</p></Card>
           <Card><h2 className="font-black text-navy">Secure next steps</h2><p className="mt-3 text-slate">When clinical records are needed, SNS provides secure instructions instead of collecting records through the public website.</p></Card>

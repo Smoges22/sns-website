@@ -21,7 +21,7 @@ export default function NurseDelegationPage() {
         </Card>
       </PageHero>
 
-      <SectionContainer eyebrow="Future readiness" title="SNS will announce this service only when the clinical safeguards are ready.">
+      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Future readiness" title="SNS will announce this service only when the clinical safeguards are ready.">
         <div className="grid gap-5 md:grid-cols-3">
           <Card><h2 className="font-black text-navy">Workflow readiness</h2><p className="mt-3 text-slate">SNS will announce this service only after the clinical workflow is ready.</p></Card>
           <Card><h2 className="font-black text-navy">Documentation standards</h2><p className="mt-3 text-slate">Future launch will require clear documentation practices and service boundaries.</p></Card>

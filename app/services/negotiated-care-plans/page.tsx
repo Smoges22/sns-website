@@ -30,7 +30,7 @@ export default function NegotiatedCarePlansPage() {
         </div>
       </SectionContainer>
 
-      <SectionContainer eyebrow="Documentation flow" title="Assessment findings become practical care-plan language.">
+      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Documentation flow" title="Assessment findings become practical care-plan language.">
         <DocumentationShowcase />
       </SectionContainer>
 
