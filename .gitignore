@@ -1,0 +1,15 @@
+.next/
+node_modules/
+.env
+.env.local
+.env.*.local
+out/
+dist/
+*.log
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+.vercel/
+
