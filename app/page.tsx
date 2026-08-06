@@ -1,104 +1,102 @@
 import Link from "next/link";
+import { ClinicalWorkflowMockup, DocumentationShowcase, ServiceGroups, WorkflowTimeline } from "@/components/clinical-visuals";
 import { PortalLink } from "@/components/portal-link";
-import { Card, Section } from "@/components/section";
-import { howItWorks, launchServices, site, trustPoints } from "@/lib/site";
+import { Card, FinalCta, Section } from "@/components/section";
+import { differentiation, site, trustPoints } from "@/lib/site";
 
 export default function HomePage() {
   return (
     <main>
-      <section className="border-b border-navy/10 bg-white px-5 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <section className="overflow-hidden border-b border-navy/10 bg-[radial-gradient(circle_at_80%_10%,#edf6fa_0%,transparent_30%),linear-gradient(180deg,#ffffff_0%,#f5f7f9_100%)] px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal">SNS</p>
-            <p className="mt-3 text-lg font-semibold text-slate">Sosena Nursing Solutions</p>
-            <h1 className="mt-6 max-w-4xl text-4xl font-bold tracking-tight text-navy sm:text-6xl">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-teal">RN-Led Clinical Services for Adult Family Homes</p>
+            <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-tight text-navy sm:text-6xl">
               Professional RN Assessments and Practical Care Planning for Adult Family Homes
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate">
-              Sosena Nursing Solutions provides comprehensive nursing assessments, negotiated care planning, and clinical support designed around the needs of Adult Family Home residents, providers, and families.
+              Sosena Nursing Solutions provides comprehensive nursing assessments, negotiated care plans, and clinical documentation support built around the practical needs of residents, providers, families, and Adult Family Home teams.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link className="rounded-md bg-navy px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-[#214562]" href="/request-assessment">
+              <Link className="inline-flex min-h-12 items-center justify-center rounded-lg bg-navy px-5 py-3 text-center text-sm font-extrabold text-white transition hover:bg-[#214562]" href="/request-assessment">
                 Request an Assessment
               </Link>
-              <PortalLink className="rounded-md border border-navy/15 px-5 py-3 text-center text-sm font-bold text-navy transition hover:border-teal hover:text-teal" />
+              <Link className="inline-flex min-h-12 items-center justify-center rounded-lg border border-navy/15 bg-white px-5 py-3 text-center text-sm font-extrabold text-navy transition hover:border-teal hover:text-teal" href="/services">
+                Explore Services
+              </Link>
+            </div>
+            <div className="mt-5">
+              <PortalLink className="text-sm font-extrabold text-navy transition hover:text-teal" comingSoonClassName="text-sm font-extrabold text-slate" />
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {trustPoints.map((point) => (
-                <div className="rounded-md border border-navy/10 bg-soft px-4 py-3 text-sm font-semibold text-navy" key={point}>
+                <div className="rounded-xl border border-navy/10 bg-white px-4 py-3 text-sm font-extrabold text-navy shadow-sm" key={point}>
                   {point}
                 </div>
               ))}
             </div>
           </div>
-          <div className="rounded-md border border-navy/10 bg-soft p-6 shadow-soft">
-            <p className="text-sm font-bold uppercase tracking-[0.16em] text-teal">{site.tagline}</p>
-            <div className="mt-8 space-y-4">
-              {launchServices.slice(0, 5).map((service) => (
-                <div className="rounded-md border border-navy/10 bg-white p-5" key={service}>
-                  <p className="font-bold text-navy">{service}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate">Clear, organized documentation designed for practical care decisions.</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ClinicalWorkflowMockup />
         </div>
       </section>
 
-      <Section eyebrow="Core services" title="RN-led assessment and care-planning support">
-        <div className="grid gap-5 md:grid-cols-3">
-          {launchServices.slice(0, 6).map((service) => (
-            <Card key={service}>
-              <h3 className="text-lg font-bold text-navy">{service}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate">Professional support for AFH care planning, documentation, and review workflows.</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="bg-soft" eyebrow="Why choose SNS" title="Clinical judgment with practical Adult Family Home context">
-        <div className="grid gap-5 md:grid-cols-2">
-          <Card><h3 className="font-bold text-navy">Registered Nurse leadership</h3><p className="mt-3 text-slate">Assessment and care-planning work is guided by RN clinical judgment.</p></Card>
-          <Card><h3 className="font-bold text-navy">Practical documentation</h3><p className="mt-3 text-slate">Outputs are built to be clear, usable, and centered on resident needs.</p></Card>
-        </div>
-      </Section>
-
-      <Section eyebrow="How it works" title="A careful workflow from request to documentation">
-        <div className="grid gap-5 md:grid-cols-4">
-          {howItWorks.map((step, index) => (
-            <Card key={step.title}>
-              <p className="text-sm font-bold text-teal">0{index + 1}</p>
-              <h3 className="mt-3 font-bold text-navy">{step.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate">{step.text}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="bg-navy text-white" eyebrow="About Sosena" title="Founded by Sosena Mekuria, RN">
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-md border border-white/15 bg-white/5 p-6">
-            <p className="text-2xl font-bold">Sosena Mekuria, RN</p>
-            <p className="mt-2 text-white/75">Founder and Clinical Director</p>
+      <Section eyebrow="Why Adult Family Homes Choose SNS" title="RN-led documentation support designed for practical AFH workflows.">
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="rounded-2xl bg-navy p-8 text-white shadow-soft">
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Clinical partner</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight">Clear assessment-to-care-plan continuity.</h2>
+            <p className="mt-4 leading-7 text-white/70">
+              SNS supports professional documentation with RN clinical judgment, AFH operating context, and a structured path from review to care planning.
+            </p>
           </div>
-          <p className="text-lg leading-8 text-white/80">
-            SNS combines registered nurse leadership with Adult Family Home operating experience, practical understanding of resident care, and individualized care planning in collaboration with residents, representatives, providers, and AFH teams.
-          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {differentiation.map((point) => (
+              <Card className="p-5" key={point}>
+                <p className="text-base font-extrabold text-navy">{point}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </Section>
 
-      <Section eyebrow="Future services" title="Nurse Delegation - Coming Soon" intro="Nurse delegation is planned as a future service area. It is not currently presented as available for booking.">
-        <Card>
-          <p className="text-slate">SNS will announce availability only after the workflow, staffing, and documentation safeguards are ready.</p>
+      <Section className="bg-white" eyebrow="Clinical workflow" title="From Request to Professional Documentation" intro="A focused process keeps public intake minimal and clinical records moving through secure next steps.">
+        <WorkflowTimeline />
+      </Section>
+
+      <Section eyebrow="Services" title="Assessment, care planning, and document review without generic service-card clutter.">
+        <ServiceGroups />
+      </Section>
+
+      <Section className="bg-white" eyebrow="Clinical documentation showcase" title="Premium documentation workflows, finalized through RN review.">
+        <DocumentationShowcase />
+      </Section>
+
+      <Section eyebrow="Meet Your Clinical Partner" title="Sosena Mekuria, RN" intro="Founder and Clinical Director of Sosena Nursing Solutions LLC.">
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+          <div className="rounded-2xl border border-navy/10 bg-white p-6 shadow-soft">
+            <div className="grid aspect-[4/5] place-items-center rounded-xl bg-[linear-gradient(145deg,#edf6fa,#ffffff)] ring-1 ring-navy/10">
+              <div className="text-center">
+                <div className="mx-auto grid h-20 w-20 place-items-center rounded-2xl bg-navy text-2xl font-black tracking-[0.16em] text-white">SM</div>
+                <p className="mt-4 font-extrabold text-navy">Professional portrait placeholder</p>
+                <p className="mt-1 text-sm text-slate">Recommended image: 1200×1500px</p>
+              </div>
+            </div>
+          </div>
+          <div className="space-y-5 text-lg leading-8 text-slate">
+            <p>SNS is guided by registered nurse leadership and practical Adult Family Home operating experience.</p>
+            <p>Sosena’s work emphasizes individualized assessment, usable documentation, and collaboration with residents, representatives, providers, and AFH teams.</p>
+            <p>The goal is simple: make clinical documentation easier to understand, easier to review, and more useful for care planning.</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="bg-[#EDF6FA]" eyebrow="Future service" title="Nurse Delegation — Coming Soon" intro="Nurse Delegation is planned as a future SNS service. Availability will be announced after the clinical workflows, documentation standards, and operational safeguards are ready.">
+        <Card className="max-w-3xl">
+          <p className="text-lg leading-8 text-slate">This service is not currently available for booking, and pricing is not listed during the launch phase.</p>
         </Card>
       </Section>
 
-      <Section className="bg-soft" title="Ready to request an assessment?">
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <Link className="rounded-md bg-navy px-5 py-3 text-center text-sm font-bold text-white" href="/request-assessment">Request an Assessment</Link>
-          <Link className="rounded-md border border-navy/15 px-5 py-3 text-center text-sm font-bold text-navy" href="/services">Explore Services</Link>
-        </div>
-      </Section>
+      <FinalCta title={`Request assessment support from ${site.brand}`} />
     </main>
   );
 }

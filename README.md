@@ -1,6 +1,6 @@
 # SNS Public Website
 
-Public marketing and intake website for Sosena Nursing Solutions LLC.
+Public marketing and minimum-intake website for Sosena Nursing Solutions LLC.
 
 ## Purpose
 
@@ -29,6 +29,15 @@ Copy `.env.example` to `.env.local` for local development when needed.
 Required public variable:
 
 - `NEXT_PUBLIC_PORTAL_URL` - secure portal login destination. Leave blank to show `Secure Portal — Coming Soon` without a clickable link.
+
+## Branding Assets
+
+The current site preserves the temporary SNS monogram placeholder because no finalized logo asset was found locally. When approved assets are available, place them in `public/brand/` using:
+
+- `sns-logo-horizontal.png` for the full header/footer logo
+- `sns-logo-mark.png` for compact icon and favicon use
+
+Use transparent-background navy/teal exports.
 
 ## Public Form Safety
 

@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     default: "SNS | Sosena Nursing Solutions",
     template: "%s | Sosena Nursing Solutions"
   },
-  description: "Registered nurse-led assessments, negotiated care planning, and clinical services for Adult Family Homes.",
+  description: "Premium RN-led assessments, negotiated care planning, and clinical documentation support for Adult Family Homes.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Sosena Nursing Solutions",
-    description: "Professional RN assessments and practical care planning for Adult Family Homes.",
+    title: "SNS | RN-Led Clinical Services for Adult Family Homes",
+    description: "Professional RN assessments, negotiated care plans, and clinical documentation support.",
     url: site.url,
     siteName: "Sosena Nursing Solutions",
     locale: "en_US",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Sosena Nursing Solutions",
+    title: "SNS | RN-Led Clinical Services",
     description: "Professional RN assessments and practical care planning for Adult Family Homes."
   }
 };

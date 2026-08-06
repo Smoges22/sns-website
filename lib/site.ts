@@ -11,39 +11,132 @@ export const site = {
   tagline: "Professional Assessments. Practical Care Solutions."
 };
 
-export const launchServices = [
-  "Comprehensive RN Assessments",
-  "Annual Reassessments",
-  "Significant-Change Assessments",
-  "Preliminary Negotiated Service Plans",
-  "Negotiated Care Plans",
-  "Care-Plan Reviews",
-  "External Assessment Review and Care-Plan Preparation"
-];
-
 export const trustPoints = [
   "Registered Nurse-led",
   "Adult Family Home experience",
   "Professional clinical documentation",
-  "Practical, resident-centered care planning"
+  "Resident-centered care planning"
 ];
 
 export const howItWorks = [
   {
     title: "Request",
-    text: "Share basic contact details and the type of assessment or care-plan support needed."
+    text: "Submit minimum intake details through the public website."
   },
   {
     title: "Coordinate",
-    text: "SNS confirms scope, timing, secure record exchange, and next steps without collecting clinical details in the public form."
+    text: "SNS confirms scope, scheduling, and secure record exchange."
   },
   {
     title: "Assess",
-    text: "A registered nurse completes the assessment or review using professional documentation practices."
+    text: "A registered nurse completes or reviews the assessment."
+  },
+  {
+    title: "Review",
+    text: "Clinical findings and narratives are reviewed by the RN."
   },
   {
     title: "Plan",
-    text: "SNS prepares practical care-planning documentation that supports residents, representatives, providers, and AFH teams."
+    text: "SNS prepares negotiated care-plan or service-plan documentation."
+  },
+  {
+    title: "Deliver",
+    text: "Finalized assessment and care-plan PDFs are delivered securely."
+  }
+];
+
+export const serviceGroups = [
+  {
+    title: "Assessments",
+    eyebrow: "RN assessment",
+    description: "Assessment work for new, annual, or significant-change care planning.",
+    services: [
+      {
+        name: "Comprehensive RN Assessments",
+        text: "A structured RN assessment that helps AFH teams understand needs, risks, preferences, and practical care considerations."
+      },
+      {
+        name: "Annual Reassessments",
+        text: "Periodic review to refresh documentation and support current care planning conversations."
+      },
+      {
+        name: "Significant-Change Assessments",
+        text: "Focused assessment support when care needs, function, or service conditions materially change."
+      }
+    ]
+  },
+  {
+    title: "Care Planning",
+    eyebrow: "Plan preparation",
+    description: "Care-plan documentation shaped around assessed needs and daily care workflows.",
+    services: [
+      {
+        name: "Preliminary Negotiated Service Plans",
+        text: "Early planning documentation connected to assessment findings and immediate care-team coordination."
+      },
+      {
+        name: "Negotiated Care Plans",
+        text: "Resident-centered care-plan preparation with caregiver interventions, abilities, and preferences organized clearly."
+      },
+      {
+        name: "Care-Plan Reviews",
+        text: "Review support for updating care plans after reassessment, external review, or changing needs."
+      }
+    ]
+  },
+  {
+    title: "Document Review",
+    eyebrow: "Clinical review",
+    description: "External assessment and care-plan preparation support for clearer next steps.",
+    services: [
+      {
+        name: "External Assessment Review",
+        text: "RN-guided review of assessment information to identify documentation needs and care-planning priorities."
+      },
+      {
+        name: "Care-Plan Preparation",
+        text: "Practical preparation support for AFH providers who need clear, usable care-plan documentation."
+      }
+    ]
+  },
+  {
+    title: "Future",
+    eyebrow: "Coming soon",
+    description: "Nurse Delegation is planned after workflows and safeguards are ready.",
+    services: [
+      {
+        name: "Nurse Delegation — Coming Soon",
+        text: "Availability will be announced after clinical workflows, documentation standards, and operational safeguards are ready."
+      }
+    ]
+  }
+];
+
+export const differentiation = [
+  "RN-led clinical judgment",
+  "Adult Family Home operating experience",
+  "Clear, usable documentation",
+  "Resident-centered care planning",
+  "Consistent assessment-to-care-plan workflow",
+  "Secure next steps for clinical records"
+];
+
+export const documentationStages = [
+  {
+    title: "Assessment",
+    items: ["Structured RN assessment", "Screening and physical assessment", "ADL and service-plan sections"]
+  },
+  {
+    title: "RN Review",
+    items: ["Clinical narrative review", "Corrections and finalization", "Signature and certification"]
+  },
+  {
+    title: "Care Plan",
+    items: ["Negotiated care-plan preparation", "Caregiver interventions", "Abilities and preferences"]
+  },
+  {
+    title: "Professional PDF",
+    items: ["Consistent formatting", "Portrait and landscape pages", "Finalized document output"]
   }
 ];
 

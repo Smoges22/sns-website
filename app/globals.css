@@ -15,14 +15,25 @@ html {
 }
 
 body {
-  background: #ffffff;
+  background: #f5f7f9;
   color: #17324d;
   margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 
 a {
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.16em;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
 }
 
 :focus-visible {
@@ -36,3 +47,18 @@ textarea {
   font: inherit;
 }
 
+::selection {
+  background: #18b7c9;
+  color: #17324d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

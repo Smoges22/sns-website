@@ -1,39 +1,42 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand";
 import { PortalLink } from "@/components/portal-link";
-import { launchServices, site } from "@/lib/site";
+import { serviceGroups, site } from "@/lib/site";
 
 export function SiteFooter() {
+  const services = serviceGroups.flatMap((group) => group.services.map((service) => service.name)).slice(0, 7);
+
   return (
-    <footer className="border-t border-navy/10 bg-soft">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
+    <footer className="bg-navy text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.25fr_1fr_0.85fr] lg:px-8">
         <div>
-          <BrandMark />
-          <p className="mt-5 max-w-md text-sm leading-6 text-slate">
-            {site.legalName} provides registered nurse-led assessment and care-planning services for Adult Family Homes.
+          <BrandMark inverse />
+          <p className="mt-5 max-w-md text-sm leading-6 text-white/68">
+            {site.legalName} provides RN-led assessment and care-planning services for Adult Family Homes with practical clinical documentation workflows.
           </p>
-          <p className="mt-4 text-sm font-semibold text-navy">{site.phone}</p>
-          <p className="text-sm text-slate">{site.primaryEmail}</p>
+          <div className="mt-6 space-y-2 text-sm">
+            <p><a className="font-bold text-white transition hover:text-teal" href={`tel:${site.phone.replaceAll("-", "")}`}>{site.phone}</a></p>
+            <p><a className="text-white/72 transition hover:text-teal" href={`mailto:${site.primaryEmail}`}>{site.primaryEmail}</a></p>
+          </div>
         </div>
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.16em] text-slate">Services</p>
-          <ul className="mt-4 space-y-2 text-sm text-navy">
-            {launchServices.slice(0, 5).map((service) => <li key={service}>{service}</li>)}
-            <li>Nurse Delegation - Coming Soon</li>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Services</p>
+          <ul className="mt-4 grid gap-2 break-words text-sm text-white/72">
+            {services.map((service) => <li key={service}>{service}</li>)}
           </ul>
         </div>
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.16em] text-slate">Company</p>
-          <ul className="mt-4 space-y-2 text-sm text-navy">
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/privacy">Privacy</Link></li>
-            <li><Link href="/terms">Terms</Link></li>
-            <li><PortalLink /></li>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Company</p>
+          <ul className="mt-4 grid gap-2 break-words text-sm text-white/72">
+            <li><Link className="transition hover:text-white" href="/about">About</Link></li>
+            <li><Link className="transition hover:text-white" href="/contact">Contact</Link></li>
+            <li><Link className="transition hover:text-white" href="/privacy">Privacy</Link></li>
+            <li><Link className="transition hover:text-white" href="/terms">Terms</Link></li>
+            <li><PortalLink className="transition hover:text-white" comingSoonClassName="text-white/72" /></li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-navy/10 px-5 py-5 text-center text-xs text-slate">
+      <div className="border-t border-white/10 px-5 py-5 text-center text-xs leading-6 text-white/58">
         © {new Date().getFullYear()} {site.legalName}. No detailed medical information should be submitted through public website forms.
       </div>
     </footer>
