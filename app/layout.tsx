@@ -7,11 +7,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "RN Assessments & Care Plans | Sosena Nursing Solutions",
+    default: "RN Assessments, Care Plans & Clinical Follow-Up | Sosena Nursing Solutions",
     template: "%s | Sosena Nursing Solutions",
   },
   description:
-    "RN-led assessments and individualized care plans for Adult Family Homes, care teams, referral professionals, assisted living, and families in Washington.",
+    "RN assessments, individualized care plans, and clinical follow-up for Adult Family Homes, care teams, and families in Washington.",
   applicationName: site.name,
   icons: {
     icon: "/images/branding/sns-icon-64.png",

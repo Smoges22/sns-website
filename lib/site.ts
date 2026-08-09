@@ -8,20 +8,18 @@ export const site = {
   url: "https://sosenanursingsolutions.com",
   primaryEmail: "info@sosenanursingsolutions.com",
   phone: "425-246-6220",
-  portalUrl:
-    process.env.NEXT_PUBLIC_PORTAL_URL?.trim() ||
-    "https://portal.sosenanursingsolutions.com",
   provider: "Sosena Mekuria, RN",
   serviceArea: "Washington State",
-  descriptor: "RN Assessments & Individualized Care Plans",
+  descriptor: "Professional RN Assessments, Care Plans & Clinical Follow-Up",
 };
 
 export const navItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/who-we-serve", label: "Who We Serve" },
+  { href: "/sample-documents", label: "Sample Documents" },
+  { href: "/resources", label: "Resources" },
   { href: "/about", label: "About" },
-  { href: "/how-it-works", label: "How It Works" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -64,33 +62,6 @@ export const processSteps = [
   {
     title: "Plan & Deliver",
     text: "SNS prepares the appropriate care plan and provides completed documentation to the authorized party.",
-  },
-] as const;
-
-export const services = [
-  {
-    title: "RN Assessments",
-    href: "/services/rn-assessments",
-    description:
-      "Comprehensive nursing assessments that document health, cognitive, functional, behavioral, medication, safety, and personal-care needs.",
-    examples: [
-      "Admission assessments",
-      "Pre-placement and transition assessments",
-      "Annual reassessments",
-      "Significant-change assessments",
-    ],
-  },
-  {
-    title: "Individualized Care Plans",
-    href: "/services/negotiated-care-plans",
-    description:
-      "Practical, person-centered care plans that translate assessed needs into clear guidance for authorized caregivers, providers, families, and care teams.",
-    examples: [
-      "Individualized care plans",
-      "Negotiated care plans for AFH settings",
-      "Care guidance tied to assessed needs",
-      "Clear responsibilities and care approaches",
-    ],
   },
 ] as const;
 

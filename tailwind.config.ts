@@ -8,8 +8,8 @@ const config: Config = {
         navy: "#17324D",
         teal: "#0B6670",
         aqua: "#5ED2DD",
-        soft: "#F5F7F9",
-        slate: "#5D6873",
+        soft: "#F3F6F7",
+        slate: "#465969",
         alert: "#A83E3E"
       },
       fontFamily: {

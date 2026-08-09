@@ -28,7 +28,7 @@ export function RequestAssessmentForm() {
     window.location.href = `mailto:${site.primaryEmail}?subject=${encodeURIComponent("RN assessment request")}&body=${encodeURIComponent(body)}`;
   }
   return (
-    <form className="grid gap-5 rounded-[24px] border border-navy/10 bg-white p-5 shadow-soft sm:p-7" onSubmit={prepareEmail}>
+    <form className="grid gap-5 rounded-[24px] border border-[#CCD9E1] bg-white p-5 shadow-[0_1px_2px_rgba(23,50,77,0.04),0_18px_48px_rgba(23,50,77,0.09)] sm:p-8" onSubmit={prepareEmail}>
       <p className="text-sm leading-6 text-slate"><span className="font-black text-navy">Required fields are marked *</span></p>
       <div className="grid gap-5 md:grid-cols-2">
         <Field autoComplete="name" label="Name" name="name" required />
@@ -36,7 +36,7 @@ export function RequestAssessmentForm() {
         <Field autoComplete="email" label="Email" name="email" required type="email" />
         <Field autoComplete="tel" label="Phone" name="phone" required type="tel" />
         <Select label="I am a" name="requesterType" required options={["Adult Family Home", "Referral / Placement Professional", "Hospital / Care Team", "Assisted Living", "Family", "Other"]} />
-        <Select label="Service Needed" name="service" required options={["RN Assessment", "Care Plan", "RN Assessment + Care Plan", "Not Sure"]} />
+        <Select label="Service Needed" name="service" required options={["Initial RN Assessment", "Negotiated Care Plan", "Initial Assessment + Care Plan", "Annual Assessment Renewal", "Annual Patient Care Plan", "90-Day Supervisory Visit", "Change in Condition Assessment", "Not Sure"]} />
         <Field label="Preferred Timeline" name="timeline" placeholder="For example: within two weeks" />
       </div>
       <div>

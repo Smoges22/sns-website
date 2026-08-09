@@ -1,0 +1,113 @@
+import Link from "next/link";
+import { interactiveCardClass, premiumCardClass, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
+import {
+  sampleDocumentDisclaimer,
+  sampleDocuments,
+  sampleDocumentsIntro,
+  sampleDocumentsNote,
+  type SampleDocument,
+} from "@/lib/sample-documents";
+
+function DocumentThumbnail({ document }: { document: SampleDocument }) {
+  return (
+    <div aria-hidden="true" className="rounded-[20px] border border-[#CFDDE4] bg-[#EEF4F6] p-4 sm:p-5">
+      <div className="mx-auto max-w-sm rounded-[16px] border border-[#D6E2E8] bg-white p-4 shadow-[0_12px_30px_rgba(23,50,77,0.09)] sm:p-5">
+        <div className="flex items-center justify-between gap-3 border-b border-navy/10 pb-3">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-teal">Fictional example</p>
+            <p className="mt-1 text-sm font-black text-navy">{document.shortTitle}</p>
+          </div>
+          <span className="rounded-full bg-[#E4F2F4] px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-teal">Sample</span>
+        </div>
+        <div className="mt-4 grid gap-3">
+          {document.previewSections.slice(0, 4).map((section) => (
+            <div className="grid grid-cols-[1fr_.7fr] items-center gap-3" key={section.title}>
+              <p className="text-[10px] font-bold text-navy">{section.title}</p>
+              <span className="h-1.5 rounded-full bg-[#DCE8EC]" />
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 border-t border-navy/10 pt-3 text-[9px] font-bold uppercase tracking-[0.12em] text-[#667785]">Not for clinical use</p>
+      </div>
+    </div>
+  );
+}
+
+export function SampleDocumentsSection({ className = "bg-[#EDF6FA]" }: { className?: string }) {
+  return (
+    <SectionContainer className={className} eyebrow="Sample Documents" title="See the clinical documentation SNS provides" intro={sampleDocumentsIntro}>
+      <p className={`${premiumCardClass} mb-8 max-w-4xl border-l-4 !border-l-teal px-5 py-4 text-sm font-semibold leading-6 text-navy`}>{sampleDocumentsNote}</p>
+      <div className="grid gap-7 xl:grid-cols-2">
+        {sampleDocuments.map((document) => (
+          <article className={`${interactiveCardClass} grid min-w-0 gap-6 p-5 sm:p-7 md:grid-cols-[.82fr_1.18fr] md:items-center`} key={document.id}>
+            <DocumentThumbnail document={document} />
+            <div className="min-w-0">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Sample · Fictional Example</p>
+              <h3 className="mt-3 text-2xl font-black tracking-[-0.02em] text-navy sm:text-3xl">{document.title}</h3>
+              <p className="mt-4 leading-7 text-slate">{document.description}</p>
+              <Link className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white transition-colors hover:bg-[#214562]" href={document.route}>{document.ctaLabel}</Link>
+            </div>
+          </article>
+        ))}
+      </div>
+    </SectionContainer>
+  );
+}
+
+export function SampleDocumentLink({ document }: { document: SampleDocument }) {
+  return (
+    <aside className={`${premiumCardClass} mt-12 border-l-4 !border-l-teal bg-[#F4F9FA] px-6 py-7 sm:px-8`} aria-labelledby={`${document.id}-sample-link-title`}>
+      <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Sample Document</p>
+      <h2 className="mt-3 text-2xl font-black text-navy" id={`${document.id}-sample-link-title`}>{document.title}</h2>
+      <p className="mt-3 max-w-3xl leading-7 text-slate">See how SNS organizes this type of clinical documentation using a fictional, non-patient example.</p>
+      <Link className="mt-5 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4 hover:text-navy" href={document.route}>{document.ctaLabel}</Link>
+    </aside>
+  );
+}
+
+export function SampleDocumentPage({ document }: { document: SampleDocument }) {
+  return (
+    <PageShell>
+      <PageHero eyebrow="Sample Document · Fictional Example" title={document.title} intro={document.pageIntro}>
+        <Link className="inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white" href="/request-assessment">Request an Assessment</Link>
+      </PageHero>
+      <SectionContainer>
+        <nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate">
+          <Link className="underline underline-offset-4" href="/">Home</Link> <span aria-hidden="true">/</span> <Link className="underline underline-offset-4" href="/sample-documents">Sample Documents</Link> <span aria-hidden="true">/</span> <span aria-current="page">{document.title}</span>
+        </nav>
+        <p className="mb-8 max-w-5xl rounded-[16px] border border-teal/25 bg-[#EAF5F6] px-5 py-4 text-sm font-bold leading-6 text-navy">{sampleDocumentDisclaimer}</p>
+        <div className="grid gap-10 lg:grid-cols-[1fr_.38fr] lg:items-start">
+          <article aria-labelledby={`${document.id}-preview-title`} className="min-w-0 rounded-[24px] border border-[#CEDCE4] bg-[#EEF3F5] p-3 shadow-[0_16px_44px_rgba(23,50,77,0.07)] sm:p-5 lg:p-7">
+            <div className="rounded-[18px] border border-[#D5E1E7] bg-white p-5 shadow-[0_18px_50px_rgba(23,50,77,0.1)] sm:p-7 lg:p-9">
+              <header className="flex flex-col gap-4 border-b border-navy/15 pb-6 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Fictional Example</p>
+                  <h2 className="mt-2 text-2xl font-black tracking-[-0.02em] text-navy sm:text-3xl" id={`${document.id}-preview-title`}>{document.shortTitle}</h2>
+                  <p className="mt-2 text-sm font-semibold text-slate">Representative document structure</p>
+                </div>
+                <span className="w-fit rounded-full bg-[#E4F2F4] px-3 py-1.5 text-xs font-black uppercase tracking-[0.14em] text-teal">Sample · Not for clinical use</span>
+              </header>
+              <dl className="mt-7 grid gap-5 sm:grid-cols-2">
+                {document.previewSections.map((section, index) => (
+                  <div className="border-t border-navy/15 pt-4" key={section.title}>
+                    <dt className="flex items-baseline gap-3 text-base font-black text-navy"><span className="text-xs text-teal">{String(index + 1).padStart(2, "0")}</span>{section.title}</dt>
+                    <dd className="mt-2 text-sm leading-6 text-slate">{section.description}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-8 border-t border-navy/15 pt-5 text-xs font-black uppercase tracking-[0.14em] text-[#667785]">Fictional example · No patient information · Not for clinical use</p>
+            </div>
+          </article>
+          <aside aria-labelledby={`${document.id}-demonstrates-title`} className="border-t-2 border-navy pt-6 lg:sticky lg:top-44">
+            <h2 className="text-2xl font-black text-navy" id={`${document.id}-demonstrates-title`}>What this sample demonstrates</h2>
+            <ul className="mt-5 grid gap-4 text-sm leading-6 text-slate">
+              {document.demonstrates.map((item) => <li className="flex gap-3" key={item}><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />{item}</li>)}
+            </ul>
+            <Link className="mt-7 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4 hover:text-navy" href={document.serviceRoute}>{document.serviceLabel}</Link>
+          </aside>
+        </div>
+      </SectionContainer>
+      <FinalCta />
+    </PageShell>
+  );
+}

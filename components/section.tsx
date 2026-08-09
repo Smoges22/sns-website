@@ -1,5 +1,11 @@
 import type { ReactNode } from "react";
 
+export const premiumCardClass =
+  "min-w-0 overflow-hidden rounded-[24px] border border-[#CCD9E1] bg-white shadow-[0_1px_2px_rgba(23,50,77,0.04),0_14px_38px_rgba(23,50,77,0.075)]";
+
+export const interactiveCardClass =
+  `${premiumCardClass} transition-[transform,box-shadow,border-color] duration-200 motion-safe:hover:-translate-y-1 hover:border-[#9FB7C5] hover:shadow-[0_2px_4px_rgba(23,50,77,0.05),0_22px_52px_rgba(23,50,77,0.11)] focus-within:border-teal`;
+
 function SectionHeading({
   eyebrow,
   title,
@@ -16,16 +22,16 @@ function SectionHeading({
   }
 
   return (
-    <div className={`mb-9 max-w-3xl sm:mb-10 ${center ? "mx-auto text-center" : ""}`}>
-      {eyebrow ? <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-teal sm:text-sm sm:tracking-[0.18em]">{eyebrow}</p> : null}
-      {title ? <h2 className="mt-2.5 break-words text-3xl font-black tracking-tight text-navy sm:text-4xl">{title}</h2> : null}
-      {intro ? <p className="mt-3 max-w-2xl text-base leading-7 text-slate sm:text-lg sm:leading-8">{intro}</p> : null}
+    <div className={`mb-10 max-w-3xl sm:mb-12 ${center ? "mx-auto text-center" : ""}`}>
+      {eyebrow ? <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-teal sm:text-sm">{eyebrow}</p> : null}
+      {title ? <h2 className="mt-3 break-words text-3xl font-black leading-[1.12] tracking-[-0.025em] text-navy sm:text-4xl lg:text-[2.75rem]">{title}</h2> : null}
+      {intro ? <p className="mt-4 max-w-2xl text-base leading-7 text-slate sm:text-lg sm:leading-8">{intro}</p> : null}
     </div>
   );
 }
 
 export function PageShell({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <main id="main-content" className={`bg-white ${className}`}>{children}</main>;
+  return <main id="main-content" className={`bg-[#FCFDFD] ${className}`}>{children}</main>;
 }
 
 export function Section({
@@ -44,7 +50,7 @@ export function Section({
   intro?: string;
 }) {
   return (
-    <section className={`px-5 py-20 sm:px-6 lg:px-8 ${className}`}>
+    <section className={`px-5 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 ${className}`}>
       <div className={`mx-auto max-w-7xl min-w-0 ${innerClassName}`}>
         <SectionHeading eyebrow={eyebrow} intro={intro} title={title} />
         {children}
@@ -71,12 +77,10 @@ export function SectionContainer({
   centerHeading?: boolean;
 }) {
   return (
-    <section className={`px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16 ${className}`}>
-      <div className="mx-auto max-w-7xl">
-        <div className={`min-w-0 overflow-hidden rounded-[28px] border border-[#D9E3EA] bg-white p-5 shadow-[0_18px_56px_rgba(23,50,77,0.085)] sm:p-7 lg:p-9 ${innerClassName}`}>
-          <SectionHeading center={centerHeading} eyebrow={eyebrow} intro={intro} title={title} />
-          {children}
-        </div>
+    <section className={`px-5 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 ${className}`}>
+      <div className={`mx-auto max-w-7xl min-w-0 ${innerClassName}`}>
+        <SectionHeading center={centerHeading} eyebrow={eyebrow} intro={intro} title={title} />
+        {children}
       </div>
     </section>
   );
@@ -84,7 +88,7 @@ export function SectionContainer({
 
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`min-w-0 overflow-hidden rounded-[22px] border border-[#D9E3EA] bg-white p-5 shadow-[0_12px_36px_rgba(23,50,77,0.065)] sm:p-6 ${className}`}>
+    <div className={`${premiumCardClass} p-5 sm:p-7 ${className}`}>
       {children}
     </div>
   );
@@ -98,7 +102,7 @@ export function FeatureBox({
   className?: string;
 }) {
   return (
-    <div className={`min-w-0 rounded-[20px] border border-[#C8D8E2] bg-[#FBFCFD] p-4 ring-1 ring-white sm:p-5 ${className}`}>
+    <div className={`min-w-0 rounded-[20px] border border-[#D8E3E9] bg-[#F7FAFB] p-5 shadow-[0_8px_24px_rgba(23,50,77,0.045)] sm:p-6 ${className}`}>
       {children}
     </div>
   );
@@ -106,7 +110,7 @@ export function FeatureBox({
 
 export function SplitPanel({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`grid min-w-0 gap-7 rounded-[28px] border border-[#D9E3EA] bg-white p-5 shadow-[0_18px_56px_rgba(23,50,77,0.085)] sm:p-7 lg:grid-cols-2 lg:p-9 ${className}`}>
+    <div className={`grid min-w-0 gap-8 lg:grid-cols-2 ${className}`}>
       {children}
     </div>
   );
@@ -124,13 +128,13 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="bg-white px-4 pb-8 pt-7 sm:px-6 sm:pt-8 lg:px-8">
+    <section className="border-b border-navy/10 bg-[radial-gradient(circle_at_84%_12%,rgba(94,210,221,0.16),transparent_28%),linear-gradient(135deg,#ffffff_0%,#F8FAFB_58%,#EDF6FA_100%)] px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="grid min-w-0 gap-7 overflow-hidden rounded-[30px] border border-[#D9E3EA] bg-[radial-gradient(circle_at_82%_18%,rgba(24,183,201,0.16),transparent_28%),linear-gradient(135deg,#ffffff_0%,#FBFCFD_58%,#EDF6FA_100%)] p-5 shadow-[0_20px_64px_rgba(23,50,77,0.095)] sm:p-7 lg:grid-cols-[0.95fr_0.62fr] lg:items-end lg:p-9">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-14">
           <div className="min-w-0 max-w-4xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-teal sm:text-sm sm:tracking-[0.18em]">{eyebrow}</p>
-            <h1 className="mt-3.5 max-w-[14ch] break-words text-4xl font-black tracking-tight text-navy sm:max-w-none sm:text-5xl">{title}</h1>
-            <p className="mt-4 max-w-[32ch] text-base leading-7 text-slate sm:max-w-3xl sm:text-lg sm:leading-8">{intro}</p>
+            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-teal sm:text-sm">{eyebrow}</p>
+            <h1 className="mt-4 max-w-[18ch] break-words text-4xl font-black leading-[1.08] tracking-[-0.035em] text-navy sm:max-w-none sm:text-5xl lg:text-[3.5rem]">{title}</h1>
+            <p className="mt-5 max-w-3xl text-base leading-7 text-slate sm:text-lg sm:leading-8">{intro}</p>
           </div>
           {children ? <div className="min-w-0">{children}</div> : null}
         </div>
@@ -141,19 +145,19 @@ export function PageHero({
 
 export function FinalCta({
   title = "Need an RN Assessment?",
-  text = "SNS provides RN assessments and individualized care plans for Adult Family Homes, care teams, referral professionals, assisted living communities, and families."
+  text = "SNS provides RN assessments, individualized care plans, and focused clinical follow-up for Adult Family Homes, care teams, referral professionals, assisted living communities, and families."
 }: {
   title?: string;
   text?: string;
 }) {
   return (
-    <section className="bg-white px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 overflow-hidden rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_88%_14%,rgba(94,210,221,0.22),transparent_30%),linear-gradient(135deg,#17324D_0%,#102A43_64%,#0F2740_100%)] p-6 text-white shadow-[0_24px_72px_rgba(16,42,67,0.24)] sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:p-9">
+    <section className="bg-[linear-gradient(135deg,#17324D_0%,#102A43_70%,#0F2740_100%)] px-5 py-16 text-white sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
           <h2 className="text-3xl font-black tracking-tight">{title}</h2>
           <p className="mt-3 leading-7 text-[#D6E1EA]">{text}</p>
         </div>
-        <a className="inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-extrabold text-[#102A43] shadow-sm transition hover:bg-blue-50" href="/request-assessment">
+        <a className="inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-[#102A43] transition-colors hover:bg-[#EAF5F8]" href="/request-assessment">
           Request an Assessment
         </a>
       </div>

@@ -6,7 +6,7 @@ Public clinical-services website for Sosena Nursing Solutions LLC.
 
 This site presents SNS public business information, RN assessment services, individualized and negotiated care-plan services, and non-clinical request coordination.
 
-It is separate from the private SNS Clinical Portal. Clinical records, assessment data, and portal routes must not be placed in this repository.
+Clinical records and assessment data must not be placed in this public website repository.
 
 ## Routes
 
@@ -22,21 +22,13 @@ It is separate from the private SNS Clinical Portal. Clinical records, assessmen
 - `/privacy`
 - `/terms`
 
-## Environment
-
-Copy `.env.example` to `.env.local` for local development when needed.
-
-Required public variable:
-
-- `NEXT_PUBLIC_PORTAL_URL` - optional Client Portal destination override. Defaults to `https://portal.sosenanursingsolutions.com`.
-
 ## Branding Assets
 
 Final SNS assets are stored in `public/images/branding/` and `public/images/team/`.
 
 - `public/images/branding/sns-logo-horizontal.png` for the header, footer, Open Graph, and larger brand placements
-- `public/images/branding/sns-icon.png` for favicon, app icon, compact navigation, and avatar-style uses
-- `public/images/team/sosena-mekuria-rn.webp` for the professional founder portrait
+- `public/images/branding/sns-icon.png` for favicon and app icon uses
+- `public/images/team/sosena-mekuria-rn-approved.webp` for the professional founder portrait
 
 Use Next.js image optimization for rendered brand assets and preserve the supplied aspect ratios.
 

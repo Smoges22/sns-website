@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background: #ffffff;
+  background: #fcfdfd;
   color: #17324d;
   margin: 0;
   text-rendering: optimizeLegibility;
@@ -48,6 +48,29 @@ textarea {
 ::selection {
   background: #dceeff;
   color: #0f172a;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::marker {
+  content: "";
+}
+
+details > summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0b6670;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+details[open] > summary::after {
+  content: "−";
 }
 
 .skip-link {

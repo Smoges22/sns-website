@@ -1,35 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function BrandMark({ compact = false, inverse = false }: { compact?: boolean; inverse?: boolean }) {
+export function BrandMark({ footer = false }: { footer?: boolean }) {
   return (
-    <Link aria-label="SNS home" className="group flex min-w-0 items-center gap-3" href="/">
-      <span className="relative shrink-0 overflow-hidden rounded-lg shadow-[0_14px_30px_rgba(23,50,77,0.18)] ring-1 ring-white/20">
-        <Image
-          alt="SNS - Sosena Nursing Solutions"
-          className={`${compact ? "block" : "sm:hidden"} h-11 w-11 object-contain`}
-          height={88}
-          priority
-          src="/images/branding/sns-icon.png"
-          width={88}
-        />
-        {!compact ? (
-          <Image
-            alt="SNS - Sosena Nursing Solutions"
-            className="hidden h-12 w-auto object-contain sm:block"
-            height={96}
-            priority
-            src="/images/branding/sns-logo-horizontal.png"
-            width={144}
-          />
-        ) : null}
-      </span>
-      {!compact ? (
-        <span className="hidden min-w-0 leading-tight md:block">
-          <span className={`block text-sm font-extrabold ${inverse ? "text-white" : "text-navy"}`}>Sosena Nursing Solutions</span>
-          <span className={`block text-xs font-semibold ${inverse ? "text-[#D6E1EA]" : "text-slate"}`}>RN clinical services</span>
-        </span>
-      ) : null}
+    <Link aria-label="Sosena Nursing Solutions home" className={`block shrink-0 ${footer ? "w-[220px] rounded-xl bg-white" : "w-[144px] sm:w-[176px] lg:w-[200px]"}`} href="/">
+      <Image
+        alt="Sosena Nursing Solutions"
+        className={`${footer ? "rounded-xl" : ""} h-auto w-full`}
+        height={1024}
+        priority
+        sizes={footer ? "220px" : "(min-width: 1024px) 200px, (min-width: 640px) 176px, 144px"}
+        src="/images/branding/sns-logo-horizontal.png"
+        width={1536}
+      />
     </Link>
   );
 }

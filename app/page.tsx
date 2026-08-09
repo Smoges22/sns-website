@@ -1,12 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card, FinalCta, PageShell, SectionContainer } from "@/components/section";
-import { absoluteUrl, audiences, createPageMetadata, processSteps, services, site } from "@/lib/site";
+import { SampleDocumentsSection } from "@/components/sample-documents";
+import { ServiceCard } from "@/components/service-card";
+import { interactiveCardClass, FinalCta, PageShell, SectionContainer } from "@/components/section";
+import { absoluteUrl, audiences, createPageMetadata, processSteps, site } from "@/lib/site";
+import { ongoingServices, primaryServices, serviceDefinitions, servicePath } from "@/lib/services";
 
 export const metadata = createPageMetadata({
-  title: "RN Assessments & Care Plans",
+  title: "RN Assessments, Care Plans & Clinical Follow-Up",
   description:
-    "RN-led assessments and individualized care plans for Adult Family Homes, care teams, referral professionals, assisted living, and families in Washington.",
+    "RN assessments, negotiated care plans, annual reviews, and clinical follow-up for Adult Family Homes and care transitions in Washington.",
   path: "/",
 });
 
@@ -24,13 +27,13 @@ export default function HomePage() {
   const homepageSchema = {
     "@context": "https://schema.org",
     "@graph": [
-      ...services.map((service) => ({
+      ...serviceDefinitions.map((service) => ({
         "@type": "Service",
-        "@id": `${absoluteUrl(service.href)}#service`,
+        "@id": `${absoluteUrl(servicePath(service))}#service`,
         name: service.title,
         provider: { "@id": `${site.url}/#organization` },
         areaServed: { "@type": "State", name: "Washington" },
-        url: absoluteUrl(service.href),
+        url: absoluteUrl(servicePath(service)),
       })),
       {
         "@type": "FAQPage",
@@ -47,12 +50,12 @@ export default function HomePage() {
   return (
     <PageShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema).replace(/</g, "\\u003c") }} />
-      <section className="border-b border-navy/10 bg-[linear-gradient(135deg,#ffffff_0%,#F8FAFC_58%,#EDF6FA_100%)] px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.15fr_.85fr]">
+      <section className="border-b border-navy/10 bg-[radial-gradient(circle_at_88%_12%,rgba(94,210,221,0.18),transparent_26%),linear-gradient(135deg,#ffffff_0%,#F8FAFB_56%,#EAF4F7_100%)] px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_.92fr] lg:gap-16">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-teal sm:text-sm">Registered nurse services in Washington State</p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.05] tracking-[-0.04em] text-navy sm:text-6xl lg:text-7xl">RN Assessments & Individualized Care Plans</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate sm:text-xl">Sosena Nursing Solutions provides professional RN assessments and individualized, negotiated care plans for adults entering or receiving care in Adult Family Homes.</p>
+            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.04] tracking-[-0.045em] text-navy sm:text-6xl lg:text-[4.5rem]">Professional RN Assessments, Care Plans & Clinical Follow-Up</h1>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate sm:text-xl">Sosena Nursing Solutions provides RN assessment, individualized care planning, and focused clinical review for adults entering or receiving care in Adult Family Homes.</p>
             <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-navy">Serving AFH providers, referral professionals, hospitals, assisted living communities, and families. Services are provided by Sosena Mekuria, RN.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link className="inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white transition hover:bg-[#214562]" href="/request-assessment">Request an Assessment</Link>
@@ -60,52 +63,50 @@ export default function HomePage() {
             </div>
             <p className="mt-5 text-sm text-slate">Serving Washington State; availability is confirmed based on the service location.</p>
           </div>
-          <div className="grid gap-4 rounded-[28px] border border-[#C8D8E2] bg-white p-5 shadow-[0_20px_60px_rgba(23,50,77,0.1)] sm:p-7">
-            <div className="grid grid-cols-[88px_1fr] items-center gap-4 border-b border-navy/10 pb-5">
-              <Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="aspect-square rounded-2xl object-cover object-[57%_center]" height={176} priority sizes="88px" src="/images/team/sosena-mekuria-rn-approved.webp" width={176} />
-              <div><p className="text-xl font-black text-navy">Sosena Mekuria, RN</p><p className="mt-1 text-sm leading-6 text-slate">Registered Nurse providing assessment and care-planning services.</p></div>
+          <div className="overflow-hidden rounded-[28px] bg-white p-3 shadow-[0_28px_80px_rgba(23,50,77,0.14)] ring-1 ring-navy/10 sm:p-4">
+            <Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="h-auto w-full rounded-[20px] object-contain" height={1122} priority sizes="(min-width:1024px) 40vw, 92vw" src="/images/team/sosena-mekuria-rn-approved.webp" width={1402} />
+            <div className="px-3 pb-3 pt-5 sm:px-4 sm:pb-4">
+              <p className="text-2xl font-black tracking-tight text-navy">Sosena Mekuria, RN</p>
+              <p className="mt-1 text-sm font-semibold text-teal">Founder and Registered Nurse</p>
+              <div className="mt-5 divide-y divide-navy/10 border-y border-navy/10 text-sm font-bold leading-6 text-navy">
+                {["More than 10 years of healthcare experience", "Registered Nurse and Adult Family Home experience", "Clear clinical assessments and care planning"].map((item) => <p className="py-3" key={item}>{item}</p>)}
+              </div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              {["Comprehensive RN assessment", "Person-centered care planning", "Practical Adult Family Home perspective", "Clear documentation for authorized parties"].map((item) => <p className="rounded-xl bg-soft px-4 py-3 text-sm font-bold text-navy" key={item}>✓ {item}</p>)}
-            </div>
-            <p className="text-xs leading-5 text-slate">SNS documents assessed care needs. The receiving Adult Family Home makes its own decision about whether it can appropriately meet those needs.</p>
           </div>
         </div>
       </section>
 
-      <SectionContainer eyebrow="Professional nursing services" title="Two focused services for clear care decisions" intro="SNS focuses on understanding current care needs and turning them into practical, person-centered guidance.">
-        <div className="grid gap-6 lg:grid-cols-2">
-          {services.map((service, index) => <Card key={service.href} className="p-6 sm:p-8"><p className="text-xs font-black uppercase tracking-[0.16em] text-teal">Service 0{index + 1}</p><h2 className="mt-3 text-3xl font-black tracking-tight text-navy">{service.title}</h2><p className="mt-4 leading-7 text-slate">{service.description}</p><ul className="mt-5 grid gap-2 text-sm text-slate">{service.examples.map((example) => <li className="flex gap-3" key={example}><span aria-hidden="true" className="text-teal">●</span>{example}</li>)}</ul><Link className="mt-6 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href={service.href}>Learn about {service.title.toLowerCase()}</Link></Card>)}
-        </div>
-      </SectionContainer>
+      <SectionContainer eyebrow="Primary services" title="Start with the clinical foundation" intro="Two focused services establish current needs and practical daily-care guidance."><div className="grid gap-6 lg:grid-cols-2">{primaryServices.map((service,index)=><ServiceCard index={index} key={service.slug} service={service}/>)}</div></SectionContainer>
+
+      <SectionContainer className="bg-[#F4F8F9]" eyebrow="Ongoing Clinical Review" title="Keep assessments and care guidance current" intro="Concise RN follow-up services for annual review and meaningful changes in care needs."><div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">{ongoingServices.map((service,index)=><ServiceCard compact index={index} key={service.slug} service={service}/>)}</div><Link className="mt-8 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href="/services">Compare all RN services</Link></SectionContainer>
+
+      <SampleDocumentsSection />
 
       <SectionContainer className="bg-soft" eyebrow="Who we serve" title="Clinical support across care transitions" intro="SNS works with authorized providers, professionals, care teams, and families who need a clear picture of an adult’s current care needs.">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{audiences.map((audience) => <Card key={audience.title}><h2 className="text-xl font-black text-navy">{audience.title}</h2><p className="mt-3 text-sm leading-6 text-slate">{audience.text}</p></Card>)}</div>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{audiences.map((audience, index) => <article className={`${interactiveCardClass} p-6`} key={audience.title}><span className="grid h-10 w-10 place-items-center rounded-full border border-[#D2E1E7] bg-[#F1F7F9] text-xs font-black text-navy">0{index + 1}</span><h2 className="mt-4 text-xl font-black text-navy">{audience.title}</h2><p className="mt-3 text-sm leading-6 text-slate">{audience.text}</p></article>)}</div>
         <Link className="mt-7 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href="/who-we-serve">See how SNS supports each audience</Link>
       </SectionContainer>
 
       <SectionContainer eyebrow="Why choose SNS" title="Professional judgment with practical AFH understanding">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {[["RN-Led Clinical Expertise","Assessments and care plans are completed and reviewed by an experienced Registered Nurse."],["Practical AFH Experience","Clinical documentation reflects an understanding of how Adult Family Homes provide day-to-day care."],["Clear Documentation","Information is organized so authorized providers, caregivers, families, and care teams can understand it."],["Responsive Communication","SNS communicates clearly with authorized contacts throughout the assessment process."]].map(([title,text]) => <div className="border-t-4 border-navy pt-5" key={title}><h2 className="text-lg font-black text-navy">{title}</h2><p className="mt-2 text-sm leading-6 text-slate">{text}</p></div>)}
+          {[["RN-Led Clinical Expertise","Assessments and care plans are completed and reviewed by an experienced Registered Nurse."],["Practical AFH Experience","Clinical documentation reflects an understanding of how Adult Family Homes provide day-to-day care."],["Clear Documentation","Information is organized so authorized providers, caregivers, families, and care teams can understand it."],["Responsive Communication","SNS communicates clearly with authorized contacts throughout the assessment process."]].map(([title,text]) => <div className={`${interactiveCardClass} border-t-4 !border-t-navy p-6`} key={title}><h2 className="text-lg font-black text-navy">{title}</h2><p className="mt-3 text-sm leading-6 text-slate">{text}</p></div>)}
         </div>
       </SectionContainer>
 
       <SectionContainer className="bg-[#EDF6FA]" eyebrow="How it works" title="A clear four-step process">
-        <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">{processSteps.map((step,index) => <li className="rounded-[20px] border border-navy/10 bg-white p-5" key={step.title}><span className="grid h-10 w-10 place-items-center rounded-full bg-navy text-sm font-black text-white">{index+1}</span><h2 className="mt-4 text-xl font-black text-navy">{step.title}</h2><p className="mt-2 text-sm leading-6 text-slate">{step.text}</p></li>)}</ol>
+        <ol className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-10"><span aria-hidden="true" className="absolute left-[12.5%] right-[12.5%] top-6 hidden h-px bg-navy/20 lg:block" />{processSteps.map((step,index) => <li className="relative" key={step.title}><span className="relative z-10 grid h-12 w-12 place-items-center rounded-full bg-navy text-sm font-black text-white ring-8 ring-[#EDF6FA]">{index+1}</span><h2 className="mt-6 text-xl font-black text-navy">{step.title}</h2><p className="mt-3 text-sm leading-6 text-slate">{step.text}</p></li>)}</ol>
         <Link className="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white" href="/request-assessment">Request an Assessment</Link>
       </SectionContainer>
 
-      <SectionContainer eyebrow="Meet your RN" title="Sosena Mekuria, RN" intro="Registered nurse experience, Adult Family Home understanding, and a commitment to clear person-centered documentation.">
-        <div className="grid items-center gap-8 lg:grid-cols-[.58fr_1.42fr]">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[24px] bg-soft"><Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="object-cover object-[57%_center]" fill sizes="(min-width:1024px) 28vw, 90vw" src="/images/team/sosena-mekuria-rn-approved.webp" /></div>
-          <div><h2 className="text-3xl font-black tracking-tight text-navy">Clinical experience grounded in residential care</h2><p className="mt-4 leading-7 text-slate">Sosena brings more than 10 years of healthcare experience across hospital, skilled nursing and rehabilitation, home health, long-term care, senior care, and Adult Family Home settings. Her broader healthcare background includes Virginia Mason, and her RN experience includes Valley Medical Center.</p><p className="mt-4 leading-7 text-slate">With firsthand experience as an Adult Family Home provider and administrator, she now focuses SNS on professional RN assessments and individualized, negotiated care plans.</p><Link className="mt-6 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href="/about">Meet Sosena</Link></div>
+      <SectionContainer eyebrow="Meet your RN" title="Meet Sosena Mekuria, RN" intro="Registered nurse experience, Adult Family Home understanding, and a commitment to clear person-centered documentation.">
+        <div className="grid items-center gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[24px] bg-[#EEF3F5] p-3"><Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="object-contain" fill sizes="(min-width:1024px) 38vw, 92vw" src="/images/team/sosena-mekuria-rn-approved.webp" /></div>
+          <div><h2 className="text-3xl font-black tracking-[-0.025em] text-navy sm:text-4xl">Clinical experience grounded in real-world care</h2><p className="mt-5 leading-8 text-slate">Sosena brings more than 10 years of healthcare experience across hospital care, skilled nursing and rehabilitation, home health, long-term care, senior care, and Adult Family Home settings. Her earlier hospital-based healthcare experience includes Virginia Mason, and her RN experience includes Valley Medical Center.</p><p className="mt-4 leading-8 text-slate">With firsthand experience as an Adult Family Home provider and administrator, she now focuses SNS on professional RN assessments, individualized care plans, and focused clinical follow-up.</p><Link className="mt-7 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4 hover:text-navy" href="/about">Meet Sosena</Link></div>
         </div>
       </SectionContainer>
 
-      <section className="border-y border-navy/10 bg-soft px-5 py-10 sm:px-6 lg:px-8"><div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-xs font-black uppercase tracking-[0.16em] text-teal">For existing clients</p><h2 className="mt-2 text-2xl font-black text-navy">Private clinical workspace</h2><p className="mt-2 max-w-3xl text-sm leading-6 text-slate">The client portal supports authorized access to clinical work. It is supporting infrastructure—not the service SNS sells.</p></div><a className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl border border-navy/20 bg-white px-4 py-3 text-sm font-extrabold text-navy" href={site.portalUrl} rel="noopener noreferrer">Client Portal</a></div></section>
-
-      <SectionContainer eyebrow="Frequently asked questions" title="Common questions about RN assessments">
-        <div className="divide-y divide-navy/10 border-y border-navy/10">{faqs.map(([question,answer]) => <details className="py-5" key={question}><summary className="cursor-pointer pr-8 text-lg font-black text-navy">{question}</summary><p className="mt-3 max-w-4xl leading-7 text-slate">{answer}</p></details>)}</div>
+      <SectionContainer className="bg-soft" eyebrow="Frequently asked questions" title="Common questions about RN assessments">
+        <div className="max-w-5xl border-t border-navy/15">{faqs.map(([question,answer]) => <details className="border-b border-navy/15" key={question}><summary className="relative cursor-pointer py-6 pr-12 text-lg font-black text-navy transition-colors hover:text-teal focus-visible:text-teal">{question}</summary><p className="max-w-4xl pb-6 pr-10 leading-7 text-slate">{answer}</p></details>)}</div>
       </SectionContainer>
       <FinalCta />
     </PageShell>
