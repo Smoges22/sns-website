@@ -1,47 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { ServiceGroups } from "@/components/clinical-visuals";
 import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
+import { createPageMetadata, services, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: "RN assessments, reassessments, negotiated care plans, and care-plan review services for Adult Family Homes."
-};
+export const metadata = createPageMetadata({ title: "RN Assessment & Care Plan Services", description: "Explore RN assessments and individualized care-plan services from Sosena Nursing Solutions for Washington care providers, referral teams, and families.", path: "/services" });
 
 export default function ServicesPage() {
-  return (
-    <PageShell>
-      <PageHero
-        eyebrow="Services"
-        title="Clinical services for Adult Family Homes"
-        intro="SNS focuses on RN assessment, care-plan preparation, and document review workflows that help AFH teams move from clinical findings to practical care documentation."
-      >
-        <Card>
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Launch focus</p>
-          <p className="mt-3 max-w-[18ch] break-words text-2xl font-black text-navy sm:max-w-none">Assessments, care planning, and document review.</p>
-        </Card>
-      </PageHero>
-
-      <SectionContainer className="bg-[#F5F7F9]">
-        <ServiceGroups />
-      </SectionContainer>
-
-      <SectionContainer eyebrow="Service detail" title="Choose the path that matches your documentation need.">
-        <div className="grid gap-5 md:grid-cols-2">
-          <Card>
-            <h2 className="text-xl font-black text-navy">RN assessment support</h2>
-            <p className="mt-3 leading-7 text-slate">For comprehensive assessments, annual reassessments, and significant changes that require updated clinical review.</p>
-            <Link className="mt-5 inline-flex font-extrabold text-teal" href="/services/rn-assessments">View assessment services</Link>
-          </Card>
-          <Card>
-            <h2 className="text-xl font-black text-navy">Care-plan documentation</h2>
-            <p className="mt-3 leading-7 text-slate">For preliminary service plans, negotiated care plans, care-plan reviews, and external assessment preparation.</p>
-            <Link className="mt-5 inline-flex font-extrabold text-teal" href="/services/negotiated-care-plans">View care-plan services</Link>
-          </Card>
-        </div>
-      </SectionContainer>
-
-      <FinalCta />
-    </PageShell>
-  );
+  return <PageShell><PageHero eyebrow="Professional nursing services" title="RN Assessments & Individualized Care Plans" intro={`Two focused clinical services provided by ${site.provider} for authorized providers, professionals, care teams, and families in Washington.`}><Link className="inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white" href="/request-assessment">Request an Assessment</Link></PageHero><SectionContainer><div className="grid gap-6 lg:grid-cols-2">{services.map((service,index)=><Card className="p-6 sm:p-8" key={service.href}><p className="text-xs font-black uppercase tracking-[0.16em] text-teal">Service 0{index+1}</p><h2 className="mt-3 text-3xl font-black tracking-tight text-navy">{service.title}</h2><p className="mt-4 leading-7 text-slate">{service.description}</p><ul className="mt-5 grid gap-3 text-sm text-slate">{service.examples.map((item)=><li className="flex gap-3" key={item}><span aria-hidden="true" className="text-teal">●</span>{item}</li>)}</ul><Link className="mt-6 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href={service.href}>View service details</Link></Card>)}</div><div className="mt-10 rounded-[24px] bg-[#EDF6FA] p-6 sm:p-8"><h2 className="text-2xl font-black text-navy">Clear clinical scope</h2><p className="mt-3 max-w-4xl leading-7 text-slate">SNS provides the nursing assessment and care plan. SNS is not a placement agency and does not make an Adult Family Home’s admission decision. The receiving home reviews the documented needs and determines whether it can appropriately meet them.</p></div></SectionContainer><FinalCta /></PageShell>;
 }

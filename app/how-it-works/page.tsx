@@ -1,46 +1,6 @@
-import type { Metadata } from "next";
-import { WorkflowTimeline } from "@/components/clinical-visuals";
+import Link from "next/link";
 import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
+import { createPageMetadata, processSteps, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "How It Works",
-  description: "How SNS coordinates requests, secure next steps, RN assessment, review, care planning, and documentation delivery."
-};
-
-export default function HowItWorksPage() {
-  return (
-    <PageShell>
-      <PageHero
-        eyebrow="How it works"
-        title="From Request to Professional Documentation"
-        intro="The public website collects only minimum intake details. SNS coordinates secure next steps when clinical records are needed."
-      >
-        <Card>
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Public intake</p>
-          <p className="mt-3 text-2xl font-black text-navy">Minimum details first. Secure clinical exchange later.</p>
-        </Card>
-      </PageHero>
-
-      <SectionContainer eyebrow="Six-step workflow" title="A professional service path from request to delivery.">
-        <WorkflowTimeline />
-      </SectionContainer>
-
-      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Safety by design" title="The public workflow is intentionally limited.">
-        <div className="grid gap-5 md:grid-cols-3">
-          <Card><h2 className="font-black text-navy">Minimum intake</h2><p className="mt-3 text-slate">The request form asks for contact, service, location, timing, and general coordination notes only.</p></Card>
-          <Card><h2 className="font-black text-navy">Secure next steps</h2><p className="mt-3 text-slate">When clinical records are needed, SNS provides secure instructions instead of collecting records through the public website.</p></Card>
-          <Card><h2 className="font-black text-navy">RN review</h2><p className="mt-3 text-slate">Assessment and care-plan documentation is reviewed and finalized through RN clinical judgment.</p></Card>
-        </div>
-      </SectionContainer>
-
-      <SectionContainer eyebrow="What clients receive" title="Clear outputs for review and care planning.">
-        <div className="grid gap-5 md:grid-cols-2">
-          <Card><h2 className="font-black text-navy">Professional assessment documentation</h2><p className="mt-3 leading-7 text-slate">Structured clinical content organized for review, finalization, and secure delivery.</p></Card>
-          <Card><h2 className="font-black text-navy">Care-plan language connected to findings</h2><p className="mt-3 leading-7 text-slate">Practical wording for interventions, abilities, preferences, and care-team coordination.</p></Card>
-        </div>
-      </SectionContainer>
-
-      <FinalCta />
-    </PageShell>
-  );
-}
+export const metadata=createPageMetadata({title:"How RN Assessments & Care Plans Work",description:"See how Sosena Nursing Solutions coordinates a request, RN assessment, individualized care plan, and delivery to the authorized party.",path:"/how-it-works"});
+export default function HowItWorksPage(){return <PageShell><PageHero eyebrow="How it works" title="A straightforward path from request to completed documentation" intro={`SNS coordinates with authorized contacts, keeps communication clear, and explains what is needed at each step. Clinical services are provided by ${site.provider}.`}><Link className="inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white" href="/request-assessment">Start a Request</Link></PageHero><SectionContainer eyebrow="Four-step process" title="Clear next steps from the beginning"><ol className="grid gap-6 md:grid-cols-2">{processSteps.map((step,index)=><li key={step.title}><Card className="h-full p-6 sm:p-8"><span className="grid h-11 w-11 place-items-center rounded-full bg-navy font-black text-white">{index+1}</span><h2 className="mt-5 text-2xl font-black text-navy">{step.title}</h2><p className="mt-3 leading-7 text-slate">{step.text}</p></Card></li>)}</ol></SectionContainer><SectionContainer className="bg-soft" eyebrow="Privacy by design" title="Public intake stays intentionally non-clinical"><div className="grid gap-5 md:grid-cols-3"><Card><h2 className="text-xl font-black text-navy">Basic coordination only</h2><p className="mt-3 leading-7 text-slate">The request form asks for contact, organization, service, timing, and a brief non-clinical message.</p></Card><Card><h2 className="text-xl font-black text-navy">Separate record sharing</h2><p className="mt-3 leading-7 text-slate">Do not send clinical records through the public website or ordinary email. SNS provides separate instructions when records are needed.</p></Card><Card><h2 className="text-xl font-black text-navy">Authorized delivery</h2><p className="mt-3 leading-7 text-slate">Completed documents are provided only to the authorized party using the agreed delivery method.</p></Card></div></SectionContainer><FinalCta /></PageShell>}

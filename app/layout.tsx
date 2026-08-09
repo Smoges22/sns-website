@@ -1,76 +1,71 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "SNS | Sosena Nursing Solutions",
-    template: "%s | Sosena Nursing Solutions"
+    default: "RN Assessments & Care Plans | Sosena Nursing Solutions",
+    template: "%s | Sosena Nursing Solutions",
   },
-  description: "Premium RN-led assessments, negotiated care planning, and clinical documentation support for Adult Family Homes.",
-  alternates: { canonical: "/" },
+  description:
+    "RN-led assessments and individualized care plans for Adult Family Homes, care teams, referral professionals, assisted living, and families in Washington.",
+  applicationName: site.name,
   icons: {
-    icon: "/images/branding/sns-icon.png",
-    shortcut: "/images/branding/sns-icon.png",
-    apple: "/images/branding/sns-icon.png"
+    icon: "/images/branding/sns-icon-64.png",
+    shortcut: "/images/branding/sns-icon-64.png",
+    apple: "/images/branding/sns-icon-64.png",
   },
-  openGraph: {
-    title: "SNS | RN-Led Clinical Services for Adult Family Homes",
-    description: "Professional RN assessments, negotiated care plans, and clinical documentation support.",
-    url: site.url,
-    siteName: "Sosena Nursing Solutions",
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "/images/branding/sns-logo-horizontal.png",
-        width: 1536,
-        height: 1024,
-        alt: "SNS - Sosena Nursing Solutions"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary",
-    title: "SNS | RN-Led Clinical Services",
-    description: "Professional RN assessments and practical care planning for Adult Family Homes.",
-    images: ["/images/branding/sns-logo-horizontal.png"]
-  }
 };
 
 export const viewport: Viewport = {
   width: "device-width",
-  initialScale: 1
+  initialScale: 1,
 };
 
-const organizationJsonLd = {
+const entityGraph = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: site.legalName,
-  url: site.url,
-  telephone: site.phone,
-  email: site.primaryEmail,
-  areaServed: "Washington",
-  description: "Registered nurse-led assessment and care-planning services for Adult Family Homes.",
-  serviceType: [
-    "Comprehensive RN Assessments",
-    "Negotiated Care Plans",
-    "Care-Plan Reviews"
-  ]
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      publisher: { "@id": `${site.url}/#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      legalName: site.legalName,
+      url: site.url,
+      logo: absoluteUrl("/images/branding/sns-logo-horizontal.png"),
+      telephone: site.phone,
+      email: site.primaryEmail,
+      areaServed: { "@type": "State", name: "Washington" },
+      founder: { "@id": `${site.url}/#sosena-mekuria` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#sosena-mekuria`,
+      name: "Sosena Mekuria",
+      honorificSuffix: "RN",
+      jobTitle: "Registered Nurse",
+      worksFor: { "@id": `${site.url}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className="font-sans antialiased">
-        <Script
-          id="organization-jsonld"
+        <a className="skip-link" href="#main-content">Skip to main content</a>
+        <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(entityGraph).replace(/</g, "\\u003c") }}
         />
         <SiteHeader />
         {children}

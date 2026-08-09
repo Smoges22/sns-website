@@ -7,7 +7,7 @@ const routes = [
   "/services",
   "/services/rn-assessments",
   "/services/negotiated-care-plans",
-  "/services/nurse-delegation",
+  "/who-we-serve",
   "/how-it-works",
   "/request-assessment",
   "/contact",
@@ -18,9 +18,7 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${site.url}${route}`,
-    lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: route === "" ? 1 : 0.7
+    priority: route === "" ? 1 : route === "/request-assessment" ? 0.9 : 0.7
   }));
 }
-

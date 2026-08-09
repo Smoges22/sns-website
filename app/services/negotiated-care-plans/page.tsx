@@ -1,44 +1,7 @@
-import type { Metadata } from "next";
-import { DocumentationShowcase, WorkflowTimeline } from "@/components/clinical-visuals";
+import Link from "next/link";
 import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
+import { absoluteUrl, createPageMetadata, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Negotiated Care Plans",
-  description: "Preliminary negotiated service plans, negotiated care plans, care-plan reviews, and external assessment review."
-};
+export const metadata = createPageMetadata({ title: "Individualized & Negotiated Care Plans", description: "Individualized and negotiated care plans that connect RN assessment findings with resident needs, preferences, and daily support.", path: "/services/negotiated-care-plans" });
 
-export default function NegotiatedCarePlansPage() {
-  return (
-    <PageShell>
-      <PageHero
-        eyebrow="Care Planning"
-        title="Negotiated care-plan documentation shaped around assessed needs"
-        intro="SNS prepares practical care-plan documentation that helps AFH teams connect assessment findings to caregiver interventions, resident abilities, and preferences."
-      >
-        <Card>
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Care-plan outputs</p>
-          <p className="mt-3 text-2xl font-black text-navy">Organized planning language for daily care workflows.</p>
-        </Card>
-      </PageHero>
-
-      <SectionContainer eyebrow="What clients receive" title="Care-plan services that connect assessment findings to action.">
-        <div className="grid gap-5 md:grid-cols-2">
-          <Card><h2 className="text-xl font-black text-navy">Preliminary negotiated service plans</h2><p className="mt-3 leading-7 text-slate">Early planning support that connects assessment findings to care-team coordination and next steps.</p></Card>
-          <Card><h2 className="text-xl font-black text-navy">Negotiated care plans</h2><p className="mt-3 leading-7 text-slate">Resident-centered documentation for caregiver interventions, preferences, abilities, and support needs.</p></Card>
-          <Card><h2 className="text-xl font-black text-navy">Care-plan reviews</h2><p className="mt-3 leading-7 text-slate">Review support when care plans need to reflect reassessments, changing needs, or external documentation.</p></Card>
-          <Card><h2 className="text-xl font-black text-navy">External assessment review</h2><p className="mt-3 leading-7 text-slate">RN-guided review to identify documentation priorities and care-planning implications.</p></Card>
-        </div>
-      </SectionContainer>
-
-      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Documentation flow" title="Assessment findings become practical care-plan language.">
-        <DocumentationShowcase />
-      </SectionContainer>
-
-      <SectionContainer eyebrow="Process" title="A clear path from request to final documentation.">
-        <WorkflowTimeline />
-      </SectionContainer>
-
-      <FinalCta title="Request care-plan support" />
-    </PageShell>
-  );
-}
+export default function CarePlansPage(){const schema={"@context":"https://schema.org","@graph":[{"@type":"Service","@id":`${absoluteUrl("/services/negotiated-care-plans")}#service`,name:"Individualized and Negotiated Care Plans",serviceType:"Nursing care planning",provider:{"@id":`${site.url}/#organization`},areaServed:{"@type":"State",name:"Washington"},url:absoluteUrl("/services/negotiated-care-plans")},{"@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:site.url},{"@type":"ListItem",position:2,name:"Services",item:absoluteUrl("/services")},{"@type":"ListItem",position:3,name:"Care Plans",item:absoluteUrl("/services/negotiated-care-plans")}]}]};return <PageShell><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/><PageHero eyebrow="Individualized care plans" title="Practical guidance built from assessed needs" intro={`SNS develops person-centered care plans that help authorized caregivers, providers, families, and care teams understand how identified needs should be addressed. Services are provided by ${site.provider}.`}><Link className="inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white" href="/request-assessment">Request an Assessment</Link></PageHero><SectionContainer><nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate"><Link className="underline" href="/">Home</Link> <span aria-hidden="true">/</span> <Link className="underline" href="/services">Services</Link> <span aria-hidden="true">/</span> <span aria-current="page">Care Plans</span></nav><div className="grid gap-10 lg:grid-cols-[1.2fr_.8fr]"><div><h2 className="text-3xl font-black text-navy">From assessment findings to everyday care</h2><p className="mt-4 leading-7 text-slate">A care plan turns clinical findings into organized, practical direction. It reflects the person’s assessed needs, preferences, routines, risks, and appropriate care approaches.</p><ul className="mt-6 grid gap-3 text-sm text-slate"><li>• Clear guidance tied to assessed needs</li><li>• Person-centered preferences and routines</li><li>• Safety precautions and care approaches</li><li>• Organized information for authorized caregivers and providers</li></ul></div><Card className="!bg-[#EDF6FA]"><h2 className="text-2xl font-black text-navy">Negotiated Care Plans</h2><p className="mt-4 leading-7 text-slate">In Adult Family Home settings, “negotiated care plan” is a common term for the written plan developed around a resident’s assessed needs and preferences. SNS uses clear language so the plan is understandable to both providers and families.</p></Card></div><div className="mt-12 rounded-[24px] bg-soft p-6 sm:p-8"><h2 className="text-3xl font-black text-navy">Assessment first, plan second</h2><p className="mt-4 max-w-4xl leading-7 text-slate">A current, comprehensive assessment provides the clinical foundation for an individualized plan. If you are unsure which service is needed, SNS can help clarify the appropriate next step without collecting clinical details through the public form.</p><Link className="mt-5 inline-flex font-extrabold text-teal underline underline-offset-4" href="/services/rn-assessments">Learn about RN assessments</Link></div></SectionContainer><FinalCta title="Request care-plan support" /></PageShell>}

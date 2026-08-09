@@ -1,47 +1,10 @@
-import type { Metadata } from "next";
-import { WorkflowTimeline } from "@/components/clinical-visuals";
+import Link from "next/link";
 import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
+import { absoluteUrl, createPageMetadata, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "RN Assessments",
-  description: "Comprehensive, annual, and significant-change RN assessments for Adult Family Home care planning."
-};
+export const metadata = createPageMetadata({ title: "RN Assessments for Adult Family Homes", description: "Request comprehensive, admission, annual, or significant-change RN assessment support for Adult Family Home care planning in Washington.", path: "/services/rn-assessments" });
 
 export default function RnAssessmentsPage() {
-  return (
-    <PageShell>
-      <PageHero
-        eyebrow="RN Assessments"
-        title="Comprehensive assessment support for Adult Family Homes"
-        intro="SNS provides RN-led assessment documentation that helps AFH teams understand resident needs, risks, preferences, and practical care-planning priorities."
-      >
-        <Card>
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-teal">Outputs</p>
-          <p className="mt-3 text-2xl font-black text-navy">Assessment documentation ready for review and planning.</p>
-        </Card>
-      </PageHero>
-
-      <SectionContainer eyebrow="What the service includes" title="Assessment types shaped around documentation needs.">
-        <div className="grid gap-5 md:grid-cols-3">
-          <Card><h2 className="text-xl font-black text-navy">Comprehensive assessments</h2><p className="mt-3 leading-7 text-slate">A structured review of resident needs, risks, preferences, support patterns, and care considerations.</p></Card>
-          <Card><h2 className="text-xl font-black text-navy">Annual reassessments</h2><p className="mt-3 leading-7 text-slate">Periodic review to support updated documentation and current care-planning conversations.</p></Card>
-          <Card><h2 className="text-xl font-black text-navy">Significant-change assessments</h2><p className="mt-3 leading-7 text-slate">Focused assessment support when resident needs, function, or care context changes materially.</p></Card>
-        </div>
-      </SectionContainer>
-
-      <SectionContainer className="bg-[#F5F7F9]" eyebrow="Who it helps" title="Designed for providers who need clearer clinical records.">
-        <div className="grid gap-5 md:grid-cols-3">
-          <Card><h2 className="font-black text-navy">AFH providers</h2><p className="mt-3 text-slate">Support for assessment review, care planning, and documentation readiness.</p></Card>
-          <Card><h2 className="font-black text-navy">Families and representatives</h2><p className="mt-3 text-slate">Clearer language around care needs, supports, risks, and preferences.</p></Card>
-          <Card><h2 className="font-black text-navy">Care teams</h2><p className="mt-3 text-slate">Documentation that can translate findings into practical daily-care priorities.</p></Card>
-        </div>
-      </SectionContainer>
-
-      <SectionContainer eyebrow="Process" title="Built for review, care planning, and professional PDF output.">
-        <WorkflowTimeline />
-      </SectionContainer>
-
-      <FinalCta title="Request RN assessment support" />
-    </PageShell>
-  );
+  const schema={"@context":"https://schema.org","@graph":[{"@type":"Service","@id":`${absoluteUrl("/services/rn-assessments")}#service`,name:"Professional RN Assessments",serviceType:"Registered nurse assessment",provider:{"@id":`${site.url}/#organization`},areaServed:{"@type":"State",name:"Washington"},url:absoluteUrl("/services/rn-assessments")},{"@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:site.url},{"@type":"ListItem",position:2,name:"Services",item:absoluteUrl("/services")},{"@type":"ListItem",position:3,name:"RN Assessments",item:absoluteUrl("/services/rn-assessments")}]}]};
+  return <PageShell><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/><PageHero eyebrow="RN assessments" title="A clear clinical picture of current care needs" intro={`Sosena Nursing Solutions provides professional nursing assessments for adults entering or receiving residential care. Assessments are completed by ${site.provider}.`}><Link className="inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white" href="/request-assessment">Request an Assessment</Link></PageHero><SectionContainer><nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate"><Link className="underline" href="/">Home</Link> <span aria-hidden="true">/</span> <Link className="underline" href="/services">Services</Link> <span aria-hidden="true">/</span> <span aria-current="page">RN Assessments</span></nav><div className="grid gap-10 lg:grid-cols-[1.2fr_.8fr]"><div><h2 className="text-3xl font-black tracking-tight text-navy">What the assessment covers</h2><p className="mt-4 leading-7 text-slate">A comprehensive assessment organizes clinically relevant information into a practical picture of the individual’s current needs.</p><ul className="mt-6 grid gap-3 text-sm text-slate sm:grid-cols-2">{["Health conditions and clinical history","Cognition and communication","Mobility and functional abilities","Behavioral and emotional needs","Medication support needs","Safety risks and precautions","Personal-care needs","Preferences and daily routines"].map((item)=><li className="flex gap-3" key={item}><span aria-hidden="true" className="text-teal">●</span>{item}</li>)}</ul></div><Card className="!bg-[#EDF6FA]"><h2 className="text-2xl font-black text-navy">Common reasons to request</h2><ul className="mt-5 grid gap-3 text-sm text-slate">{["Admission to an Adult Family Home","Pre-placement or care transition planning","Annual reassessment","Significant change in condition or care needs"].map((item)=><li className="flex gap-3" key={item}><span aria-hidden="true" className="text-teal">●</span>{item}</li>)}</ul></Card></div><div className="mt-12 border-t border-navy/10 pt-10"><h2 className="text-3xl font-black text-navy">How the assessment supports the next step</h2><p className="mt-4 max-w-4xl leading-7 text-slate">SNS documents assessed care needs so the receiving Adult Family Home can review the information and determine whether it can appropriately meet those needs. SNS does not make the admission decision.</p><div className="mt-6 flex flex-wrap gap-5"><Link className="font-extrabold text-teal underline underline-offset-4" href="/services/negotiated-care-plans">How care plans use assessment findings</Link><Link className="font-extrabold text-teal underline underline-offset-4" href="/who-we-serve">Who can coordinate an assessment</Link></div></div></SectionContainer><FinalCta title="Request RN assessment support" /></PageShell>;
 }

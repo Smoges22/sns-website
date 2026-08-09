@@ -1,10 +1,10 @@
 # SNS Public Website
 
-Public marketing and minimum-intake website for Sosena Nursing Solutions LLC.
+Public clinical-services website for Sosena Nursing Solutions LLC.
 
 ## Purpose
 
-This site presents SNS public business information, RN assessment services, negotiated care-plan services, and minimum-intake request coordination for Adult Family Homes.
+This site presents SNS public business information, RN assessment services, individualized and negotiated care-plan services, and non-clinical request coordination.
 
 It is separate from the private SNS Clinical Portal. Clinical records, assessment data, and portal routes must not be placed in this repository.
 
@@ -15,7 +15,7 @@ It is separate from the private SNS Clinical Portal. Clinical records, assessmen
 - `/services`
 - `/services/rn-assessments`
 - `/services/negotiated-care-plans`
-- `/services/nurse-delegation`
+- `/who-we-serve`
 - `/how-it-works`
 - `/request-assessment`
 - `/contact`
@@ -28,7 +28,7 @@ Copy `.env.example` to `.env.local` for local development when needed.
 
 Required public variable:
 
-- `NEXT_PUBLIC_PORTAL_URL` - secure portal login destination. Leave blank to show `Secure Portal — Coming Soon` without a clickable link.
+- `NEXT_PUBLIC_PORTAL_URL` - optional Client Portal destination override. Defaults to `https://portal.sosenanursingsolutions.com`.
 
 ## Branding Assets
 

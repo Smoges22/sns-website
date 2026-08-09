@@ -1,61 +1,40 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand";
 import { PortalLink } from "@/components/portal-link";
-import { serviceGroups, site } from "@/lib/site";
+import { site } from "@/lib/site";
+
+const footerLinks = [
+  ["RN Assessments", "/services/rn-assessments"],
+  ["Individualized Care Plans", "/services/negotiated-care-plans"],
+  ["Who We Serve", "/who-we-serve"],
+  ["How It Works", "/how-it-works"],
+] as const;
 
 export function SiteFooter() {
-  const services = serviceGroups.flatMap((group) => group.services.map((service) => service.name)).slice(0, 7);
-
   return (
-    <footer className="bg-white px-4 pb-5 pt-8 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_12%_0%,rgba(94,210,221,0.2),transparent_34%),radial-gradient(circle_at_92%_18%,rgba(255,255,255,0.08),transparent_30%),linear-gradient(135deg,#0F2740_0%,#102A43_62%,#0B3448_100%)] text-white shadow-[0_26px_82px_rgba(16,42,67,0.26)]">
-        <div className="grid gap-8 px-5 py-9 sm:px-8 lg:grid-cols-[1.25fr_1fr_0.85fr] lg:px-9 lg:py-10">
-          <div>
-            <BrandMark inverse />
-            <p className="mt-6 max-w-md text-sm leading-6 text-[#D6E1EA]">
-              {site.legalName} provides RN-led assessment and care-planning services for Adult Family Homes with practical clinical documentation workflows.
-            </p>
-            <div className="mt-6 grid gap-2 rounded-[20px] border border-white/15 bg-white/9 p-4 text-sm backdrop-blur">
-              <p><a className="font-bold text-white transition hover:text-[#5ED2DD]" href={`tel:${site.phone.replaceAll("-", "")}`}>{site.phone}</a></p>
-              <p><a className="text-[#D6E1EA] transition hover:text-[#5ED2DD]" href={`mailto:${site.primaryEmail}`}>{site.primaryEmail}</a></p>
-              <p className="text-[#AFC1CF]">{site.domain}</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5ED2DD]">Services</p>
-            <ul className="mt-5 grid gap-2.5 break-words text-sm text-[#D6E1EA]">
-              {services.map((service) => <li key={service}>{service}</li>)}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5ED2DD]">Company</p>
-            <ul className="mt-5 grid gap-2.5 break-words text-sm text-[#D6E1EA]">
-              <li><Link className="transition hover:text-white" href="/about">About</Link></li>
-              <li><Link className="transition hover:text-white" href="/contact">Contact</Link></li>
-              <li><Link className="transition hover:text-white" href="/privacy">Privacy</Link></li>
-              <li><Link className="transition hover:text-white" href="/terms">Terms</Link></li>
-              <li><PortalLink className="transition hover:text-white" comingSoonClassName="text-[#D6E1EA]" /></li>
-            </ul>
-            <div className="mt-6 rounded-[20px] border border-[#5ED2DD]/30 bg-white/9 p-4 text-xs font-semibold leading-5 text-[#D6E1EA]">
-              No detailed medical information should be submitted through public website forms.
-            </div>
-          </div>
+    <footer className="bg-[#102A43] text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.25fr_1fr_1fr] lg:px-8">
+        <div>
+          <BrandMark inverse />
+          <p className="mt-5 max-w-md text-sm leading-6 text-[#D6E1EA]">RN assessments and individualized care plans provided by Sosena Mekuria, RN for authorized care providers, professionals, and families in Washington.</p>
+          <p className="mt-4 text-xs leading-5 text-[#AFC1CF]">Service availability is confirmed based on the service location.</p>
         </div>
-        <div className="border-t border-white/12 px-5 py-5 text-center text-xs leading-6 text-[#AFC1CF] sm:px-8 lg:px-9">
-          <p>&copy; {new Date().getFullYear()} {site.legalName}.</p>
-          <p className="mt-2 text-[12px] text-[#AFC1CF]">
-            Website by{" "}
-            <a
-              className="rounded-full underline decoration-[#AFC1CF]/45 underline-offset-4 transition hover:bg-white/8 hover:px-1 hover:text-white hover:decoration-[#5ED2DD] focus-visible:text-white"
-              href="https://www.afhdesignsbysam.com/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Web Designs by Sam
-            </a>
-          </p>
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-200">Services & information</p>
+          <ul className="mt-3 grid gap-1 text-sm text-[#D6E1EA]">{footerLinks.map(([label, href]) => <li key={href}><Link className="block rounded-lg py-2 hover:text-white" href={href}>{label}</Link></li>)}</ul>
+        </div>
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-200">Contact</p>
+          <a className="mt-3 block rounded-lg py-2 text-sm font-bold text-white" href={`tel:${site.phone.replaceAll("-", "")}`}>{site.phone}</a>
+          <a className="block rounded-lg py-2 text-sm text-[#D6E1EA] hover:text-white" href={`mailto:${site.primaryEmail}`}>{site.primaryEmail}</a>
+          <div className="mt-3 grid text-sm text-[#D6E1EA]">
+            <Link className="rounded-lg py-2 hover:text-white" href="/privacy">Privacy</Link>
+            <Link className="rounded-lg py-2 hover:text-white" href="/terms">Terms</Link>
+            <PortalLink className="rounded-lg py-2 hover:text-white" />
+          </div>
         </div>
       </div>
+      <div className="border-t border-white/10"><div className="mx-auto max-w-7xl px-5 py-5 text-xs text-[#AFC1CF] sm:px-6 lg:px-8">© {new Date().getFullYear()} {site.legalName}.</div></div>
     </footer>
   );
 }

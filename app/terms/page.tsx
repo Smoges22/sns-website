@@ -1,37 +1,6 @@
-import type { Metadata } from "next";
 import { Card, PageHero, PageShell, SectionContainer } from "@/components/section";
+import { createPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Terms",
-  description: "Terms for the Sosena Nursing Solutions public website."
-};
+export const metadata = createPageMetadata({ title: "Website Terms", description: "General terms for using the Sosena Nursing Solutions public website and contacting SNS about services.", path: "/terms" });
 
-export default function TermsPage() {
-  return (
-    <PageShell>
-      <PageHero
-        eyebrow="Terms"
-        title="Website Terms"
-        intro="General terms for using the Sosena Nursing Solutions public website."
-      />
-      <SectionContainer>
-        <Card className="max-w-4xl p-6 sm:p-8">
-          <div className="space-y-6 leading-7 text-slate">
-            <section>
-              <h2 className="text-xl font-black text-navy">General information</h2>
-              <p className="mt-3">The information on this website is for general business and service-description purposes only. It does not replace professional clinical judgment or provider direction.</p>
-            </section>
-            <section>
-              <h2 className="text-xl font-black text-navy">Service availability</h2>
-              <p className="mt-3">Service availability, scope, and timing are confirmed directly with SNS. Nurse Delegation is listed as Coming Soon and is not currently available for booking through this website.</p>
-            </section>
-            <section>
-              <h2 className="text-xl font-black text-navy">Public forms</h2>
-              <p className="mt-3">Do not submit detailed medical information through public website forms or general email until SNS provides secure next steps.</p>
-            </section>
-          </div>
-        </Card>
-      </SectionContainer>
-    </PageShell>
-  );
-}
+export default function TermsPage(){return <PageShell><PageHero eyebrow="Terms" title="Website Terms" intro="General terms for using the Sosena Nursing Solutions public website."/><SectionContainer><Card className="max-w-4xl p-6 sm:p-8"><div className="space-y-7 leading-7 text-slate"><section><h2 className="text-xl font-black text-navy">General information</h2><p className="mt-3">Website information is for general business and service-description purposes only. It does not replace professional clinical judgment or provider direction.</p></section><section><h2 className="text-xl font-black text-navy">Service availability</h2><p className="mt-3">Service availability, scope, location, and timing are confirmed directly with SNS. The public website describes current RN assessment and individualized care-plan services only.</p></section><section><h2 className="text-xl font-black text-navy">Public contact</h2><p className="mt-3">Do not submit detailed medical or protected health information through the public website, ordinary email, or voicemail. SNS provides separate instructions when clinical records are needed.</p></section></div></Card></SectionContainer></PageShell>}

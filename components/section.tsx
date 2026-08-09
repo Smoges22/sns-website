@@ -25,7 +25,7 @@ function SectionHeading({
 }
 
 export function PageShell({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <main className={`bg-white ${className}`}>{children}</main>;
+  return <main id="main-content" className={`bg-white ${className}`}>{children}</main>;
 }
 
 export function Section({
@@ -84,7 +84,7 @@ export function SectionContainer({
 
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`min-w-0 overflow-hidden rounded-[22px] border border-[#D9E3EA] bg-white p-5 shadow-[0_12px_36px_rgba(23,50,77,0.075)] transition duration-200 hover:-translate-y-0.5 hover:border-teal/45 hover:shadow-[0_18px_54px_rgba(23,50,77,0.12)] sm:p-6 ${className}`}>
+    <div className={`min-w-0 overflow-hidden rounded-[22px] border border-[#D9E3EA] bg-white p-5 shadow-[0_12px_36px_rgba(23,50,77,0.065)] sm:p-6 ${className}`}>
       {children}
     </div>
   );
@@ -140,8 +140,8 @@ export function PageHero({
 }
 
 export function FinalCta({
-  title = "Ready to streamline your clinical documentation?",
-  text = "SNS provides RN-led assessments and practical care-planning documentation designed for Adult Family Homes."
+  title = "Need an RN Assessment?",
+  text = "SNS provides RN assessments and individualized care plans for Adult Family Homes, care teams, referral professionals, assisted living communities, and families."
 }: {
   title?: string;
   text?: string;
@@ -153,7 +153,7 @@ export function FinalCta({
           <h2 className="text-3xl font-black tracking-tight">{title}</h2>
           <p className="mt-3 leading-7 text-[#D6E1EA]">{text}</p>
         </div>
-        <a className="inline-flex min-h-12 items-center justify-center rounded-xl bg-teal px-5 py-3 text-sm font-extrabold text-[#102A43] shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-white" href="/request-assessment">
+        <a className="inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-extrabold text-[#102A43] shadow-sm transition hover:bg-blue-50" href="/request-assessment">
           Request an Assessment
         </a>
       </div>

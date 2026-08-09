@@ -6,7 +6,8 @@ const config: Config = {
     extend: {
       colors: {
         navy: "#17324D",
-        teal: "#18B7C9",
+        teal: "#0B6670",
+        aqua: "#5ED2DD",
         soft: "#F5F7F9",
         slate: "#5D6873",
         alert: "#A83E3E"
@@ -23,4 +24,3 @@ const config: Config = {
 };
 
 export default config;
-

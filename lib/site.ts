@@ -1,173 +1,138 @@
+import type { Metadata } from "next";
+
 export const site = {
   legalName: "Sosena Nursing Solutions LLC",
+  name: "Sosena Nursing Solutions",
   brand: "SNS",
   domain: "sosenanursingsolutions.com",
   url: "https://sosenanursingsolutions.com",
   primaryEmail: "info@sosenanursingsolutions.com",
-  generalEmail: "info@sosenanursingsolutions.com",
   phone: "425-246-6220",
-  portalUrl: process.env.NEXT_PUBLIC_PORTAL_URL?.trim() || "",
-  descriptor: "RN Assessments, Care Planning & Clinical Services",
-  tagline: "Professional Assessments. Practical Care Solutions."
+  portalUrl:
+    process.env.NEXT_PUBLIC_PORTAL_URL?.trim() ||
+    "https://portal.sosenanursingsolutions.com",
+  provider: "Sosena Mekuria, RN",
+  serviceArea: "Washington State",
+  descriptor: "RN Assessments & Individualized Care Plans",
 };
 
-export const trustPoints = [
-  "Registered Nurse-led",
-  "Adult Family Home experience",
-  "Professional clinical documentation",
-  "Resident-centered care planning"
-];
+export const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/who-we-serve", label: "Who We Serve" },
+  { href: "/about", label: "About" },
+  { href: "/how-it-works", label: "How It Works" },
+  { href: "/contact", label: "Contact" },
+] as const;
 
-export const howItWorks = [
+export const audiences = [
   {
-    title: "Request",
-    text: "Submit minimum intake details through the public website."
+    title: "Adult Family Homes",
+    text: "RN assessments and care plans for prospective admissions, current residents, annual reassessments, and significant changes in care needs.",
   },
   {
-    title: "Coordinate",
-    text: "SNS confirms scope, scheduling, and secure record exchange."
+    title: "Referral & Placement Professionals",
+    text: "Independent clinical documentation that helps authorized professionals and receiving providers understand assessed care needs during an AFH transition.",
+  },
+  {
+    title: "Hospitals & Discharge Teams",
+    text: "RN assessment support for adults preparing to discharge to an Adult Family Home or another residential care setting.",
+  },
+  {
+    title: "Assisted Living Communities",
+    text: "Updated assessment and care-planning support when needs change or an Adult Family Home transition is being considered.",
+  },
+  {
+    title: "Families",
+    text: "Professional nursing assessment to help authorized family members understand and document a loved one’s current care needs.",
+  },
+] as const;
+
+export const processSteps = [
+  {
+    title: "Request",
+    text: "Share basic contact, service, location, and timing information without sending clinical records.",
+  },
+  {
+    title: "Schedule",
+    text: "SNS confirms the appropriate service and coordinates with the authorized contact or care team.",
   },
   {
     title: "Assess",
-    text: "A registered nurse completes or reviews the assessment."
+    text: "Sosena Mekuria, RN completes the clinical assessment and reviews relevant records when available.",
   },
   {
-    title: "Review",
-    text: "Clinical findings and narratives are reviewed by the RN."
+    title: "Plan & Deliver",
+    text: "SNS prepares the appropriate care plan and provides completed documentation to the authorized party.",
   },
-  {
-    title: "Plan",
-    text: "SNS prepares negotiated care-plan or service-plan documentation."
-  },
-  {
-    title: "Deliver",
-    text: "Finalized assessment and care-plan PDFs are delivered securely."
-  }
-];
+] as const;
 
-export const serviceGroups = [
+export const services = [
   {
-    title: "Assessments",
-    eyebrow: "RN assessment",
-    description: "Assessment work for new, annual, or significant-change care planning.",
-    services: [
-      {
-        name: "Comprehensive RN Assessments",
-        text: "A structured RN assessment that helps AFH teams understand needs, risks, preferences, and practical care considerations."
-      },
-      {
-        name: "Annual Reassessments",
-        text: "Periodic review to refresh documentation and support current care planning conversations."
-      },
-      {
-        name: "Significant-Change Assessments",
-        text: "Focused assessment support when care needs, function, or service conditions materially change."
-      }
-    ]
+    title: "RN Assessments",
+    href: "/services/rn-assessments",
+    description:
+      "Comprehensive nursing assessments that document health, cognitive, functional, behavioral, medication, safety, and personal-care needs.",
+    examples: [
+      "Admission assessments",
+      "Pre-placement and transition assessments",
+      "Annual reassessments",
+      "Significant-change assessments",
+    ],
   },
   {
-    title: "Care Planning",
-    eyebrow: "Plan preparation",
-    description: "Care-plan documentation shaped around assessed needs and daily care workflows.",
-    services: [
-      {
-        name: "Preliminary Negotiated Service Plans",
-        text: "Early planning documentation connected to assessment findings and immediate care-team coordination."
-      },
-      {
-        name: "Negotiated Care Plans",
-        text: "Resident-centered care-plan preparation with caregiver interventions, abilities, and preferences organized clearly."
-      },
-      {
-        name: "Care-Plan Reviews",
-        text: "Review support for updating care plans after reassessment, external review, or changing needs."
-      }
-    ]
+    title: "Individualized Care Plans",
+    href: "/services/negotiated-care-plans",
+    description:
+      "Practical, person-centered care plans that translate assessed needs into clear guidance for authorized caregivers, providers, families, and care teams.",
+    examples: [
+      "Individualized care plans",
+      "Negotiated care plans for AFH settings",
+      "Care guidance tied to assessed needs",
+      "Clear responsibilities and care approaches",
+    ],
   },
-  {
-    title: "Document Review",
-    eyebrow: "Clinical review",
-    description: "External assessment and care-plan preparation support for clearer next steps.",
-    services: [
-      {
-        name: "External Assessment Review",
-        text: "RN-guided review of assessment information to identify documentation needs and care-planning priorities."
-      },
-      {
-        name: "Care-Plan Preparation",
-        text: "Practical preparation support for AFH providers who need clear, usable care-plan documentation."
-      }
-    ]
-  },
-  {
-    title: "Future",
-    eyebrow: "Coming soon",
-    description: "Nurse Delegation is planned after workflows and safeguards are ready.",
-    services: [
-      {
-        name: "Nurse Delegation — Coming Soon",
-        text: "Availability will be announced after clinical workflows, documentation standards, and operational safeguards are ready."
-      }
-    ]
-  }
-];
+] as const;
 
-export const differentiation = [
-  {
-    title: "RN Leadership",
-    text: "Clinical documentation guided by registered nurse judgment, review, and finalization.",
-    icon: "rn"
-  },
-  {
-    title: "Adult Family Home Expertise",
-    text: "Workflows shaped around provider needs, family communication, and day-to-day care realities.",
-    icon: "shield"
-  },
-  {
-    title: "Professional Documentation",
-    text: "Assessment findings and care-plan language organized for secure review and clean final PDFs.",
-    icon: "document"
-  },
-  {
-    title: "Assessment to Care Plan Workflow",
-    text: "A consistent path from assessment builder to RN review, negotiated care plan, and PDF output.",
-    icon: "workflow"
-  },
-  {
-    title: "Future Nurse Delegation",
-    text: "Planned service expansion only after workflow, documentation, and safeguard readiness.",
-    icon: "calendar"
-  },
-  {
-    title: "Resident-Centered Planning",
-    text: "Care-plan support focused on preferences, abilities, caregiver interventions, and practical next steps.",
-    icon: "carePlan"
-  }
-];
+export function absoluteUrl(path = "") {
+  return `${site.url}${path}`;
+}
 
-export const documentationStages = [
-  {
-    title: "Assessment",
-    items: ["Structured RN assessment", "Screening and physical assessment", "ADL and service-plan sections"]
-  },
-  {
-    title: "RN Review",
-    items: ["Clinical narrative review", "Corrections and finalization", "Signature and certification"]
-  },
-  {
-    title: "Care Plan",
-    items: ["Negotiated care-plan preparation", "Caregiver interventions", "Abilities and preferences"]
-  },
-  {
-    title: "Professional PDF",
-    items: ["Consistent formatting", "Portrait and landscape pages", "Finalized document output"]
-  }
-];
-
-export const navItems = [
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/how-it-works", label: "How It Works" },
-  { href: "/request-assessment", label: "Request" },
-  { href: "/contact", label: "Contact" }
-];
+export function createPageMetadata({
+  title,
+  description,
+  path,
+}: {
+  title: string;
+  description: string;
+  path: string;
+}): Metadata {
+  const url = absoluteUrl(path);
+  return {
+    title: path === "/" ? { absolute: `${title} | ${site.name}` } : title,
+    description,
+    alternates: { canonical: path || "/" },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: site.name,
+      type: "website",
+      locale: "en_US",
+      images: [
+        {
+          url: "/images/branding/sns-og.png",
+          width: 1200,
+          height: 630,
+          alt: "Sosena Nursing Solutions — RN Assessments and Individualized Care Plans",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/images/branding/sns-og.png"],
+    },
+  };
+}
