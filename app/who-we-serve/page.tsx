@@ -9,7 +9,7 @@ export default function WhoWeServePage() {
   return (
     <PageShell>
       <PageHero breadcrumbLabel="Who We Serve" eyebrow="Who we serve" title="Clinical clarity across care transitions" intro={`SNS works with authorized providers, professionals, care teams, and families who need a reliable understanding of an adult's current care needs. Services are provided by ${site.provider}.`}>
-        <ButtonLink href="/request-assessment" variant="light">Request an Assessment</ButtonLink>
+        <ButtonLink href="/request-assessment" variant="primary">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer>
         <AudienceTabs ctaHref="/request-assessment" ctaLabel="Request an Assessment" />

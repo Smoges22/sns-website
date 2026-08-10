@@ -67,7 +67,7 @@ export default function ServiceAreaPage() {
           </div>
           <div className="flex shrink-0 flex-wrap gap-3">
             <ButtonLink href="/request-assessment">Request an Assessment</ButtonLink>
-            <ButtonLink href="/contact" variant="secondary">Contact SNS</ButtonLink>
+            <ButtonLink href="/refer-a-client" variant="referral">Refer a Client</ButtonLink>
           </div>
         </div>
       </section>

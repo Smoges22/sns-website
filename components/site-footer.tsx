@@ -16,6 +16,7 @@ const informationLinks = [
   ["Sample Documents", "/sample-documents"],
   ["Resources", "/resources"],
   ["Service Area", "/service-area"],
+  ["Refer a Client", "/refer-a-client"],
   ["How It Works", "/how-it-works"],
   ["About", "/about"],
 ] as const;
@@ -47,7 +48,12 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10"><div className="mx-auto max-w-7xl px-5 py-5 text-xs text-[#AFC1CF] sm:px-6 lg:px-8">© {new Date().getFullYear()} {site.legalName}.</div></div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-1 px-5 py-5 text-center sm:px-6 lg:px-8">
+          <p className="text-xs text-[#AFC1CF]">© {new Date().getFullYear()} {site.legalName}.</p>
+          <a className="text-[0.68rem] text-[#8FA6B7] transition-colors hover:text-white hover:underline" href="https://www.afhdesignsbysam.com/" rel="noopener noreferrer" target="_blank">Web Design by Sam</a>
+        </div>
+      </div>
     </footer>
   );
 }

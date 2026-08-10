@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <PageShell>
       <PageHero breadcrumbLabel="About" eyebrow="About Sosena Nursing Solutions" title="Sosena Mekuria, RN" intro="Registered Nurse providing professional assessments and individualized care plans with a practical understanding of Adult Family Home care.">
-        <ButtonLink href="/request-assessment" variant="light">Request an Assessment</ButtonLink>
+        <ButtonLink href="/request-assessment" variant="primary">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer>
         <div className="grid items-center gap-10 lg:grid-cols-[.82fr_1.18fr] lg:gap-16">

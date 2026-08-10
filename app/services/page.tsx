@@ -11,7 +11,7 @@ export default function ServicesPage() {
   return (
     <PageShell>
       <PageHero breadcrumbLabel="Services" eyebrow="Professional nursing services" title="RN Assessments, Care Plans & Clinical Follow-Up" intro={`Focused clinical services provided by ${site.provider} for authorized providers, professionals, care teams, and families in Washington.`}>
-        <ButtonLink href="/request-assessment" variant="light">Request an Assessment</ButtonLink>
+        <ButtonLink href="/request-assessment" variant="primary">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer eyebrow="Primary services" title="Assessment and care-planning foundation" intro="Begin with a clear clinical picture, then translate assessed needs into practical daily-care guidance.">
         <div className="grid gap-6 lg:grid-cols-2">{primaryServices.map((service,index)=><ServiceCard index={index} key={service.slug} service={service}/>)}</div>

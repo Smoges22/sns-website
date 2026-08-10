@@ -9,7 +9,7 @@ export default function HowItWorksPage() {
   return (
     <PageShell>
       <PageHero breadcrumbLabel="How It Works" eyebrow="How it works" title="A straightforward path from request to completed documentation" intro={`SNS coordinates with authorized contacts, keeps communication clear, and explains what is needed at each step. Clinical services are provided by ${site.provider}.`}>
-        <ButtonLink href="/request-assessment" variant="light">Start a Request</ButtonLink>
+        <ButtonLink href="/request-assessment" variant="primary">Start a Request</ButtonLink>
       </PageHero>
       <SectionContainer eyebrow="Four-step process" title="Clear next steps from the beginning">
         <ProcessTimeline />

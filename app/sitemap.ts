@@ -17,6 +17,7 @@ const routes = [
   "/who-we-serve",
   "/how-it-works",
   "/request-assessment",
+  "/refer-a-client",
   "/contact",
   "/privacy",
   "/terms"
@@ -26,6 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${site.url}${route}`,
     changeFrequency: "monthly",
-    priority: route === "" ? 1 : route === "/request-assessment" ? 0.9 : route.startsWith("/sample-") ? 0.6 : 0.7
+    priority: route === "" ? 1 : ["/request-assessment", "/refer-a-client"].includes(route) ? 0.9 : route.startsWith("/sample-") ? 0.6 : 0.7
   }));
 }

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { ButtonLink } from "@/components/ui";
 
 export const premiumCardClass =
   "min-w-0 overflow-hidden rounded-[18px] border border-[#D5E0E6] bg-white shadow-[0_1px_2px_rgba(23,50,77,0.035)]";
@@ -122,13 +123,15 @@ export function PageHero({
   title,
   intro,
   children,
-  breadcrumbLabel
+  breadcrumbLabel,
+  breadcrumbParent,
 }: {
   eyebrow: string;
   title: string;
   intro: string;
   children?: ReactNode;
   breadcrumbLabel?: string;
+  breadcrumbParent?: { label: string; href: string };
 }) {
   return (
     <section className="relative overflow-hidden bg-[#173B60] px-5 py-10 text-white sm:px-6 sm:py-12 lg:px-8 lg:py-14">
@@ -137,7 +140,12 @@ export function PageHero({
       <div className="mx-auto max-w-7xl">
         <div className="grid min-w-0 gap-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-14">
           <div className="min-w-0 max-w-4xl">
-            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm font-semibold text-[#BFE8EC]"><Link className="rounded-sm underline-offset-4 hover:underline" href="/">Home</Link><span aria-hidden="true">/</span><span>{breadcrumbLabel ?? eyebrow}</span></nav>
+            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm font-semibold text-[#BFE8EC]">
+              <Link className="rounded-sm underline-offset-4 hover:underline" href="/">Home</Link>
+              <span aria-hidden="true">/</span>
+              {breadcrumbParent ? <><Link className="rounded-sm underline-offset-4 hover:underline" href={breadcrumbParent.href}>{breadcrumbParent.label}</Link><span aria-hidden="true">/</span></> : null}
+              <span aria-current="page">{breadcrumbLabel ?? eyebrow}</span>
+            </nav>
             <h1 className="text-balance mt-3 max-w-[22ch] break-words font-display text-4xl font-bold leading-[1.08] tracking-[-0.035em] text-white sm:max-w-none sm:text-5xl lg:text-[3.25rem]">{title}</h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-[#D9E6EF] sm:text-lg sm:leading-8">{intro}</p>
           </div>
@@ -162,9 +170,7 @@ export function FinalCta({
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
           <p className="mt-3 leading-7 text-[#D6E1EA]">{text}</p>
         </div>
-        <a className="inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-[#102A43] transition-colors hover:bg-[#EAF5F8]" href="/request-assessment">
-          Request an Assessment
-        </a>
+        <ButtonLink href="/request-assessment">Request an Assessment</ButtonLink>
       </div>
     </section>
   );

@@ -99,7 +99,7 @@ export function AudienceTabs({ ctaHref = "/who-we-serve", ctaLabel = "Learn more
             <ul className="mt-5 grid gap-x-7 gap-y-2 text-sm font-semibold text-navy sm:grid-cols-2">
               {audienceDetails[index].points.map((point) => <li className="flex gap-2.5" key={point}><LineIcon className="h-5 w-5 shrink-0 text-teal" name="check" />{point}</li>)}
             </ul>
-            <ButtonLink className="mt-6" href={ctaHref}>{ctaLabel}</ButtonLink>
+            <ButtonLink className="mt-6" href={index >= 1 && index <= 3 ? "/refer-a-client" : ctaHref} variant={index >= 1 && index <= 3 ? "referral" : "primary"}>{index >= 1 && index <= 3 ? "Refer a Client" : ctaLabel}</ButtonLink>
           </div>
           <AudienceVisual kind={audienceDetails[index].visual} />
         </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { buttonVariants } from "@/components/ui";
 import { site } from "@/lib/site";
 
 const fieldClass = "mt-2 min-h-12 w-full rounded-xl border border-navy/20 bg-white px-4 py-3 text-base text-navy outline-none transition placeholder:text-slate/60 focus:border-teal focus:ring-4 focus:ring-teal/15";
@@ -48,7 +49,7 @@ export function RequestAssessmentForm() {
         <input className="mt-1 h-5 w-5 shrink-0 accent-navy" name="consent" required type="checkbox" />
         <span>I consent to be contacted by SNS about this request and understand this public form is not for clinical records. *</span>
       </label>
-      <button className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white transition hover:bg-[#214562] sm:w-fit" type="submit">Prepare Email Request</button>
+      <button className={`inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold transition-colors sm:w-fit ${buttonVariants.primary}`} type="submit">Prepare Email Request</button>
       <p className="text-xs leading-5 text-slate">This opens your email app so you can review the non-clinical request before sending it to SNS.</p>
       {status ? <p className="text-sm font-bold text-green-700" role="status">{status}</p> : null}
     </form>

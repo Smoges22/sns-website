@@ -45,7 +45,7 @@ export function SampleDocumentsSection({ className = "bg-[#EDF6FA]" }: { classNa
               <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Sample · Fictional Example</p>
               <h3 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em] text-navy">{document.title}</h3>
               <p className="mt-3 text-sm leading-6 text-slate">{document.description}</p>
-              <ButtonLink className="mt-4 min-h-11" href={document.route}>{document.ctaLabel}</ButtonLink>
+              <ButtonLink className="mt-4 min-h-11" href={document.route} variant="secondary">{document.ctaLabel}</ButtonLink>
             </div>
           </article>
         ))}
@@ -69,7 +69,7 @@ export function SampleDocumentPage({ document }: { document: SampleDocument }) {
   return (
     <PageShell>
       <PageHero breadcrumbLabel="Sample Documents" eyebrow="Sample Document · Fictional Example" title={document.title} intro={document.pageIntro}>
-        <ButtonLink href="/request-assessment" variant="light">Request an Assessment</ButtonLink>
+        <ButtonLink href="/request-assessment" variant="primary">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer>
         <p className="mb-8 max-w-5xl rounded-[16px] border border-teal/25 bg-[#EAF5F6] px-5 py-4 text-sm font-bold leading-6 text-navy">{sampleDocumentDisclaimer}</p>

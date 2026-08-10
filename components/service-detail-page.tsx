@@ -24,7 +24,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDefinition }) {
     <PageShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <PageHero breadcrumbLabel="Services" eyebrow={service.category} title={service.title} intro={service.description}>
-        <ButtonLink href="/request-assessment" variant="light">Request This Service</ButtonLink>
+        <ButtonLink href="/request-assessment" variant="primary">Request This Service</ButtonLink>
       </PageHero>
       <SectionContainer>
         <div className="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
