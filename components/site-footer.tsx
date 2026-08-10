@@ -21,11 +21,11 @@ const informationLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#102A43] text-white">
+    <footer className="bg-[#123354] text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.35fr_.75fr_.8fr_1fr] lg:px-8 lg:py-16">
         <div>
           <BrandMark footer />
-          <p className="mt-5 max-w-md text-sm leading-6 text-[#D6E1EA]">RN assessments, individualized care plans, and focused clinical follow-up provided by Sosena Mekuria, RN in Washington.</p>
+          <p className="mt-6 max-w-md text-sm leading-6 text-[#D6E1EA]">RN assessments, individualized care plans, and focused clinical follow-up provided by Sosena Mekuria, RN in Washington.</p>
           <p className="mt-4 text-xs leading-5 text-[#AFC1CF]">Service availability is confirmed based on the service location.</p>
         </div>
         <div>

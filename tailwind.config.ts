@@ -13,7 +13,8 @@ const config: Config = {
         alert: "#A83E3E"
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "Segoe UI", "Arial", "sans-serif"]
+        sans: ["Inter", "Aptos", "ui-sans-serif", "system-ui", "Segoe UI", "Arial", "sans-serif"],
+        display: ["Georgia", "Cambria", "Times New Roman", "serif"]
       },
       boxShadow: {
         soft: "0 20px 60px rgba(23, 50, 77, 0.08)"

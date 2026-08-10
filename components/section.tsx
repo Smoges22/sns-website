@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 
 export const premiumCardClass =
-  "min-w-0 overflow-hidden rounded-[24px] border border-[#CCD9E1] bg-white shadow-[0_1px_2px_rgba(23,50,77,0.04),0_14px_38px_rgba(23,50,77,0.075)]";
+  "min-w-0 overflow-hidden rounded-[18px] border border-[#D5E0E6] bg-white shadow-[0_1px_2px_rgba(23,50,77,0.035)]";
 
 export const interactiveCardClass =
-  `${premiumCardClass} transition-[transform,box-shadow,border-color] duration-200 motion-safe:hover:-translate-y-1 hover:border-[#9FB7C5] hover:shadow-[0_2px_4px_rgba(23,50,77,0.05),0_22px_52px_rgba(23,50,77,0.11)] focus-within:border-teal`;
+  `${premiumCardClass} transition-[transform,box-shadow,border-color] duration-200 motion-safe:hover:-translate-y-0.5 hover:border-[#AFC3CD] hover:shadow-[0_12px_30px_rgba(23,50,77,0.07)] focus-within:border-teal`;
 
 function SectionHeading({
   eyebrow,
@@ -24,14 +24,14 @@ function SectionHeading({
   return (
     <div className={`mb-10 max-w-3xl sm:mb-12 ${center ? "mx-auto text-center" : ""}`}>
       {eyebrow ? <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-teal sm:text-sm">{eyebrow}</p> : null}
-      {title ? <h2 className="mt-3 break-words text-3xl font-black leading-[1.12] tracking-[-0.025em] text-navy sm:text-4xl lg:text-[2.75rem]">{title}</h2> : null}
+      {title ? <h2 className="text-balance mt-3 break-words font-display text-3xl font-bold leading-[1.14] tracking-[-0.025em] text-navy sm:text-4xl lg:text-[2.75rem]">{title}</h2> : null}
       {intro ? <p className="mt-4 max-w-2xl text-base leading-7 text-slate sm:text-lg sm:leading-8">{intro}</p> : null}
     </div>
   );
 }
 
 export function PageShell({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <main id="main-content" className={`bg-[#FCFDFD] ${className}`}>{children}</main>;
+  return <main id="main-content" className={`bg-white ${className}`}>{children}</main>;
 }
 
 export function Section({
@@ -128,13 +128,15 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-navy/10 bg-[radial-gradient(circle_at_84%_12%,rgba(94,210,221,0.16),transparent_28%),linear-gradient(135deg,#ffffff_0%,#F8FAFB_58%,#EDF6FA_100%)] px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="relative overflow-hidden bg-[#173B60] px-5 py-14 text-white sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <span aria-hidden="true" className="absolute -right-20 -top-32 h-80 w-80 rounded-full border border-white/10" />
+      <span aria-hidden="true" className="absolute -right-8 -top-16 h-56 w-56 rounded-full border border-aqua/20" />
       <div className="mx-auto max-w-7xl">
         <div className="grid min-w-0 gap-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-14">
           <div className="min-w-0 max-w-4xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-teal sm:text-sm">{eyebrow}</p>
-            <h1 className="mt-4 max-w-[18ch] break-words text-4xl font-black leading-[1.08] tracking-[-0.035em] text-navy sm:max-w-none sm:text-5xl lg:text-[3.5rem]">{title}</h1>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-slate sm:text-lg sm:leading-8">{intro}</p>
+            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#9DE2E8] sm:text-sm">{eyebrow}</p>
+            <h1 className="text-balance mt-4 max-w-[20ch] break-words font-display text-4xl font-bold leading-[1.08] tracking-[-0.035em] text-white sm:max-w-none sm:text-5xl lg:text-[3.5rem]">{title}</h1>
+            <p className="mt-5 max-w-3xl text-base leading-7 text-[#D9E6EF] sm:text-lg sm:leading-8">{intro}</p>
           </div>
           {children ? <div className="min-w-0">{children}</div> : null}
         </div>
@@ -151,10 +153,10 @@ export function FinalCta({
   text?: string;
 }) {
   return (
-    <section className="bg-[linear-gradient(135deg,#17324D_0%,#102A43_70%,#0F2740_100%)] px-5 py-16 text-white sm:px-6 sm:py-20 lg:px-8">
+    <section className="bg-[#173B60] px-5 py-16 text-white sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
-          <h2 className="text-3xl font-black tracking-tight">{title}</h2>
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
           <p className="mt-3 leading-7 text-[#D6E1EA]">{text}</p>
         </div>
         <a className="inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-[#102A43] transition-colors hover:bg-[#EAF5F8]" href="/request-assessment">

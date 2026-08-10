@@ -28,7 +28,7 @@ export function RequestAssessmentForm() {
     window.location.href = `mailto:${site.primaryEmail}?subject=${encodeURIComponent("RN assessment request")}&body=${encodeURIComponent(body)}`;
   }
   return (
-    <form className="grid gap-5 rounded-[24px] border border-[#CCD9E1] bg-white p-5 shadow-[0_1px_2px_rgba(23,50,77,0.04),0_18px_48px_rgba(23,50,77,0.09)] sm:p-8" onSubmit={prepareEmail}>
+    <form className="grid gap-5 rounded-[18px] border border-[#CCD9E1] border-t-[3px] border-t-navy bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.06)] sm:p-8" onSubmit={prepareEmail}>
       <p className="text-sm leading-6 text-slate"><span className="font-black text-navy">Required fields are marked *</span></p>
       <div className="grid gap-5 md:grid-cols-2">
         <Field autoComplete="name" label="Name" name="name" required />

@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { SampleDocumentsSection } from "@/components/sample-documents";
 import { ServiceCard } from "@/components/service-card";
-import { interactiveCardClass, FinalCta, PageShell, SectionContainer } from "@/components/section";
+import { FinalCta, PageShell, SectionContainer } from "@/components/section";
+import { ButtonLink, LineIcon } from "@/components/ui";
 import { absoluteUrl, audiences, createPageMetadata, processSteps, site } from "@/lib/site";
 import { ongoingServices, primaryServices, serviceDefinitions, servicePath } from "@/lib/services";
 
@@ -50,27 +51,28 @@ export default function HomePage() {
   return (
     <PageShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema).replace(/</g, "\\u003c") }} />
-      <section className="border-b border-navy/10 bg-[radial-gradient(circle_at_88%_12%,rgba(94,210,221,0.18),transparent_26%),linear-gradient(135deg,#ffffff_0%,#F8FAFB_56%,#EAF4F7_100%)] px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_.92fr] lg:gap-16">
+      <section className="relative overflow-hidden border-b border-navy/10 bg-white px-5 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <span aria-hidden="true" className="absolute -right-24 top-10 h-72 w-72 rounded-full border border-teal/10" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_.92fr] lg:gap-20">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-teal sm:text-sm">Registered nurse services in Washington State</p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.04] tracking-[-0.045em] text-navy sm:text-6xl lg:text-[4.5rem]">Professional RN Assessments, Care Plans & Clinical Follow-Up</h1>
+            <h1 className="text-balance mt-4 max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-[-0.045em] text-navy sm:text-6xl lg:text-[4.5rem]">Professional RN Assessments, Care Plans & Clinical Follow-Up</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate sm:text-xl">Sosena Nursing Solutions provides RN assessment, individualized care planning, and focused clinical review for adults entering or receiving care in Adult Family Homes.</p>
             <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-navy">Serving AFH providers, referral professionals, hospitals, assisted living communities, and families. Services are provided by Sosena Mekuria, RN.</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link className="inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white transition hover:bg-[#214562]" href="/request-assessment">Request an Assessment</Link>
-              <Link className="inline-flex min-h-12 items-center justify-center rounded-xl border border-navy/20 bg-white px-5 py-3 text-sm font-extrabold text-navy transition hover:border-navy hover:bg-soft" href="/services">View RN Services</Link>
+              <ButtonLink href="/request-assessment">Request an Assessment</ButtonLink>
+              <ButtonLink href="/services" variant="secondary">View RN Services</ButtonLink>
             </div>
             <p className="mt-5 text-sm text-slate">Serving Washington State; availability is confirmed based on the service location.</p>
           </div>
-          <div className="overflow-hidden rounded-[28px] bg-white p-3 shadow-[0_28px_80px_rgba(23,50,77,0.14)] ring-1 ring-navy/10 sm:p-4">
-            <Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="h-auto w-full rounded-[20px] object-contain" height={1122} priority sizes="(min-width:1024px) 40vw, 92vw" src="/images/team/sosena-mekuria-rn-approved.webp" width={1402} />
-            <div className="px-3 pb-3 pt-5 sm:px-4 sm:pb-4">
-              <p className="text-2xl font-black tracking-tight text-navy">Sosena Mekuria, RN</p>
-              <p className="mt-1 text-sm font-semibold text-teal">Founder and Registered Nurse</p>
-              <div className="mt-5 divide-y divide-navy/10 border-y border-navy/10 text-sm font-bold leading-6 text-navy">
-                {["More than 10 years of healthcare experience", "Registered Nurse and Adult Family Home experience", "Clear clinical assessments and care planning"].map((item) => <p className="py-3" key={item}>{item}</p>)}
-              </div>
+          <div className="relative mx-auto w-full max-w-xl pb-8 pl-4 sm:pl-8 lg:pb-10">
+            <div aria-hidden="true" className="absolute bottom-0 left-0 h-[82%] w-[86%] bg-[#EAF3F5]" />
+            <div className="relative overflow-hidden border border-[#D3E0E6] bg-white p-2 shadow-[0_20px_60px_rgba(23,50,77,0.10)]">
+              <Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="h-auto w-full object-contain" height={1122} priority sizes="(min-width:1024px) 40vw, 92vw" src="/images/team/sosena-mekuria-rn-approved.webp" width={1402} />
+            </div>
+            <div className="absolute bottom-0 right-0 border-l-4 border-teal bg-white px-5 py-4 shadow-[0_10px_30px_rgba(23,50,77,0.10)]">
+              <p className="font-display text-xl font-bold text-navy">Sosena Mekuria, RN</p>
+              <p className="mt-1 text-xs font-extrabold uppercase tracking-[.12em] text-teal">Founder and Registered Nurse</p>
             </div>
           </div>
         </div>
@@ -83,25 +85,25 @@ export default function HomePage() {
       <SampleDocumentsSection />
 
       <SectionContainer className="bg-soft" eyebrow="Who we serve" title="Clinical support across care transitions" intro="SNS works with authorized providers, professionals, care teams, and families who need a clear picture of an adult’s current care needs.">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{audiences.map((audience, index) => <article className={`${interactiveCardClass} p-6`} key={audience.title}><span className="grid h-10 w-10 place-items-center rounded-full border border-[#D2E1E7] bg-[#F1F7F9] text-xs font-black text-navy">0{index + 1}</span><h2 className="mt-4 text-xl font-black text-navy">{audience.title}</h2><p className="mt-3 text-sm leading-6 text-slate">{audience.text}</p></article>)}</div>
-        <Link className="mt-7 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href="/who-we-serve">See how SNS supports each audience</Link>
+        <div className="divide-y divide-navy/10 border-y border-navy/10 lg:grid lg:grid-cols-5 lg:divide-x lg:divide-y-0">{audiences.map((audience, index) => <article className="px-3 py-6 sm:px-5 lg:py-8" key={audience.title}><LineIcon className="text-teal" name={index === 0 ? "home" : index === 2 || index === 3 ? "hospital" : index === 4 ? "family" : "people"} /><h2 className="mt-4 font-display text-xl font-bold text-navy">{audience.title}</h2><p className="mt-3 text-sm leading-6 text-slate">{audience.text}</p></article>)}</div>
+        <ButtonLink className="mt-7 !px-0" href="/who-we-serve" variant="text">See how SNS supports each audience</ButtonLink>
       </SectionContainer>
 
       <SectionContainer eyebrow="Why choose SNS" title="Professional judgment with practical AFH understanding">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {[["RN-Led Clinical Expertise","Assessments and care plans are completed and reviewed by an experienced Registered Nurse."],["Practical AFH Experience","Clinical documentation reflects an understanding of how Adult Family Homes provide day-to-day care."],["Clear Documentation","Information is organized so authorized providers, caregivers, families, and care teams can understand it."],["Responsive Communication","SNS communicates clearly with authorized contacts throughout the assessment process."]].map(([title,text]) => <div className={`${interactiveCardClass} border-t-4 !border-t-navy p-6`} key={title}><h2 className="text-lg font-black text-navy">{title}</h2><p className="mt-3 text-sm leading-6 text-slate">{text}</p></div>)}
+          {[["RN-Led Clinical Expertise","Assessments and care plans are completed and reviewed by an experienced Registered Nurse."],["Practical AFH Experience","Clinical documentation reflects an understanding of how Adult Family Homes provide day-to-day care."],["Clear Documentation","Information is organized so authorized providers, caregivers, families, and care teams can understand it."],["Responsive Communication","SNS communicates clearly with authorized contacts throughout the assessment process."]].map(([title,text]) => <div className="border-t-2 border-navy pt-5" key={title}><LineIcon className="text-teal" name="check"/><h2 className="mt-4 font-display text-xl font-bold text-navy">{title}</h2><p className="mt-3 text-sm leading-6 text-slate">{text}</p></div>)}
         </div>
       </SectionContainer>
 
       <SectionContainer className="bg-[#EDF6FA]" eyebrow="How it works" title="A clear four-step process">
         <ol className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-10"><span aria-hidden="true" className="absolute left-[12.5%] right-[12.5%] top-6 hidden h-px bg-navy/20 lg:block" />{processSteps.map((step,index) => <li className="relative" key={step.title}><span className="relative z-10 grid h-12 w-12 place-items-center rounded-full bg-navy text-sm font-black text-white ring-8 ring-[#EDF6FA]">{index+1}</span><h2 className="mt-6 text-xl font-black text-navy">{step.title}</h2><p className="mt-3 text-sm leading-6 text-slate">{step.text}</p></li>)}</ol>
-        <Link className="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-navy px-5 py-3 text-sm font-extrabold text-white" href="/request-assessment">Request an Assessment</Link>
+        <ButtonLink className="mt-7" href="/request-assessment">Request an Assessment</ButtonLink>
       </SectionContainer>
 
       <SectionContainer eyebrow="Meet your RN" title="Meet Sosena Mekuria, RN" intro="Registered nurse experience, Adult Family Home understanding, and a commitment to clear person-centered documentation.">
         <div className="grid items-center gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[24px] bg-[#EEF3F5] p-3"><Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="object-contain" fill sizes="(min-width:1024px) 38vw, 92vw" src="/images/team/sosena-mekuria-rn-approved.webp" /></div>
-          <div><h2 className="text-3xl font-black tracking-[-0.025em] text-navy sm:text-4xl">Clinical experience grounded in real-world care</h2><p className="mt-5 leading-8 text-slate">Sosena brings more than 10 years of healthcare experience across hospital care, skilled nursing and rehabilitation, home health, long-term care, senior care, and Adult Family Home settings. Her earlier hospital-based healthcare experience includes Virginia Mason, and her RN experience includes Valley Medical Center.</p><p className="mt-4 leading-8 text-slate">With firsthand experience as an Adult Family Home provider and administrator, she now focuses SNS on professional RN assessments, individualized care plans, and focused clinical follow-up.</p><Link className="mt-7 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4 hover:text-navy" href="/about">Meet Sosena</Link></div>
+          <div><h2 className="font-display text-3xl font-bold tracking-[-0.025em] text-navy sm:text-4xl">Clinical experience grounded in real-world care</h2><p className="mt-5 leading-8 text-slate">Sosena brings more than 10 years of healthcare experience across hospital care, skilled nursing and rehabilitation, home health, long-term care, senior care, and Adult Family Home settings. Her earlier hospital-based healthcare experience includes Virginia Mason, and her RN experience includes Valley Medical Center.</p><p className="mt-4 leading-8 text-slate">With firsthand experience as an Adult Family Home provider and administrator, she now focuses SNS on professional RN assessments, individualized care plans, and focused clinical follow-up.</p><ButtonLink className="mt-7 !px-0" href="/about" variant="text">Meet Sosena</ButtonLink></div>
         </div>
       </SectionContainer>
 
