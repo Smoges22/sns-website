@@ -14,11 +14,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "RN Assessments, Care Plans & Clinical Follow-Up | Sosena Nursing Solutions",
+    default: "Professional RN Assessments & Individualized Care Plans | Sosena Nursing Solutions",
     template: "%s | Sosena Nursing Solutions",
   },
   description:
-    "RN assessments, individualized care plans, and clinical follow-up for Adult Family Homes, care teams, and families in Washington.",
+    "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, and families in Washington.",
   applicationName: site.name,
   icons: {
     icon: "/images/branding/sns-icon-64.png",

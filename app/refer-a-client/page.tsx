@@ -4,7 +4,7 @@ import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
   title: "Refer a Client",
-  description: "Initiate a professional referral to Sosena Nursing Solutions for current RN assessment, care-plan, and clinical follow-up services using non-clinical coordination details.",
+  description: "Initiate a professional referral to Sosena Nursing Solutions for an RN assessment or individualized care plan using non-clinical coordination details.",
   path: "/refer-a-client",
 });
 

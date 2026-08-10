@@ -11,10 +11,10 @@ import {
   publicFormCardClass,
 } from "@/components/public-form-ui";
 import { buttonVariants } from "@/components/ui";
-import { serviceDefinitions } from "@/lib/services";
 import { site } from "@/lib/site";
 
-const serviceOptions = [...serviceDefinitions.map((service) => service.shortTitle), "Not Sure"];
+const serviceOptions = ["RN Assessment", "Individualized / Negotiated Care Plan", "Assessment + Care Plan", "Not Sure"] as const;
+const contextOptions = ["New admission / placement", "Annual reassessment", "Significant change in needs", "Care-plan update", "90-day assessment / care-plan review", "Other / Not Sure"] as const;
 
 export function ReferralForm() {
   const [status, setStatus] = useState("");
@@ -38,6 +38,7 @@ export function ReferralForm() {
       "",
       "SERVICE REQUEST",
       `Service requested: ${data.get("service")}`,
+      `Reason / timing: ${data.get("context") || "Not specified"}`,
       `Preferred timeline: ${data.get("timeline") || "Not specified"}`,
       `Service location: ${data.get("location")}`,
       "",
@@ -71,9 +72,10 @@ export function ReferralForm() {
         <div className="mt-5"><PublicFormPrivacyNotice>Do not enter the client or resident&apos;s name, date of birth, diagnoses, medications, insurance information, or other clinical details. SNS will provide separate instructions when clinical records are needed.</PublicFormPrivacyNotice></div>
       </PublicFormSection>
 
-      <PublicFormSection legend="Service Request" intro="Select one of the current SNS services or choose Not Sure.">
+      <PublicFormSection legend="Service Request" intro="Select an RN assessment, individualized care plan, both primary services, or Not Sure.">
         <div className="grid gap-5 md:grid-cols-2">
           <PublicFormSelect label="Service Requested" name="service" options={serviceOptions} required />
+          <PublicFormSelect label="Reason / Timing" name="context" options={contextOptions} />
           <PublicFormField label="Preferred Timeline" name="timeline" placeholder="For example: within two weeks" />
         </div>
       </PublicFormSection>

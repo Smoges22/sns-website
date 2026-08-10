@@ -3,21 +3,21 @@ import { ServiceCard } from "@/components/service-card";
 import { FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
 import { createPageMetadata, site } from "@/lib/site";
-import { ongoingServices, primaryServices } from "@/lib/services";
+import { primaryServices, supportingContexts } from "@/lib/services";
 
-export const metadata = createPageMetadata({ title: "RN Assessment, Care Plan & Follow-Up Services", description: "Explore initial and annual RN assessments, negotiated care plans, supervisory visits, and change-in-condition reviews from SNS.", path: "/services" });
+export const metadata = createPageMetadata({ title: "RN Assessment & Individualized Care Plan Services", description: "Explore professional RN assessments and individualized or negotiated care plans from SNS, including reassessment and update contexts.", path: "/services" });
 
 export default function ServicesPage() {
   return (
     <PageShell>
-      <PageHero breadcrumbLabel="Services" eyebrow="Professional nursing services" title="RN Assessments, Care Plans & Clinical Follow-Up" intro={`Focused clinical services provided by ${site.provider} for authorized providers, professionals, care teams, and families in Washington.`}>
+      <PageHero breadcrumbLabel="Services" eyebrow="Professional nursing services" title="RN Assessments & Individualized Care Plans" intro={`Two focused clinical services provided by ${site.provider} for authorized providers, professionals, care teams, and families in Washington.`}>
         <ButtonLink href="/request-assessment" variant="primary">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer eyebrow="Primary services" title="Assessment and care-planning foundation" intro="Begin with a clear clinical picture, then translate assessed needs into practical daily-care guidance.">
         <div className="grid gap-6 lg:grid-cols-2">{primaryServices.map((service,index)=><ServiceCard index={index} key={service.slug} service={service}/>)}</div>
       </SectionContainer>
-      <SectionContainer className="bg-[#F4F8F9]" eyebrow="Ongoing Clinical Review" title="Current information for changing needs">
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">{ongoingServices.map((service,index)=><ServiceCard compact index={index} key={service.slug} service={service}/>)}</div>
+      <SectionContainer className="bg-[#F4F8F9]" eyebrow="Supporting contexts" title="When updates may be needed" intro="Annual review, significant changes, and focused follow-up may indicate that an RN assessment or care plan should be revisited.">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">{supportingContexts.map((service,index)=><ServiceCard compact index={index} key={service.slug} service={service}/>)}</div>
       </SectionContainer>
       <SampleDocumentsSection />
       <SectionContainer>

@@ -13,7 +13,8 @@ import { buttonVariants } from "@/components/ui";
 import { site } from "@/lib/site";
 
 const requesterOptions = ["Adult Family Home", "Referral / Placement Professional", "Hospital / Care Team", "Assisted Living", "Family", "Other"] as const;
-const serviceOptions = ["Initial RN Assessment", "Negotiated Care Plan", "Initial Assessment + Care Plan", "Annual Assessment Renewal", "Annual Patient Care Plan", "90-Day Supervisory Visit", "Change in Condition Assessment", "Not Sure"] as const;
+const serviceOptions = ["RN Assessment", "Individualized / Negotiated Care Plan", "Assessment + Care Plan", "Not Sure"] as const;
+const contextOptions = ["New admission / placement", "Annual reassessment", "Significant change in needs", "Care-plan update", "90-day assessment / care-plan review", "Other / Not Sure"] as const;
 
 export function RequestAssessmentForm() {
   const [status, setStatus] = useState("");
@@ -29,6 +30,7 @@ export function RequestAssessmentForm() {
       `Phone: ${data.get("phone")}`,
       `Requester type: ${data.get("requesterType")}`,
       `Service needed: ${data.get("service")}`,
+      `Reason / timing: ${data.get("context") || "Not specified"}`,
       `Preferred timeline: ${data.get("timeline") || "Not specified"}`,
       "",
       "Brief non-clinical message:",
@@ -47,6 +49,7 @@ export function RequestAssessmentForm() {
         <PublicFormField autoComplete="tel" label="Phone" name="phone" required type="tel" />
         <PublicFormSelect label="I am a" name="requesterType" options={requesterOptions} required />
         <PublicFormSelect label="Service Needed" name="service" options={serviceOptions} required />
+        <PublicFormSelect label="Reason / Timing" name="context" options={contextOptions} />
         <PublicFormField label="Preferred Timeline" name="timeline" placeholder="For example: within two weeks" />
       </div>
       <div>

@@ -162,7 +162,7 @@ export function PageHero({
 
 export function FinalCta({
   title = "Need an RN Assessment?",
-  text = "SNS provides RN assessments, individualized care plans, and focused clinical follow-up for Adult Family Homes, care teams, referral professionals, assisted living communities, and families.",
+  text = "SNS provides professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, referral professionals, assisted living communities, and families.",
   compact = false,
 }: {
   title?: string;

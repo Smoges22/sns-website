@@ -22,7 +22,7 @@ export default function AboutPage() {
             <div className="mt-7 space-y-5 text-lg leading-8 text-slate">
               <p>Sosena brings more than 10 years of healthcare experience across hospital, skilled nursing and rehabilitation, home health, long-term care, senior care, and Adult Family Home settings.</p>
               <p>Her earlier hospital-based healthcare experience includes Virginia Mason, while her RN experience includes Valley Medical Center. She also brings firsthand experience as an Adult Family Home provider and administrator.</p>
-              <p>Today, her work through Sosena Nursing Solutions focuses on professional RN assessments, individualized care plans, and focused clinical follow-up that authorized providers, care teams, and families can understand and use.</p>
+              <p>Today, her work through Sosena Nursing Solutions focuses on professional RN assessments and individualized or negotiated care plans, including reassessments and updates when needs change.</p>
             </div>
           </div>
         </div>

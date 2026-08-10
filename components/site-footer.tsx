@@ -3,12 +3,8 @@ import { BrandMark } from "@/components/brand";
 import { site } from "@/lib/site";
 
 const serviceLinks = [
-  ["Initial RN Assessment", "/services/initial-rn-assessment"],
-  ["Negotiated Care Plan", "/services/negotiated-care-plan"],
-  ["Annual Assessment Renewal", "/services/annual-assessment-renewal"],
-  ["Annual Patient Care Plan", "/services/annual-patient-care-plan"],
-  ["90-Day Supervisory Visit", "/services/90-day-supervisory-visit"],
-  ["Change in Condition", "/services/change-in-condition-assessment"],
+  ["RN Assessments", "/services/initial-rn-assessment"],
+  ["Individualized / Negotiated Care Plans", "/services/negotiated-care-plan"],
 ] as const;
 
 const informationLinks = [
@@ -27,7 +23,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.35fr_.75fr_.8fr_1fr] lg:px-8 lg:py-16">
         <div>
           <BrandMark footer />
-          <p className="mt-6 max-w-md text-sm leading-6 text-[#D6E1EA]">RN assessments, individualized care plans, and focused clinical follow-up provided by Sosena Mekuria, RN in Washington.</p>
+          <p className="mt-6 max-w-md text-sm leading-6 text-[#D6E1EA]">Professional RN assessments and individualized or negotiated care plans provided by Sosena Mekuria, RN in Washington.</p>
           <p className="mt-4 text-xs leading-5 text-[#AFC1CF]">Service availability is confirmed based on the service location.</p>
         </div>
         <div>

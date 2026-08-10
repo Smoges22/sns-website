@@ -107,8 +107,8 @@ export const resources: readonly ResourceDefinition[] = [
   },
   {
     slug: "initial-assessment-vs-annual-assessment-renewal",
-    title: "Initial Assessment vs. Annual Assessment Renewal",
-    description: "Compare an initial Adult Family Home RN assessment with an annual assessment renewal.",
+    title: "Initial Assessment vs. Annual Reassessment",
+    description: "Compare an initial Adult Family Home RN assessment with an annual reassessment.",
     intro: "Both services document current care needs, but they begin from different points in the person’s care journey.",
     categories: ["AFH Providers", "Clinical Documentation"],
     sections: [
@@ -117,7 +117,7 @@ export const resources: readonly ResourceDefinition[] = [
         paragraphs: ["An initial assessment establishes a comprehensive clinical picture for a new admission, placement, or transition. It documents current needs at the start of the care relationship."],
       },
       {
-        heading: "Annual Assessment Renewal",
+        heading: "Annual Reassessment",
         paragraphs: ["An annual renewal revisits the current picture, reviews changes since the prior assessment, and identifies information that may require updated care planning."],
       },
       {
@@ -130,9 +130,9 @@ export const resources: readonly ResourceDefinition[] = [
   },
   {
     slug: "when-is-a-change-in-condition-assessment-needed",
-    title: "When Is a Change in Condition Assessment Needed?",
+    title: "When Is a Significant-Change Assessment Needed?",
     description: "Learn when a focused RN reassessment may be appropriate after a significant change in an AFH resident’s needs.",
-    intro: "A change in condition assessment focuses on a meaningful new development that may affect health, function, safety, or the level of support required.",
+    intro: "A significant-change assessment focuses on a meaningful new development that may affect health, function, safety, or the level of support required.",
     categories: ["AFH Providers", "Clinical Documentation"],
     sections: [
       {
@@ -255,7 +255,7 @@ export const resources: readonly ResourceDefinition[] = [
       },
       {
         heading: "How SNS can help",
-        paragraphs: ["SNS offers annual assessment renewal, annual care-plan review, and change-in-condition assessment services. These services can provide current clinical information and updated care-plan content; the AFH remains responsible for its ongoing review and regulatory process."],
+        paragraphs: ["SNS can provide annual reassessment, care-plan update, and significant-change assessment support. This work can provide current clinical information and updated care-plan content; the AFH remains responsible for its ongoing review and regulatory process."],
       },
     ],
     relatedService: "annual-patient-care-plan",

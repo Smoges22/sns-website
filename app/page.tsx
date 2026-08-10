@@ -8,12 +8,12 @@ import { ServiceCard } from "@/components/service-card";
 import { FinalCta, PageShell, SectionContainer } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
 import { absoluteUrl, createPageMetadata, site } from "@/lib/site";
-import { ongoingServices, primaryServices, serviceDefinitions, servicePath } from "@/lib/services";
+import { primaryServices, servicePath, supportingContexts } from "@/lib/services";
 
 export const metadata = createPageMetadata({
-  title: "RN Assessments, Care Plans & Clinical Follow-Up",
+  title: "Professional RN Assessments & Individualized Care Plans",
   description:
-    "RN assessments, negotiated care plans, annual reviews, and clinical follow-up for Adult Family Homes and care transitions in Washington.",
+    "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes and care transitions in Washington.",
   path: "/",
 });
 
@@ -31,7 +31,7 @@ export default function HomePage() {
   const homepageSchema = {
     "@context": "https://schema.org",
     "@graph": [
-      ...serviceDefinitions.map((service) => ({
+      ...primaryServices.map((service) => ({
         "@type": "Service",
         "@id": `${absoluteUrl(servicePath(service))}#service`,
         name: service.title,
@@ -59,8 +59,8 @@ export default function HomePage() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-teal sm:text-sm">Registered nurse services in Washington State</p>
-            <h1 className="text-balance mt-3 max-w-4xl font-display text-[2.2rem] font-bold leading-[1.07] tracking-[-0.038em] text-navy sm:text-[2.85rem] lg:text-[3.35rem] xl:text-[3.55rem]">Professional RN Assessments, Care Plans & Clinical Follow-Up</h1>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-slate sm:text-lg sm:leading-8">Sosena Nursing Solutions provides RN assessment, individualized care planning, and focused clinical review for adults entering or receiving care in Adult Family Homes.</p>
+            <h1 className="text-balance mt-3 max-w-4xl font-display text-[2.2rem] font-bold leading-[1.07] tracking-[-0.038em] text-navy sm:text-[2.85rem] lg:text-[3.35rem] xl:text-[3.55rem]">Professional RN Assessments & Individualized Care Plans</h1>
+            <p className="mt-5 max-w-3xl text-base leading-7 text-slate sm:text-lg sm:leading-8">Sosena Nursing Solutions provides professional RN assessments and individualized or negotiated care plans for adults entering or receiving care in Adult Family Homes.</p>
             <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-navy sm:text-base sm:leading-7">Serving AFH providers, referral professionals, hospitals, assisted living communities, and families. Services are provided by Sosena Mekuria, RN.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <ButtonLink href="/request-assessment">Request an Assessment</ButtonLink>
@@ -83,9 +83,9 @@ export default function HomePage() {
 
       <SectionContainer compact eyebrow="Primary services" title="Start with the clinical foundation" intro="Two focused services establish current needs and practical daily-care guidance."><div className="grid gap-5 lg:grid-cols-2">{primaryServices.map((service,index)=><ServiceCard home index={index} key={service.slug} service={service}/>)}</div></SectionContainer>
 
-      <SectionContainer compact className="bg-[#F4F8F9]" eyebrow="Ongoing Clinical Review" title="Keep assessments and care guidance current" intro="Concise RN follow-up services for annual review and meaningful changes in care needs.">
+      <SectionContainer compact className="bg-[#F4F8F9]" eyebrow="Assessment & Care Plan Updates" title="When assessments and care plans need updating" intro="Common reasons to revisit an RN assessment or individualized care plan as needs change.">
         <div className="border-y border-navy/15 md:hidden">
-          {ongoingServices.map((service, index) => (
+          {supportingContexts.map((service, index) => (
             <details className="border-b border-navy/15 last:border-b-0" key={service.slug}>
               <summary className="relative grid cursor-pointer grid-cols-[2.25rem_1fr] gap-3 py-4 pr-10 text-navy transition-colors hover:text-teal focus-visible:text-teal">
                 <span aria-hidden="true" className="font-display text-base font-bold text-teal">{String(index + 1).padStart(2, "0")}</span>
@@ -93,24 +93,24 @@ export default function HomePage() {
               </summary>
               <div className="pb-4 pl-[3rem] pr-3">
                 <p className="text-sm leading-6 text-slate">{service.description}</p>
-                <Link className="mt-2 inline-flex min-h-10 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href={servicePath(service)}>View service details</Link>
+                <Link className="mt-2 inline-flex min-h-10 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href={servicePath(service)}>{service.detailCta}</Link>
               </div>
             </details>
           ))}
         </div>
         <div className="hidden gap-x-10 md:grid md:grid-cols-2">
-          {ongoingServices.map((service, index) => (
+          {supportingContexts.map((service, index) => (
             <article className="grid min-w-0 grid-cols-[2.25rem_1fr] gap-3 border-t border-navy/15 py-4" key={service.slug}>
               <span aria-hidden="true" className="pt-0.5 font-display text-base font-bold text-teal">{String(index + 1).padStart(2, "0")}</span>
               <div className="min-w-0">
                 <h3 className="font-display text-lg font-bold leading-tight tracking-[-0.02em] text-navy">{service.shortTitle}</h3>
                 <p className="mt-1 text-[0.82rem] leading-5 text-slate">{service.description}</p>
-                <Link className="mt-1.5 inline-flex min-h-9 items-center text-sm font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href={servicePath(service)}>View service details</Link>
+                <Link className="mt-1.5 inline-flex min-h-9 items-center text-sm font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href={servicePath(service)}>{service.detailCta}</Link>
               </div>
             </article>
           ))}
         </div>
-        <Link className="mt-4 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href="/services">View All RN Services</Link>
+        <Link className="mt-4 inline-flex min-h-11 items-center font-extrabold text-teal underline decoration-teal/30 underline-offset-4" href="/services">Explore assessment and care-plan updates</Link>
       </SectionContainer>
 
       <SampleDocumentsSection compact />
@@ -136,7 +136,7 @@ export default function HomePage() {
           <div className="relative mx-auto w-full max-w-[18rem] overflow-hidden border border-[#D2E0E6] bg-[#EEF3F5] p-3 shadow-[0_18px_48px_rgba(23,50,77,0.07)] sm:max-w-sm lg:max-w-md">
             <Image alt="Sosena Mekuria, RN, founder of Sosena Nursing Solutions" className="h-auto w-full" height={1122} sizes="(min-width:1024px) 38vw, 92vw" src="/images/team/sosena-mekuria-rn-approved.webp" width={1402} />
           </div>
-          <div><p className="leading-7 text-slate sm:text-lg sm:leading-8">Sosena brings more than 10 years of healthcare experience and firsthand Adult Family Home provider and administrator experience. Through SNS, she focuses on professional RN assessments, individualized care plans, and focused clinical follow-up.</p><ButtonLink className="mt-5 !px-0" href="/about" variant="text">Meet Sosena</ButtonLink></div>
+          <div><p className="leading-7 text-slate sm:text-lg sm:leading-8">Sosena brings more than 10 years of healthcare experience and firsthand Adult Family Home provider and administrator experience. Through SNS, she focuses on professional RN assessments and individualized or negotiated care plans, including reassessments and updates when needs change.</p><ButtonLink className="mt-5 !px-0" href="/about" variant="text">Meet Sosena</ButtonLink></div>
         </div>
       </SectionContainer>
 

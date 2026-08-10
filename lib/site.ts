@@ -10,7 +10,7 @@ export const site = {
   phone: "425-246-6220",
   provider: "Sosena Mekuria, RN",
   serviceArea: "Washington State",
-  descriptor: "Professional RN Assessments, Care Plans & Clinical Follow-Up",
+  descriptor: "Professional RN Assessments & Individualized Care Plans",
 };
 
 export const navItems = [
