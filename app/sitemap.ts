@@ -13,6 +13,7 @@ const routes = [
   "/sample-care-plan",
   "/resources",
   ...resources.map(resourcePath),
+  "/service-area",
   "/who-we-serve",
   "/how-it-works",
   "/request-assessment",

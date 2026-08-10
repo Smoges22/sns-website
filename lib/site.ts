@@ -19,6 +19,7 @@ export const navItems = [
   { href: "/who-we-serve", label: "Who We Serve" },
   { href: "/sample-documents", label: "Sample Documents" },
   { href: "/resources", label: "Resources" },
+  { href: "/service-area", label: "Service Area" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;

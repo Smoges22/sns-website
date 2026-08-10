@@ -15,6 +15,7 @@ const informationLinks = [
   ["Who We Serve", "/who-we-serve"],
   ["Sample Documents", "/sample-documents"],
   ["Resources", "/resources"],
+  ["Service Area", "/service-area"],
   ["How It Works", "/how-it-works"],
   ["About", "/about"],
 ] as const;

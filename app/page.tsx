@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AudienceTabs } from "@/components/audience-tabs";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { SampleDocumentsSection } from "@/components/sample-documents";
+import { HomeServiceAreaPreview } from "@/components/service-area";
 import { ServiceCard } from "@/components/service-card";
 import { FinalCta, PageShell, SectionContainer } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
@@ -89,6 +90,8 @@ export default function HomePage() {
       <SectionContainer className="bg-soft" eyebrow="Who we serve" title="Clinical support across care transitions" intro="SNS works with authorized providers, professionals, care teams, and families who need a clear picture of an adult’s current care needs.">
         <AudienceTabs />
       </SectionContainer>
+
+      <HomeServiceAreaPreview />
 
       <SectionContainer eyebrow="Why choose SNS" title="Professional judgment with practical AFH understanding">
         <div className="grid max-w-5xl gap-x-10 gap-y-6 md:grid-cols-2">
