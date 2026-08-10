@@ -8,7 +8,7 @@ export const metadata = createPageMetadata({ title: "RN Assessment & AFH Care Re
 export default function ResourcesPage() {
   return (
     <PageShell>
-      <PageHero eyebrow="Resources" title="Practical guidance for Adult Family Home care decisions" intro="A small collection of clear, useful guides about RN assessments, care plans, and clinical review." />
+      <PageHero breadcrumbLabel="Resources" eyebrow="Resources" title="Practical guidance for Adult Family Home care decisions" intro="A small collection of clear, useful guides about RN assessments, care plans, and clinical review." />
       <SectionContainer>
         <div className="mb-8 flex items-center gap-3 border-b border-navy/15 pb-5"><LineIcon className="text-teal" name="document"/><p className="text-sm font-bold text-navy">SNS clinical guides</p></div>
         <div className="grid gap-px overflow-hidden border border-[#D5E0E6] bg-[#D5E0E6] md:grid-cols-2 lg:grid-cols-3">

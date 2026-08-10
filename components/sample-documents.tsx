@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { premiumCardClass, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
 import {
@@ -11,8 +10,8 @@ import {
 
 function DocumentThumbnail({ document }: { document: SampleDocument }) {
   return (
-    <div aria-hidden="true" className="border border-[#CFDDE4] bg-[#EEF4F6] p-4 sm:p-5">
-      <div className="mx-auto max-w-sm border border-[#D6E2E8] bg-white p-4 shadow-[0_12px_30px_rgba(23,50,77,0.07)] sm:p-5">
+    <div aria-hidden="true" className="border border-[#CFDDE4] bg-[#EEF4F6] p-3 sm:p-4">
+      <div className="mx-auto max-w-sm border border-[#D6E2E8] bg-white p-3 shadow-[0_8px_20px_rgba(23,50,77,0.06)] sm:p-4">
         <div className="flex items-center justify-between gap-3 border-b border-navy/10 pb-3">
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.16em] text-teal">Fictional example</p>
@@ -20,7 +19,7 @@ function DocumentThumbnail({ document }: { document: SampleDocument }) {
           </div>
           <span className="rounded-full bg-[#E4F2F4] px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-teal">Sample</span>
         </div>
-        <div className="mt-4 grid gap-3">
+        <div className="mt-3 grid gap-2.5">
           {document.previewSections.slice(0, 4).map((section) => (
             <div className="grid grid-cols-[1fr_.7fr] items-center gap-3" key={section.title}>
               <p className="text-[10px] font-bold text-navy">{section.title}</p>
@@ -37,16 +36,16 @@ function DocumentThumbnail({ document }: { document: SampleDocument }) {
 export function SampleDocumentsSection({ className = "bg-[#EDF6FA]" }: { className?: string }) {
   return (
     <SectionContainer className={className} eyebrow="Sample Documents" title="See the clinical documentation SNS provides" intro={sampleDocumentsIntro}>
-      <p className={`${premiumCardClass} mb-8 max-w-4xl border-l-4 !border-l-teal px-5 py-4 text-sm font-semibold leading-6 text-navy`}>{sampleDocumentsNote}</p>
-      <div className="grid gap-7 xl:grid-cols-2">
+      <p className={`${premiumCardClass} mb-5 max-w-4xl border-l-4 !border-l-teal px-4 py-3 text-sm font-semibold leading-6 text-navy`}>{sampleDocumentsNote}</p>
+      <div className="grid gap-5 lg:grid-cols-2">
         {sampleDocuments.map((document) => (
-          <article className="grid min-w-0 gap-6 border-t-2 border-navy bg-white p-5 shadow-[0_10px_30px_rgba(23,50,77,.05)] sm:p-7 md:grid-cols-[.82fr_1.18fr] md:items-center" key={document.id}>
+          <article className="grid min-w-0 gap-5 rounded-[16px] border border-[#D5E0E6] border-t-[3px] border-t-navy bg-white p-4 shadow-[0_6px_18px_rgba(23,50,77,.045)] sm:grid-cols-[.76fr_1.24fr] sm:items-center sm:p-5" key={document.id}>
             <DocumentThumbnail document={document} />
             <div className="min-w-0">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Sample · Fictional Example</p>
-              <h3 className="mt-3 font-display text-2xl font-bold tracking-[-0.02em] text-navy sm:text-3xl">{document.title}</h3>
-              <p className="mt-4 leading-7 text-slate">{document.description}</p>
-              <ButtonLink className="mt-6" href={document.route}>{document.ctaLabel}</ButtonLink>
+              <h3 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em] text-navy">{document.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate">{document.description}</p>
+              <ButtonLink className="mt-4 min-h-11" href={document.route}>{document.ctaLabel}</ButtonLink>
             </div>
           </article>
         ))}
@@ -69,13 +68,10 @@ export function SampleDocumentLink({ document }: { document: SampleDocument }) {
 export function SampleDocumentPage({ document }: { document: SampleDocument }) {
   return (
     <PageShell>
-      <PageHero eyebrow="Sample Document · Fictional Example" title={document.title} intro={document.pageIntro}>
+      <PageHero breadcrumbLabel="Sample Documents" eyebrow="Sample Document · Fictional Example" title={document.title} intro={document.pageIntro}>
         <ButtonLink href="/request-assessment" variant="light">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer>
-        <nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate">
-          <Link className="underline underline-offset-4" href="/">Home</Link> <span aria-hidden="true">/</span> <Link className="underline underline-offset-4" href="/sample-documents">Sample Documents</Link> <span aria-hidden="true">/</span> <span aria-current="page">{document.title}</span>
-        </nav>
         <p className="mb-8 max-w-5xl rounded-[16px] border border-teal/25 bg-[#EAF5F6] px-5 py-4 text-sm font-bold leading-6 text-navy">{sampleDocumentDisclaimer}</p>
         <div className="grid gap-10 lg:grid-cols-[1fr_.38fr] lg:items-start">
           <article aria-labelledby={`${document.id}-preview-title`} className="min-w-0 border border-[#CEDCE4] bg-[#EEF3F5] p-3 shadow-[0_16px_44px_rgba(23,50,77,0.05)] sm:p-5 lg:p-7">

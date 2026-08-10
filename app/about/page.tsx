@@ -8,7 +8,7 @@ export const metadata = createPageMetadata({ title: "About Sosena Mekuria, RN", 
 export default function AboutPage() {
   return (
     <PageShell>
-      <PageHero eyebrow="About Sosena Nursing Solutions" title="Sosena Mekuria, RN" intro="Registered Nurse providing professional assessments and individualized care plans with a practical understanding of Adult Family Home care.">
+      <PageHero breadcrumbLabel="About" eyebrow="About Sosena Nursing Solutions" title="Sosena Mekuria, RN" intro="Registered Nurse providing professional assessments and individualized care plans with a practical understanding of Adult Family Home care.">
         <ButtonLink href="/request-assessment" variant="light">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer>

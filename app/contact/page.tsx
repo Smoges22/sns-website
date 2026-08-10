@@ -7,7 +7,7 @@ export const metadata = createPageMetadata({ title: "Contact SNS", description: 
 export default function ContactPage() {
   return (
     <PageShell>
-      <PageHero eyebrow="Contact SNS" title="Let's clarify the next clinical step" intro={`Contact ${site.provider} about an RN assessment, individualized care plan, or upcoming Adult Family Home care transition.`}>
+      <PageHero breadcrumbLabel="Contact" eyebrow="Contact SNS" title="Let's clarify the next clinical step" intro={`Contact ${site.provider} about an RN assessment, individualized care plan, or upcoming Adult Family Home care transition.`}>
         <ButtonLink href="/request-assessment" variant="light">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer className="bg-soft">

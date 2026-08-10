@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { SampleDocumentLink } from "@/components/sample-documents";
 import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
@@ -24,11 +23,10 @@ export function ServiceDetailPage({ service }: { service: ServiceDefinition }) {
   return (
     <PageShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
-      <PageHero eyebrow={service.category} title={service.title} intro={service.description}>
+      <PageHero breadcrumbLabel="Services" eyebrow={service.category} title={service.title} intro={service.description}>
         <ButtonLink href="/request-assessment" variant="light">Request This Service</ButtonLink>
       </PageHero>
       <SectionContainer>
-        <nav aria-label="Breadcrumb" className="mb-10 flex flex-wrap gap-2 text-sm text-slate"><Link className="underline underline-offset-4" href="/">Home</Link><span aria-hidden="true">/</span><Link className="underline underline-offset-4" href="/services">Services</Link><span aria-hidden="true">/</span><span aria-current="page">{service.title}</span></nav>
         <div className="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
           <div>
             <h2 className="font-display text-3xl font-bold tracking-[-0.025em] text-navy">What this service is</h2>
