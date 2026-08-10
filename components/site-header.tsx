@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BrandMark } from "@/components/brand";
 import { buttonVariants } from "@/components/ui";
-import { navItems } from "@/lib/site";
+import { desktopNavItems, navItems } from "@/lib/site";
 import { serviceNavigation, servicePath } from "@/lib/services";
 
 function isActive(pathname: string, href: string) {
@@ -42,15 +42,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-[#D5E1E7] bg-white/95 backdrop-blur">
       <div className="mx-auto flex min-h-[82px] max-w-[1500px] items-center justify-between gap-4 px-4 sm:min-h-[90px] sm:px-6 lg:min-h-[96px] lg:px-8">
         <BrandMark />
-        <nav aria-label="Primary navigation" className="hidden items-center text-[12px] font-bold text-[#425466] xl:flex 2xl:gap-0.5 2xl:text-[13px]">
-          {navItems.map((item) => item.href === "/services" ? (
+        <nav aria-label="Primary navigation" className="hidden items-center gap-0.5 text-[12px] font-bold text-[#425466] xl:flex 2xl:text-[13px]">
+          {desktopNavItems.map((item) => item.href === "/services" ? (
             <div className="relative" key={item.href} ref={servicesRef}>
               <button ref={servicesButtonRef} aria-expanded={servicesOpen} aria-haspopup="true" className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg px-2.5 py-3 transition-colors 2xl:px-3 ${isActive(pathname,item.href) ? "bg-[#EDF6FA] text-navy" : "hover:bg-soft hover:text-navy"}`} onClick={() => setServicesOpen((open)=>!open)} type="button">Services<span aria-hidden="true" className={`text-[10px] transition-transform ${servicesOpen ? "rotate-180" : ""}`}>▼</span></button>
               {servicesOpen ? <div className="absolute left-1/2 top-[calc(100%+.65rem)] w-[620px] -translate-x-1/2 rounded-[22px] border border-[#C9D8E0] bg-white p-5 shadow-[0_22px_60px_rgba(23,50,77,.16)]"><Link className="mb-4 block rounded-xl bg-[#F1F7F9] px-4 py-3 font-black text-navy hover:bg-[#E7F2F5]" href="/services">View all RN services</Link><div className="grid grid-cols-2 gap-5">{serviceNavigation.map((group)=><div key={group.label}><p className="px-2 text-[11px] font-black uppercase tracking-[.15em] text-teal">{group.label}</p><div className="mt-2 grid gap-1">{group.services.map((service)=><Link className="rounded-xl px-3 py-2.5 font-bold leading-5 text-slate hover:bg-soft hover:text-navy" href={servicePath(service)} key={service.slug}>{service.shortTitle}</Link>)}</div></div>)}</div></div> : null}
             </div>
           ) : <Link aria-current={isActive(pathname,item.href) ? "page" : undefined} className={`rounded-lg px-2 py-3 transition-colors 2xl:px-2.5 ${isActive(pathname,item.href) ? "bg-[#EDF6FA] text-navy" : "hover:bg-soft hover:text-navy"}`} href={item.href} key={item.href}>{item.label}</Link>)}
         </nav>
-        <div className="hidden shrink-0 items-center gap-2 xl:flex">
+        <div className="hidden shrink-0 items-center gap-2.5 xl:flex">
           <Link className={`inline-flex min-h-12 items-center rounded-lg px-3.5 py-2 text-[13px] font-extrabold transition-colors ${buttonVariants.primary}`} href="/request-assessment">Request an Assessment</Link>
           <Link aria-current={isActive(pathname,"/refer-a-client") ? "page" : undefined} className={`inline-flex min-h-12 items-center rounded-lg px-3.5 py-2 text-[13px] font-extrabold transition-colors ${buttonVariants.referral}`} href="/refer-a-client">Refer a Client</Link>
         </div>

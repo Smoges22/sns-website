@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui";
 
 export const premiumCardClass =
-  "min-w-0 overflow-hidden rounded-[18px] border border-[#D5E0E6] bg-white shadow-[0_1px_2px_rgba(23,50,77,0.035)]";
+  "min-w-0 overflow-hidden rounded-[20px] border border-[#D2DEE4] bg-white shadow-[0_1px_2px_rgba(23,50,77,0.035),0_8px_24px_rgba(23,50,77,0.025)]";
 
 export const interactiveCardClass =
-  `${premiumCardClass} transition-[transform,box-shadow,border-color] duration-200 motion-safe:hover:-translate-y-0.5 hover:border-[#AFC3CD] hover:shadow-[0_12px_30px_rgba(23,50,77,0.07)] focus-within:border-teal`;
+  `${premiumCardClass} transition-[transform,box-shadow,border-color] duration-200 motion-safe:hover:-translate-y-0.5 hover:border-[#A9C0CA] hover:shadow-[0_14px_34px_rgba(23,50,77,0.075)] focus-within:border-teal`;
 
 function SectionHeading({
   eyebrow,

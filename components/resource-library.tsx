@@ -43,7 +43,7 @@ export function ResourceLibrary() {
 
   return (
     <div>
-      <div className="scrollbar-none -mx-5 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0" role="tablist" aria-label="Resource categories">
+      <div className="scrollbar-none -mx-5 snap-x snap-mandatory scroll-px-5 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:px-0" role="tablist" aria-label="Resource categories">
         <div className="flex min-w-max gap-2">
           {resourceCategories.map((category, index) => {
             const isActive = activeCategory === category;
@@ -51,7 +51,7 @@ export function ResourceLibrary() {
               <button
                 aria-controls="resource-library-panel"
                 aria-selected={isActive}
-                className={`min-h-11 rounded-full border px-4 py-2 text-sm font-extrabold transition-colors ${isActive ? "border-[#0B6670] bg-[#0B6670] text-white" : "border-[#CBD9E0] bg-white text-navy hover:border-[#8EAAB6] hover:bg-[#F7FAFB]"}`}
+                className={`min-h-11 snap-start rounded-full border px-4 py-2 text-sm font-extrabold transition-colors ${isActive ? "border-teal-action bg-teal-action text-white hover:bg-teal-dark" : "border-[#CBD9E0] bg-white text-navy hover:border-[#8EAAB6] hover:bg-[#F7FAFB]"}`}
                 id={`resource-tab-${index}`}
                 key={category}
                 onClick={() => setActiveCategory(category)}
@@ -83,7 +83,7 @@ export function ResourceLibrary() {
             return (
               <article className={`${interactiveCardClass} flex min-h-[310px] flex-col p-5 sm:p-6`} key={resource.slug}>
                 <div className="flex items-start justify-between gap-4">
-                  <span className={`inline-flex min-h-7 items-center rounded-full px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.12em] ${resource.regulatory ? "bg-[#F7E9C8] text-[#725015]" : "bg-[#E4F3F5] text-[#0B6670]"}`}>
+                  <span className={`inline-flex min-h-7 items-center rounded-full px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.12em] ${resource.regulatory ? "bg-[#F7E9C8] text-[#725015]" : "bg-[#E4F3F5] text-teal"}`}>
                     {categoryLabel}
                   </span>
                   <LineIcon className={`h-6 w-6 shrink-0 ${resource.regulatory ? "text-[#B98324]" : "text-teal"}`} name={resource.regulatory ? "document" : "assessment"} />

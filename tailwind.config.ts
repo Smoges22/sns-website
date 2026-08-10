@@ -6,7 +6,9 @@ const config: Config = {
     extend: {
       colors: {
         navy: "#17324D",
-        teal: "#0B6670",
+        teal: "#0F7784",
+        "teal-action": "#137F8D",
+        "teal-dark": "#0F6F7A",
         aqua: "#5ED2DD",
         soft: "#F3F6F7",
         slate: "#465969",

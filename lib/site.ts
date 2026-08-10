@@ -17,12 +17,16 @@ export const navItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/who-we-serve", label: "Who We Serve" },
-  { href: "/sample-documents", label: "Sample Documents" },
   { href: "/resources", label: "Resources" },
+  { href: "/sample-documents", label: "Sample Documents" },
   { href: "/service-area", label: "Service Area" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+export const desktopNavItems = navItems.filter(
+  (item) => item.href !== "/sample-documents" && item.href !== "/service-area",
+);
 
 export const audiences = [
   {

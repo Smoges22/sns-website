@@ -1,5 +1,6 @@
 import { ResourceLibrary } from "@/components/resource-library";
 import { FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
+import { ButtonLink } from "@/components/ui";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
@@ -23,6 +24,9 @@ export default function ResourcesPage() {
         intro="Filter by topic to find concise explanations, direct official-source links, and the related SNS service when one applies."
       >
         <ResourceLibrary />
+        <div className="mt-10 border-t border-navy/15 pt-6">
+          <ButtonLink href="/sample-documents" variant="secondary">View Sample Documents</ButtonLink>
+        </div>
       </SectionContainer>
       <FinalCta />
     </PageShell>

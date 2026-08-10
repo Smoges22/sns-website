@@ -2,16 +2,16 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export const buttonVariants = {
-  primary: "bg-teal text-white hover:brightness-90 focus-visible:outline-white focus-visible:shadow-[0_0_0_5px_#0B6670]",
-  referral: "border border-teal bg-white text-teal hover:bg-teal/5",
+  primary: "bg-teal-action text-white hover:bg-teal-dark focus-visible:outline-white focus-visible:shadow-[0_0_0_5px_#0F6F7A]",
+  referral: "border border-teal-action bg-white text-teal hover:bg-[#EAF5F6] hover:text-teal-dark",
   secondary: "border border-navy/30 bg-white text-navy hover:border-navy hover:bg-soft",
-  text: "text-teal underline decoration-teal/30 underline-offset-4 hover:text-navy",
+  text: "text-teal underline decoration-teal/35 underline-offset-4 hover:text-teal-dark",
 } as const;
 
 export type ButtonVariant = keyof typeof buttonVariants;
 
 export function ButtonLink({ href, children, variant = "primary", className = "" }: { href: string; children: ReactNode; variant?: ButtonVariant; className?: string }) {
-  return <Link className={`inline-flex min-h-12 w-fit items-center justify-center rounded-lg px-5 py-3 text-sm font-extrabold transition-colors ${buttonVariants[variant]} ${className}`} href={href}>{children}{variant === "text" ? <span aria-hidden="true" className="ml-2">→</span> : null}</Link>;
+  return <Link className={`inline-flex min-h-12 w-fit items-center justify-center rounded-[10px] px-5 py-3 text-sm font-extrabold transition-colors ${buttonVariants[variant]} ${className}`} href={href}>{children}{variant === "text" ? <span aria-hidden="true" className="ml-2">→</span> : null}</Link>;
 }
 
 export function LineIcon({ name, className = "" }: { name: "assessment" | "plan" | "review" | "people" | "hospital" | "home" | "family" | "document" | "check" | "location"; className?: string }) {
