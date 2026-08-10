@@ -15,7 +15,7 @@ const config: Config = {
         alert: "#A83E3E"
       },
       fontFamily: {
-        sans: ["Inter", "Aptos", "ui-sans-serif", "system-ui", "Segoe UI", "Arial", "sans-serif"],
+        sans: ["var(--font-inter)", "Arial", "sans-serif"],
         display: ["Georgia", "Cambria", "Times New Roman", "serif"]
       },
       boxShadow: {

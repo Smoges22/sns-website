@@ -2,10 +2,10 @@ import { interactiveCardClass } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
 import { servicePath, type ServiceDefinition } from "@/lib/services";
 
-export function ServiceCard({ service, index, compact = false }: { service: ServiceDefinition; index?: number; compact?: boolean }) {
+export function ServiceCard({ service, index, compact = false, home = false }: { service: ServiceDefinition; index?: number; compact?: boolean; home?: boolean }) {
   const icon = service.sample === "assessment" ? "assessment" : service.sample === "care-plan" ? "plan" : "review";
   return (
-    <article className={`${interactiveCardClass} flex h-full flex-col ${compact ? "p-5 sm:p-5" : "p-6 sm:p-7"}`}>
+    <article className={`${interactiveCardClass} flex h-full flex-col ${compact ? "p-5 sm:p-5" : home ? "p-5 sm:p-7" : "p-6 sm:p-7"}`}>
       <div className="flex items-center justify-between gap-4">
         <span className={`grid place-items-center bg-[#E8F5F6] text-teal ${compact ? "h-10 w-10 rounded-[10px]" : "h-12 w-12 rounded-xl"}`}><LineIcon name={icon} /></span>
         {index !== undefined ? <span className="font-display text-lg font-bold text-navy/35">{String(index + 1).padStart(2, "0")}</span> : null}

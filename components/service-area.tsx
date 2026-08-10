@@ -33,13 +33,13 @@ export function ServiceAreaVisual({ compact = false }: { compact?: boolean }) {
 
 export function HomeServiceAreaPreview() {
   return (
-    <section className="border-y border-[#D8E3E9] bg-[#F7FAFB] px-5 py-9 sm:px-6 sm:py-11 lg:px-8 lg:py-12">
-      <div className="mx-auto grid max-w-7xl min-w-0 items-center gap-7 md:grid-cols-[1.12fr_.88fr] md:gap-10 lg:grid-cols-[1.2fr_.8fr] lg:gap-14">
+    <section className="border-y border-[#D8E3E9] bg-[#F7FAFB] px-5 py-6 sm:px-6 sm:py-9 lg:px-8 lg:py-9">
+      <div className="mx-auto grid max-w-7xl min-w-0 items-center gap-5 md:grid-cols-[1.12fr_.88fr] md:gap-8 lg:grid-cols-[1.2fr_.8fr] lg:gap-12">
         <div className="min-w-0">
           <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-teal sm:text-sm">Service Area</p>
           <h2 className="text-balance mt-3 font-display text-3xl font-bold leading-[1.14] tracking-[-0.025em] text-navy sm:text-4xl">Confirm service availability for your location</h2>
           <p className="mt-4 max-w-2xl leading-7 text-slate sm:text-lg sm:leading-8">SNS serves clients in Washington State. Availability is confirmed based on the service location, access, clinical need, and scheduling.</p>
-          <ButtonLink className="mt-6" href="/service-area" variant="secondary">View Service Area</ButtonLink>
+          <ButtonLink className="mt-5" href="/service-area" variant="secondary">View Service Area</ButtonLink>
         </div>
         <div className="hidden min-w-0 md:block">
           <ServiceAreaVisual compact />

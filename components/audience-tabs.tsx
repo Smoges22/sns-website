@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ButtonLink, LineIcon } from "@/components/ui";
 import { audiences } from "@/lib/site";
 
@@ -66,9 +66,24 @@ function AudienceVisual({ kind }: { kind: AudienceVisualKind }) {
   );
 }
 
-export function AudienceTabs({ ctaHref = "/who-we-serve", ctaLabel = "Learn more about who SNS serves" }: { ctaHref?: string; ctaLabel?: string }) {
+export function AudienceTabs({ ctaHref = "/who-we-serve", ctaLabel = "Learn more about who SNS serves", compact = false }: { ctaHref?: string; ctaLabel?: string; compact?: boolean }) {
   const [active, setActive] = useState(0);
+  const [showScrollHint, setShowScrollHint] = useState(true);
   const tabs = useRef<Array<HTMLButtonElement | null>>([]);
+  const tabList = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = tabList.current;
+    if (!node) return;
+    const updateScrollHint = () => setShowScrollHint(node.scrollLeft + node.clientWidth < node.scrollWidth - 4);
+    updateScrollHint();
+    node.addEventListener("scroll", updateScrollHint, { passive: true });
+    window.addEventListener("resize", updateScrollHint);
+    return () => {
+      node.removeEventListener("scroll", updateScrollHint);
+      window.removeEventListener("resize", updateScrollHint);
+    };
+  }, []);
 
   function selectFromKeyboard(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     let next = index;
@@ -84,29 +99,32 @@ export function AudienceTabs({ ctaHref = "/who-we-serve", ctaLabel = "Learn more
 
   return (
     <div className="min-w-0">
-      <div className="scrollbar-none -mx-5 snap-x snap-mandatory scroll-px-5 overflow-x-auto border-b border-[#C9D8E0] px-5 sm:-mx-7 sm:scroll-px-7 sm:px-7 md:mx-0 md:px-0" role="tablist" aria-label="Who SNS serves">
-        <div className="flex min-w-max gap-1 px-0.5">
-          {audiences.map((audience, index) => (
-            <button
-              aria-controls={`audience-panel-${index}`}
-              aria-selected={active === index}
-              className={`relative min-h-12 snap-start whitespace-nowrap px-4 py-3 text-sm font-bold transition-colors focus-visible:z-10 ${active === index ? "text-teal after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:bg-teal" : "text-slate hover:bg-[#F4F8F9] hover:text-navy"}`}
-              id={`audience-tab-${index}`}
-              key={audience.title}
-              onClick={() => setActive(index)}
-              onKeyDown={(event) => selectFromKeyboard(event, index)}
-              ref={(node) => { tabs.current[index] = node; }}
-              role="tab"
-              tabIndex={active === index ? 0 : -1}
-              type="button"
-            >
-              {audience.title}
-            </button>
-          ))}
+      <div className="relative -mx-5 sm:-mx-7 md:mx-0">
+        <div ref={tabList} className="scrollbar-none snap-x snap-mandatory scroll-px-5 overflow-x-auto border-b border-[#C9D8E0] px-5 sm:scroll-px-7 sm:px-7 md:px-0" role="tablist" aria-label="Who SNS serves">
+          <div className="flex min-w-max gap-1 px-0.5">
+            {audiences.map((audience, index) => (
+              <button
+                aria-controls={`audience-panel-${index}`}
+                aria-selected={active === index}
+                className={`relative min-h-12 snap-start whitespace-nowrap px-4 py-3 text-sm font-bold transition-colors focus-visible:z-10 ${active === index ? "text-teal after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:bg-teal" : "text-slate hover:bg-[#F4F8F9] hover:text-navy"}`}
+                id={`audience-tab-${index}`}
+                key={audience.title}
+                onClick={() => setActive(index)}
+                onKeyDown={(event) => selectFromKeyboard(event, index)}
+                ref={(node) => { tabs.current[index] = node; }}
+                role="tab"
+                tabIndex={active === index ? 0 : -1}
+                type="button"
+              >
+                {audience.title}
+              </button>
+            ))}
+          </div>
         </div>
+        <span aria-hidden="true" className={`pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/90 to-transparent transition-opacity md:hidden ${showScrollHint ? "opacity-100" : "opacity-0"}`} />
       </div>
       {audiences.map((audience, index) => (
-        <section aria-labelledby={`audience-tab-${index}`} className={`${active === index ? "grid" : "hidden"} min-w-0 gap-6 bg-white px-5 py-7 sm:px-7 sm:py-8 md:min-h-[28rem] md:grid-cols-[minmax(0,1.35fr)_minmax(14rem,.85fr)] md:items-center md:gap-8 lg:min-h-[25rem] lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,.8fr)] lg:gap-10 xl:min-h-[22rem]`} hidden={active !== index} id={`audience-panel-${index}`} key={audience.title} role="tabpanel" tabIndex={0}>
+        <section aria-labelledby={`audience-tab-${index}`} className={`${active === index ? "grid" : "hidden"} min-w-0 gap-6 bg-white px-5 sm:px-7 md:grid-cols-[minmax(0,1.35fr)_minmax(14rem,.85fr)] md:items-center md:gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,.8fr)] lg:gap-10 ${compact ? "py-5 sm:py-6 md:min-h-[21rem] lg:min-h-[19rem] xl:min-h-[18rem]" : "py-7 sm:py-8 md:min-h-[28rem] lg:min-h-[25rem] xl:min-h-[22rem]"}`} hidden={active !== index} id={`audience-panel-${index}`} key={audience.title} role="tabpanel" tabIndex={0}>
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[.16em] text-teal">Who we serve</p>
             <h3 className="mt-2 font-display text-2xl font-bold text-navy sm:text-3xl">{audience.title}</h3>

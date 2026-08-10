@@ -18,7 +18,7 @@ function DocumentThumbnail({ document }: { document: SampleDocument }) {
     : "Fictional sample individualized care plan document preview";
 
   return (
-    <div className="relative isolate rounded-[16px] bg-[#EEF4F6] p-3 sm:p-4">
+    <div className="relative isolate rounded-[16px] bg-[#EEF4F6] p-2.5 sm:p-4">
       <span aria-hidden="true" className="absolute inset-x-7 bottom-1 top-5 -z-10 translate-x-2 rounded-sm border border-[#CCD9E0] bg-white" />
       <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[#C8D6DE] bg-white shadow-[0_12px_28px_rgba(23,50,77,0.10)]">
         <Image alt={imageAlt} className="object-cover object-top" fill sizes="(min-width: 640px) 30vw, 88vw" src={imagePath} />
@@ -28,19 +28,19 @@ function DocumentThumbnail({ document }: { document: SampleDocument }) {
   );
 }
 
-export function SampleDocumentsSection({ className = "bg-[#EDF6FA]" }: { className?: string }) {
+export function SampleDocumentsSection({ className = "bg-[#EDF6FA]", compact = false }: { className?: string; compact?: boolean }) {
   return (
-    <SectionContainer className={className} eyebrow="Sample Documents" title="See the clinical documentation SNS provides" intro={sampleDocumentsIntro}>
-      <p className={`${premiumCardClass} mb-5 max-w-4xl border-l-4 !border-l-teal px-4 py-3 text-sm font-semibold leading-6 text-navy`}>{sampleDocumentsNote}</p>
-      <div className="grid gap-5 lg:grid-cols-2">
+    <SectionContainer compact={compact} className={className} eyebrow="Sample Documents" title="See the clinical documentation SNS provides" intro={sampleDocumentsIntro}>
+      <p className={`${premiumCardClass} ${compact ? "mb-4" : "mb-5"} max-w-4xl border-l-4 !border-l-teal px-4 py-3 text-sm font-semibold leading-6 text-navy`}>{sampleDocumentsNote}</p>
+      <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
         {sampleDocuments.map((document) => (
-          <article className="grid min-w-0 gap-5 rounded-[20px] border border-[#CEDCE3] bg-white p-4 shadow-[0_10px_30px_rgba(23,50,77,.055)] sm:grid-cols-[.82fr_1.18fr] sm:items-center sm:p-5" key={document.id}>
+          <article className={`grid min-w-0 gap-4 rounded-[20px] border border-[#CEDCE3] bg-white shadow-[0_10px_30px_rgba(23,50,77,.055)] min-[390px]:grid-cols-[.62fr_1.38fr] min-[390px]:items-center sm:grid-cols-[.82fr_1.18fr] ${compact ? "p-3 sm:p-4" : "p-4 sm:p-5"}`} key={document.id}>
             <DocumentThumbnail document={document} />
             <div className="min-w-0">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-teal">Sample · Fictional Example</p>
-              <h3 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em] text-navy">{document.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate">{document.description}</p>
-              <ButtonLink className="mt-4 min-h-11" href={document.route} variant="secondary">{document.ctaLabel}</ButtonLink>
+              <h3 className={`mt-2 font-display font-bold tracking-[-0.02em] text-navy ${compact ? "text-xl sm:text-2xl" : "text-2xl"}`}>{document.title}</h3>
+              <p className={`mt-2 text-slate ${compact ? "text-xs leading-5 sm:text-sm sm:leading-6" : "text-sm leading-6"}`}>{document.description}</p>
+              <ButtonLink className={compact ? "mt-2 !px-0" : "mt-4 min-h-11"} href={document.route} variant={compact ? "text" : "secondary"}>{document.ctaLabel}</ButtonLink>
             </div>
           </article>
         ))}

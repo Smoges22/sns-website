@@ -8,7 +8,7 @@ export function BrandMark({ footer = false }: { footer?: boolean }) {
         alt="Sosena Nursing Solutions"
         className="object-cover"
         fill
-        priority
+        priority={!footer}
         sizes={footer ? "220px" : "(min-width: 1024px) 210px, (min-width: 640px) 190px, 168px"}
         src="/images/branding/sns-logo-horizontal.png"
       />
