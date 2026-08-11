@@ -11,6 +11,7 @@ export const site = {
   provider: "Sosena Mekuria, RN",
   serviceArea: "Washington State",
   descriptor: "Professional RN Assessments & Individualized / Negotiated Care Plans",
+  socialDescription: "Professional RN Assessments & Individualized / Negotiated Care Plans in Washington State",
 };
 
 export const navItems = [
@@ -85,7 +86,7 @@ export function createPageMetadata({
 }): Metadata {
   const url = absoluteUrl(path);
   return {
-    title: path === "/" ? { absolute: `${title} | ${site.name}` } : title,
+    title: path === "/" ? { absolute: title === site.name ? site.name : `${title} | ${site.name}` } : title,
     description,
     alternates: { canonical: path || "/" },
     openGraph: {

@@ -14,19 +14,17 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Professional RN Assessments & Individualized / Negotiated Care Plans | Sosena Nursing Solutions",
+    default: site.name,
     template: "%s | Sosena Nursing Solutions",
   },
-  description:
-    "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, and families in Washington.",
+  description: site.socialDescription,
   applicationName: site.name,
   alternates: { canonical: "/" },
   manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "Professional RN Assessments & Individualized / Negotiated Care Plans",
-    description:
-      "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, and families in Washington.",
-    url: site.url,
+    title: site.name,
+    description: site.socialDescription,
+    url: absoluteUrl("/"),
     siteName: site.name,
     type: "website",
     locale: "en_US",
@@ -41,9 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Professional RN Assessments & Individualized / Negotiated Care Plans",
-    description:
-      "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, and families in Washington.",
+    title: site.name,
+    description: site.socialDescription,
     images: ["/images/branding/sns-og.png"],
   },
 };
