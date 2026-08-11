@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { forwardFormSubmission } from "@/lib/form-forwarding";
 import { isPublicFormType, validatePublicFormPayload } from "@/lib/public-form-validation";
 import type { PublicFormType } from "@/lib/public-form-config";
 
 export const runtime = "nodejs";
 
 const MAX_REQUEST_BYTES = 25_000;
-const FORWARD_TIMEOUT_MS = 10_000;
 const genericFailureMessage = "We couldn't submit your request right now. Please try again.";
 
 const sourcePages: Record<PublicFormType, string> = {
@@ -109,41 +109,23 @@ export async function POST(request: NextRequest) {
     .replaceAll("\u0000", "")
     .trim()
     .slice(0, 500);
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FORWARD_TIMEOUT_MS);
+  const forwardBody = JSON.stringify({
+    formType: body.formType,
+    payload: validation.payload,
+    secret: sharedSecret,
+    sourcePage: sourcePages[body.formType],
+    submissionId,
+    userAgent,
+  });
+  const forwardResult = await forwardFormSubmission({
+    appsScriptUrl,
+    requestBody: forwardBody,
+    submissionId,
+  });
 
-  try {
-    const response = await fetch(appsScriptUrl, {
-      body: JSON.stringify({
-        formType: body.formType,
-        payload: validation.payload,
-        secret: sharedSecret,
-        sourcePage: sourcePages[body.formType],
-        submissionId,
-        userAgent,
-      }),
-      cache: "no-store",
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      redirect: "follow",
-      signal: controller.signal,
-    });
-
-    const responseText = await response.text();
-    if (!response.ok || responseText.length > 5_000) throw new Error("AppsScriptResponseError");
-
-    const result = JSON.parse(responseText) as unknown;
-    if (!isPlainRecord(result) || result.ok !== true || result.submissionId !== submissionId) {
-      const errorCode = isPlainRecord(result) && typeof result.error === "string" ? result.error : "INVALID_RESPONSE";
-      console.warn(`[forms] Apps Script rejected a submission: ${errorCode}`);
-      return jsonResponse({ error: "SUBMISSION_FAILED", message: genericFailureMessage, ok: false }, 502);
-    }
-
-    return jsonResponse({ message: "Submission received.", ok: true, submissionId }, 200);
-  } catch (error) {
-    console.error("[forms] Apps Script request failed.", error instanceof Error ? error.name : "UnknownError");
+  if (!forwardResult.ok) {
     return jsonResponse({ error: "SUBMISSION_FAILED", message: genericFailureMessage, ok: false }, 502);
-  } finally {
-    clearTimeout(timeout);
   }
+
+  return jsonResponse({ message: "Submission received.", ok: true, submissionId }, 200);
 }

@@ -186,7 +186,7 @@ function doPost(event) {
       const layout = snsEnsureHeaders(sheet, preferredHeaders);
 
       if (snsSubmissionExists(sheet, submissionId, layout.indexByHeader["Submission ID"] + 1)) {
-        return snsJsonResponse({ ok: true, submissionId: submissionId, message: "Submission received." });
+        return snsJsonResponse({ ok: true, duplicate: true, submissionId: submissionId, message: "Submission received." });
       }
 
       persistedTimestamp = new Date();
