@@ -108,6 +108,233 @@ details[open] > summary::after {
   display: none;
 }
 
+.nav-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: #465969;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.nav-underline::after {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.35rem;
+  left: 0.7rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #137f8d;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.nav-underline:hover,
+.nav-underline:focus-visible,
+.nav-underline[aria-current="page"],
+.nav-underline[data-active="true"] {
+  color: #0f7784;
+}
+
+.nav-underline:hover::after,
+.nav-underline:focus-visible::after,
+.nav-underline[aria-current="page"]::after,
+.nav-underline[data-active="true"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.nav-dropdown {
+  animation: nav-dropdown-in 200ms ease-out;
+  transform-origin: top center;
+}
+
+.dropdown-link {
+  position: relative;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.dropdown-link::before {
+  position: absolute;
+  top: 0.65rem;
+  bottom: 0.65rem;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: #137f8d;
+  content: "";
+  opacity: 0;
+  transform: scaleY(0.35);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.dropdown-link:hover,
+.dropdown-link:focus-visible,
+.dropdown-link[aria-current="page"] {
+  background: #eaf5f6;
+  color: #0f7784;
+}
+
+.dropdown-link:hover::before,
+.dropdown-link:focus-visible::before,
+.dropdown-link[aria-current="page"]::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.mobile-menu-panel {
+  animation: mobile-menu-in 200ms ease-out;
+  transform-origin: top center;
+}
+
+.mobile-nav-link {
+  position: relative;
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: #17324d;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus-visible,
+.mobile-nav-link[aria-current="page"] {
+  background: #eef7f8;
+  color: #0f7784;
+}
+
+.mobile-nav-link[aria-current="page"]::before {
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: #137f8d;
+  content: "";
+}
+
+.section-tab {
+  position: relative;
+  color: #465969;
+  transition: color 200ms ease;
+}
+
+.section-tab::after {
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+  left: 1rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #137f8d;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.section-tab:hover,
+.section-tab:focus-visible,
+.section-tab[data-active="true"] {
+  color: #0f7784;
+}
+
+.section-tab:hover::after,
+.section-tab:focus-visible::after {
+  opacity: 0.55;
+  transform: scaleX(0.55);
+}
+
+.section-tab[data-active="true"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.footer-heading {
+  color: #cceff2;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.footer-heading::after {
+  display: block;
+  width: 2.25rem;
+  height: 2px;
+  margin-top: 0.65rem;
+  border-radius: 999px;
+  background: #5ed2dd;
+  content: "";
+}
+
+.footer-link {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  color: #d6e1ea;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.footer-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.35rem;
+  left: 0;
+  height: 1px;
+  background: #78dce4;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: #8be4ea;
+}
+
+.footer-link:hover::after,
+.footer-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@keyframes nav-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -0.35rem) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

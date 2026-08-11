@@ -106,7 +106,8 @@ export function AudienceTabs({ ctaHref = "/who-we-serve", ctaLabel = "Learn more
               <button
                 aria-controls={`audience-panel-${index}`}
                 aria-selected={active === index}
-                className={`relative min-h-12 snap-start whitespace-nowrap px-4 py-3 text-sm font-bold transition-colors focus-visible:z-10 ${active === index ? "text-teal after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:bg-teal" : "text-slate hover:bg-[#F4F8F9] hover:text-navy"}`}
+                className="section-tab min-h-12 snap-start whitespace-nowrap px-4 py-3 text-sm font-semibold focus-visible:z-10"
+                data-active={active === index}
                 id={`audience-tab-${index}`}
                 key={audience.title}
                 onClick={() => setActive(index)}
@@ -121,7 +122,7 @@ export function AudienceTabs({ ctaHref = "/who-we-serve", ctaLabel = "Learn more
             ))}
           </div>
         </div>
-        <span aria-hidden="true" className={`pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/90 to-transparent transition-opacity md:hidden ${showScrollHint ? "opacity-100" : "opacity-0"}`} />
+        <span aria-hidden="true" className={`pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/90 to-transparent transition-opacity ${showScrollHint ? "opacity-100" : "opacity-0"}`} />
       </div>
       {audiences.map((audience, index) => (
         <section aria-labelledby={`audience-tab-${index}`} className={`${active === index ? "grid" : "hidden"} min-w-0 gap-6 bg-white px-5 sm:px-7 md:grid-cols-[minmax(0,1.35fr)_minmax(14rem,.85fr)] md:items-center md:gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,.8fr)] lg:gap-10 ${compact ? "py-5 sm:py-6 md:min-h-[21rem] lg:min-h-[19rem] xl:min-h-[18rem]" : "py-7 sm:py-8 md:min-h-[28rem] lg:min-h-[25rem] xl:min-h-[22rem]"}`} hidden={active !== index} id={`audience-panel-${index}`} key={audience.title} role="tabpanel" tabIndex={0}>

@@ -21,7 +21,7 @@ export const serviceDefinitions: readonly ServiceDefinition[] = [
     slug: "initial-rn-assessment",
     title: "Initial RN Assessment",
     shortTitle: "Initial RN Assessment",
-    navigationLabel: "Professional RN Assessment",
+    navigationLabel: "RN Assessment",
     category: "Primary Service",
     contextType: "assessment",
     description: "A comprehensive nursing assessment for a new admission, placement, or transition to an Adult Family Home.",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ButtonLink, LineIcon } from "@/components/ui";
 import { interactiveCardClass } from "@/components/section";
 import {
@@ -14,10 +14,25 @@ type Category = (typeof resourceCategories)[number];
 
 export function ResourceLibrary() {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [showScrollHint, setShowScrollHint] = useState(true);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const tabList = useRef<HTMLDivElement>(null);
   const filteredResources = resources.filter(
     (resource) => activeCategory === "All" || resource.categories.includes(activeCategory as ResourceCategory),
   );
+
+  useEffect(() => {
+    const node = tabList.current;
+    if (!node) return;
+    const updateScrollHint = () => setShowScrollHint(node.scrollLeft + node.clientWidth < node.scrollWidth - 4);
+    updateScrollHint();
+    node.addEventListener("scroll", updateScrollHint, { passive: true });
+    window.addEventListener("resize", updateScrollHint);
+    return () => {
+      node.removeEventListener("scroll", updateScrollHint);
+      window.removeEventListener("resize", updateScrollHint);
+    };
+  }, []);
 
   function selectTab(index: number) {
     const category = resourceCategories[index];
@@ -43,29 +58,33 @@ export function ResourceLibrary() {
 
   return (
     <div>
-      <div className="scrollbar-none -mx-5 snap-x snap-mandatory scroll-px-5 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:px-0" role="tablist" aria-label="Resource categories">
-        <div className="flex min-w-max gap-2">
-          {resourceCategories.map((category, index) => {
-            const isActive = activeCategory === category;
-            return (
-              <button
-                aria-controls="resource-library-panel"
-                aria-selected={isActive}
-                className={`min-h-11 snap-start rounded-full border px-4 py-2 text-sm font-extrabold transition-colors ${isActive ? "border-teal-action bg-teal-action text-white hover:bg-teal-dark" : "border-[#CBD9E0] bg-white text-navy hover:border-[#8EAAB6] hover:bg-[#F7FAFB]"}`}
-                id={`resource-tab-${index}`}
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                onKeyDown={(event) => handleKeyDown(event, index)}
-                ref={(element) => { tabRefs.current[index] = element; }}
-                role="tab"
-                tabIndex={isActive ? 0 : -1}
-                type="button"
-              >
-                {category}
-              </button>
-            );
-          })}
+      <div className="relative -mx-5 sm:-mx-6 lg:mx-0">
+        <div ref={tabList} className="scrollbar-none snap-x snap-mandatory scroll-px-5 overflow-x-auto border-b border-[#C9D8E0] px-5 sm:scroll-px-6 sm:px-6 lg:px-0" role="tablist" aria-label="Resource categories">
+          <div className="flex min-w-max gap-1 px-0.5">
+            {resourceCategories.map((category, index) => {
+              const isActive = activeCategory === category;
+              return (
+                <button
+                  aria-controls="resource-library-panel"
+                  aria-selected={isActive}
+                  className="section-tab min-h-12 snap-start whitespace-nowrap px-4 py-3 text-sm font-semibold focus-visible:z-10"
+                  data-active={isActive}
+                  id={`resource-tab-${index}`}
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  onKeyDown={(event) => handleKeyDown(event, index)}
+                  ref={(element) => { tabRefs.current[index] = element; }}
+                  role="tab"
+                  tabIndex={isActive ? 0 : -1}
+                  type="button"
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
         </div>
+        <span aria-hidden="true" className={`pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/90 to-transparent transition-opacity duration-200 lg:hidden ${showScrollHint ? "opacity-100" : "opacity-0"}`} />
       </div>
 
       <div
