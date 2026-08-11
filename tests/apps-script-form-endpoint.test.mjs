@@ -9,6 +9,7 @@ const headers = ["Timestamp", "Name", "Role / I Am A", "Email", "Phone", "Messag
 function createHarness({ mailFails = false } = {}) {
   const rows = [headers.slice()];
   let mailAttempts = 0;
+  const mailMessages = [];
 
   function getRange(row, column, rowCount = 1, columnCount = 1) {
     return {
@@ -60,8 +61,9 @@ function createHarness({ mailFails = false } = {}) {
     LockService: { getScriptLock: () => ({ releaseLock() {}, tryLock: () => true }) },
     MailApp: {
       getRemainingDailyQuota: () => 100,
-      sendEmail() {
+      sendEmail(message) {
         mailAttempts += 1;
+        mailMessages.push(message);
         if (mailFails) throw new Error("Synthetic mail failure");
       },
     },
@@ -92,7 +94,7 @@ function createHarness({ mailFails = false } = {}) {
         email: "fictional@example.com",
         message: "Fictional non-clinical test",
         name: "Fictional Test",
-        phone: "206-555-0100",
+        phone: "(206) 555-0100",
         role: "Family",
       },
       secret: "test-secret",
@@ -103,7 +105,7 @@ function createHarness({ mailFails = false } = {}) {
     return JSON.parse(context.doPost({ postData: { contents: JSON.stringify(request) } }).text);
   }
 
-  return { get mailAttempts() { return mailAttempts; }, rows, submit };
+  return { get mailAttempts() { return mailAttempts; }, mailMessages, rows, submit };
 }
 
 test("an exact duplicate confirms capture without another row or email", () => {
@@ -130,4 +132,15 @@ test("MailApp failure remains non-blocking after Sheet persistence", () => {
   assert.equal(harness.rows.length, 2);
   assert.equal(harness.rows[1][headers.indexOf("Status")], "New");
   assert.equal(harness.mailAttempts, 1);
+});
+
+test("the server-normalized phone reaches the Sheet and notification email unchanged", () => {
+  const harness = createHarness();
+  const submissionId = "sns_24681357-1357-2468-abcd-246813572468";
+
+  const result = harness.submit(submissionId);
+
+  assert.equal(result.ok, true);
+  assert.equal(harness.rows[1][headers.indexOf("Phone")], "(206) 555-0100");
+  assert.match(harness.mailMessages[0].body, /Phone: \(206\) 555-0100/);
 });

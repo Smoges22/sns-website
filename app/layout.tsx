@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, primaryServiceAreaSchema, site } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -69,7 +69,7 @@ const entityGraph = {
       logo: absoluteUrl("/images/branding/sns-logo-horizontal.png"),
       telephone: site.phone,
       email: site.primaryEmail,
-      areaServed: { "@type": "State", name: "Washington" },
+      areaServed: primaryServiceAreaSchema,
       founder: { "@id": `${site.url}/#sosena-mekuria` },
     },
     {

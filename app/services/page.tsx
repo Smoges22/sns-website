@@ -5,12 +5,12 @@ import { ButtonLink, LineIcon } from "@/components/ui";
 import { createPageMetadata, site } from "@/lib/site";
 import { primaryServices, supportingContexts } from "@/lib/services";
 
-export const metadata = createPageMetadata({ title: "RN Assessment & Individualized Care Plan Services", description: "Explore professional RN assessments and individualized or negotiated care plans from SNS, including reassessment and update contexts.", path: "/services" });
+export const metadata = createPageMetadata({ title: "RN Assessment & Individualized Care Plan Services", description: "Explore professional RN assessments and individualized or negotiated care plans from SNS in King County, Washington.", path: "/services" });
 
 export default function ServicesPage() {
   return (
     <PageShell>
-      <PageHero breadcrumbLabel="Services" eyebrow="Professional nursing services" title="RN Assessments & Individualized Care Plans" intro={`Two focused clinical services provided by ${site.provider} for authorized providers, professionals, care teams, and families in Washington.`}>
+      <PageHero breadcrumbLabel="Services" eyebrow="Professional nursing services" title="RN Assessments & Individualized Care Plans" intro={`Two focused clinical services provided by ${site.provider} for authorized providers, professionals, care teams, and families, primarily in King County, Washington.`}>
         <ButtonLink href="/request-assessment" variant="primary">Request an Assessment</ButtonLink>
       </PageHero>
       <SectionContainer eyebrow="Primary services" title="Assessment and care-planning foundation" intro="Begin with a clear clinical picture, then translate assessed needs into practical daily-care guidance.">

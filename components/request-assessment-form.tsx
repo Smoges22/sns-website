@@ -4,6 +4,7 @@ import {
   PublicFormField,
   PublicFormConsent,
   PublicFormHoneypot,
+  PublicPhoneField,
   PublicFormPrivacyNotice,
   PublicFormSelect,
   PublicFormSubmissionStatus,
@@ -30,7 +31,7 @@ export function RequestAssessmentForm() {
         <PublicFormField autoComplete="name" label="Name" maxLength={120} name="name" required />
         <PublicFormField autoComplete="organization" label="Organization / Facility" maxLength={160} name="organization" />
         <PublicFormField autoComplete="email" label="Email" maxLength={254} name="email" required type="email" />
-        <PublicFormField autoComplete="tel" label="Phone" maxLength={40} name="phone" required type="tel" />
+        <PublicPhoneField label="Phone" name="phone" required />
         <PublicFormSelect label="I am a" name="requesterType" options={requesterOptions} required />
         <PublicFormSelect label="Service Needed" name="service" options={serviceOptions} required />
         <PublicFormSelect label="Reason / Timing" name="context" options={contextOptions} />

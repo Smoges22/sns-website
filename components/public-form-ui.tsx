@@ -1,5 +1,6 @@
-import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
+import { type FocusEvent, type FormEvent, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, useEffect, useRef, useState } from "react";
 import type { PublicFormSubmissionState } from "@/components/use-public-form-submit";
+import { formatUsPhoneInput, normalizeUsPhoneNumber } from "@/lib/phone";
 import { site } from "@/lib/site";
 
 export const publicFormCardClass =
@@ -18,6 +19,86 @@ export function PublicFormField({ label, name, required = false, type = "text", 
     <div>
       <label className="font-bold text-navy" htmlFor={name}>{label}{required ? " *" : ""}</label>
       <input className={publicFieldClass} id={name} name={name} required={required} type={type} {...props} />
+    </div>
+  );
+}
+
+type PublicPhoneFieldProps = Omit<PublicFormFieldProps, "autoComplete" | "defaultValue" | "inputMode" | "onBlur" | "onChange" | "onInput" | "type" | "value">;
+
+const phoneValidationMessage = "Enter a valid 10-digit U.S. phone number.";
+
+function updatePhoneValidity(input: HTMLInputElement) {
+  const value = input.value.trim();
+  input.setCustomValidity(value && normalizeUsPhoneNumber(value) === null ? phoneValidationMessage : "");
+}
+
+export function PublicPhoneField({ label, maxLength = 40, name, placeholder = "(206) 555-1234", required = false, ...props }: PublicPhoneFieldProps) {
+  const errorId = `${name}-phone-error`;
+  const hintId = `${name}-phone-format`;
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [showError, setShowError] = useState(false);
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    const form = inputRef.current?.form;
+    if (!form) return;
+    const handleReset = () => {
+      setShowError(false);
+      setValue("");
+    };
+    form.addEventListener("reset", handleReset);
+    return () => form.removeEventListener("reset", handleReset);
+  }, []);
+
+  function handleInput(event: FormEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
+    const nextValue = input.selectionStart === input.value.length ? formatUsPhoneInput(input.value) : input.value;
+    setValue(nextValue);
+    input.value = nextValue;
+    updatePhoneValidity(input);
+    setShowError(false);
+  }
+
+  function handleBlur(event: FocusEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
+    const normalized = normalizeUsPhoneNumber(input.value);
+    if (normalized) {
+      input.value = normalized;
+      setValue(normalized);
+    }
+    updatePhoneValidity(input);
+    setShowError(Boolean(input.value.trim()) && normalized === null);
+  }
+
+  function handleInvalid(event: FormEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
+    setShowError(Boolean(input.value.trim()) && normalizeUsPhoneNumber(input.value) === null);
+  }
+
+  return (
+    <div>
+      <label className="font-bold text-navy" htmlFor={name}>{label}{required ? " *" : ""}</label>
+      <input
+        aria-describedby={showError ? `${hintId} ${errorId}` : hintId}
+        aria-invalid={showError || undefined}
+        autoComplete="tel"
+        className={publicFieldClass}
+        id={name}
+        inputMode="tel"
+        maxLength={maxLength}
+        name={name}
+        onBlur={handleBlur}
+        onInput={handleInput}
+        onInvalid={handleInvalid}
+        placeholder={placeholder}
+        ref={inputRef}
+        required={required}
+        type="tel"
+        value={value}
+        {...props}
+      />
+      <p className="mt-2 text-sm leading-5 text-slate" id={hintId}>U.S. number, for example (206) 555-1234.</p>
+      {showError ? <p className="mt-2 text-sm font-semibold text-alert" id={errorId} role="alert">{phoneValidationMessage}</p> : null}
     </div>
   );
 }

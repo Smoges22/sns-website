@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/ui";
+import { site } from "@/lib/site";
 
 // Simplified from the U.S. Census Bureau 2025 cartographic state boundary file.
 const washingtonIslandPath = "M153 61.4 155.3 70.5 159.6 78.9 166.7 83.3 174.3 85.3 178.1 87.4 182.9 86.4 182 81 184.6 78.5 185.2 73.3 183.3 69.1 187.1 63.5 181.9 55.4 173.7 50.9 170.8 51.7 168 57.6 164.5 59.7Z";
@@ -11,21 +12,25 @@ export function ServiceAreaVisual({ compact = false }: { compact?: boolean }) {
       className={`relative isolate overflow-hidden rounded-[22px] border border-[#C3D6DE] bg-[#EEF6F8] shadow-[0_16px_42px_rgba(23,50,77,0.07)] ${compact ? "min-h-[13rem] md:min-h-[15rem]" : "min-h-[15rem] sm:min-h-[19rem]"}`}
     >
       <div className="absolute left-5 top-5 z-10 rounded-xl border border-white/90 bg-white/90 px-4 py-3 shadow-[0_8px_24px_rgba(23,50,77,0.06)]">
-        <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-teal">Washington State</p>
-        <p className="mt-1 text-xs font-semibold text-slate">Availability reviewed by location</p>
+        <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-teal">Primary Service Area</p>
+        <p className="mt-1 font-display text-sm font-bold text-navy">King County</p>
       </div>
       <div className={`absolute ${compact ? "inset-x-3 bottom-2 top-14" : "inset-x-4 bottom-3 top-14 sm:inset-x-6 sm:bottom-4"}`}>
         <svg className="h-full w-full" fill="none" viewBox="0 0 640 400">
           <path d={washingtonMainPath} fill="#D8EAF0" stroke="#17324D" strokeLinejoin="round" strokeWidth="2.2" />
           <path d={washingtonIslandPath} fill="#D8EAF0" stroke="#17324D" strokeLinejoin="round" strokeWidth="2.2" />
-          <circle cx="216" cy="167" fill="#FFFFFF" opacity="0.96" r="19" />
+          <circle cx="216" cy="167" fill="#137F8D" opacity="0.13" r="31" />
+          <circle cx="216" cy="167" fill="#FFFFFF" opacity="0.98" r="18" />
           <circle cx="216" cy="167" fill="#137F8D" r="9" />
-          <circle cx="216" cy="167" fill="none" opacity="0.28" r="27" stroke="#137F8D" strokeWidth="2" />
+          <circle cx="216" cy="167" fill="none" opacity="0.42" r="26" stroke="#137F8D" strokeWidth="2" />
+          <path d="M216 177V203" stroke="#137F8D" strokeLinecap="round" strokeWidth="2" />
+          <rect fill="#FFFFFF" height="34" rx="17" stroke="#B9D6DE" width="126" x="153" y="201" />
+          <text fill="#17324D" fontFamily="Arial, sans-serif" fontSize="13" fontWeight="700" textAnchor="middle" x="216" y="223">King County</text>
         </svg>
       </div>
       <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full border border-white/90 bg-white/90 px-3 py-2 text-[0.68rem] font-extrabold uppercase tracking-[0.12em] text-navy shadow-[0_8px_22px_rgba(23,50,77,0.07)]">
         <span className="h-2.5 w-2.5 rounded-full bg-teal" />
-        Location reviewed individually
+        Additional areas by availability
       </div>
     </div>
   );
@@ -37,8 +42,8 @@ export function HomeServiceAreaPreview() {
       <div className="mx-auto grid max-w-7xl min-w-0 items-center gap-5 md:grid-cols-[1.12fr_.88fr] md:gap-8 lg:grid-cols-[1.2fr_.8fr] lg:gap-12">
         <div className="min-w-0">
           <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-teal sm:text-sm">Service Area</p>
-          <h2 className="text-balance mt-3 font-display text-3xl font-bold leading-[1.14] tracking-[-0.025em] text-navy sm:text-4xl">Confirm service availability for your location</h2>
-          <p className="mt-4 max-w-2xl leading-7 text-slate sm:text-lg sm:leading-8">SNS serves clients in Washington State. Availability is confirmed based on the service location, access, clinical need, and scheduling.</p>
+          <h2 className="text-balance mt-3 font-display text-3xl font-bold leading-[1.14] tracking-[-0.025em] text-navy sm:text-4xl">King County &amp; Surrounding Areas</h2>
+          <p className="mt-4 max-w-2xl leading-7 text-slate sm:text-lg sm:leading-8">SNS primarily serves King County. {site.additionalServiceArea}</p>
           <ButtonLink className="mt-5" href="/service-area" variant="secondary">View Service Area</ButtonLink>
         </div>
         <div className="hidden min-w-0 md:block">

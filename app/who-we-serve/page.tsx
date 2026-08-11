@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui";
 import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
 import { createPageMetadata, site } from "@/lib/site";
 
-export const metadata = createPageMetadata({ title: "Who SNS Serves", description: "RN assessment and care-plan support for Adult Family Homes, referral professionals, hospitals, assisted living, and families in Washington.", path: "/who-we-serve" });
+export const metadata = createPageMetadata({ title: "Who SNS Serves", description: "RN assessment and care-plan support for Adult Family Homes, referral professionals, hospitals, assisted living, and families in King County, Washington.", path: "/who-we-serve" });
 
 export default function WhoWeServePage() {
   return (

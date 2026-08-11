@@ -2,14 +2,14 @@ import { SampleDocumentLink } from "@/components/sample-documents";
 import { Card, FinalCta, PageHero, PageShell, SectionContainer } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
 import { sampleAssessment, sampleCarePlan } from "@/lib/sample-documents";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, primaryServiceAreaSchema, site } from "@/lib/site";
 import { servicePath, type ServiceDefinition } from "@/lib/services";
 
 export function ServiceDetailPage({ service }: { service: ServiceDefinition }) {
   const path = servicePath(service);
   const isPrimaryService = service.category === "Primary Service";
   const pageEntity = isPrimaryService
-    ? { "@type": "Service", "@id": `${absoluteUrl(path)}#service`, name: service.title, serviceType: service.searchLabel, description: service.metaDescription, provider: { "@id": `${site.url}/#organization` }, areaServed: { "@type": "State", name: "Washington" }, url: absoluteUrl(path) }
+    ? { "@type": "Service", "@id": `${absoluteUrl(path)}#service`, name: service.title, serviceType: service.searchLabel, description: service.metaDescription, provider: { "@id": `${site.url}/#organization` }, areaServed: primaryServiceAreaSchema, url: absoluteUrl(path) }
     : { "@type": "WebPage", "@id": `${absoluteUrl(path)}#webpage`, name: service.title, description: service.metaDescription, url: absoluteUrl(path), isPartOf: { "@id": `${site.url}/#website` }, about: service.relatedPrimaryServices?.map((slug) => ({ "@id": `${absoluteUrl(`/services/${slug}`)}#service` })) };
   const schema = {
     "@context": "https://schema.org",

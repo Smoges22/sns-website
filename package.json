@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test:forms": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/form-forwarding.test.mjs tests/apps-script-form-endpoint.test.mjs",
+    "test:forms": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/form-forwarding.test.mjs tests/apps-script-form-endpoint.test.mjs tests/phone.test.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

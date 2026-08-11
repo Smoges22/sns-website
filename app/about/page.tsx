@@ -3,7 +3,7 @@ import { FinalCta, PageHero, PageShell, SectionContainer } from "@/components/se
 import { ButtonLink, LineIcon } from "@/components/ui";
 import { createPageMetadata } from "@/lib/site";
 
-export const metadata = createPageMetadata({ title: "About Sosena Mekuria, RN", description: "Meet Sosena Mekuria, RN, founder of Sosena Nursing Solutions and provider of professional RN assessments and individualized care plans in Washington.", path: "/about" });
+export const metadata = createPageMetadata({ title: "About Sosena Mekuria, RN", description: "Meet Sosena Mekuria, RN, founder of Sosena Nursing Solutions and provider of professional RN assessments and individualized care plans in King County, Washington.", path: "/about" });
 
 export default function AboutPage() {
   return (

@@ -28,7 +28,7 @@ export const serviceDefinitions: readonly ServiceDefinition[] = [
     intro: "SNS documents assessment context, health history, diagnoses and treatments, medications and allergies, cognition and communication, psychosocial and behavioral needs, physical health, mobility, daily-living support, nutrition, safety, therapies, and emergency-evacuation needs. The assessment gives authorized providers and care teams a clear clinical picture for care planning and review.",
     whenNeeded: ["New Adult Family Home admission", "Hospital discharge to an AFH", "Assisted living to AFH transition", "Referral or placement evaluation", "Family preparing for AFH placement"],
     reviews: ["Assessment context, health history, diagnoses, and treatments", "Medication profile, allergies, and assistance needs", "Cognition, decision-making, communication, and psychosocial screening", "Sensory, cardiopulmonary, physical-system, skin, and pain review", "Mobility, transfers, continence, nutrition, sleep, and activities of daily living", "Behavioral needs, safety concerns, therapies, and emergency evacuation"],
-    metaDescription: "Initial RN assessments for Adult Family Home admission, hospital discharge, placement, and care transitions in Washington.",
+    metaDescription: "Initial RN assessments for Adult Family Home admission, hospital discharge, placement, and care transitions in King County, Washington.",
     searchLabel: "Initial RN assessment for an Adult Family Home",
     detailCta: "View RN assessment",
     sample: "assessment",

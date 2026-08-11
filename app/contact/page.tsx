@@ -43,8 +43,9 @@ export default function ContactPage() {
               <div className="flex items-start gap-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-teal"><LineIcon className="h-5 w-5" name="location" /></span>
                 <div className="min-w-0">
-                  <h2 className="font-display text-2xl font-bold text-navy" id="contact-service-area-heading">Service Area</h2>
-                  <p className="mt-3 leading-7 text-slate">SNS serves clients in Washington State. Availability is confirmed based on the service location, access, clinical need, and scheduling.</p>
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-teal">Primary Service Area</p>
+                  <h2 className="mt-2 font-display text-2xl font-bold text-navy" id="contact-service-area-heading">King County, Washington</h2>
+                  <p className="mt-3 leading-7 text-slate">{site.additionalServiceArea}</p>
                   <ButtonLink className="mt-5" href="/service-area" variant="secondary">View Service Area</ButtonLink>
                 </div>
               </div>

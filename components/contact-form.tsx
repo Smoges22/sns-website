@@ -3,6 +3,7 @@
 import {
   PublicFormField,
   PublicFormHoneypot,
+  PublicPhoneField,
   PublicFormPrivacyNotice,
   PublicFormSelect,
   PublicFormSubmissionStatus,
@@ -29,7 +30,7 @@ export function ContactForm() {
         <PublicFormField autoComplete="name" label="Name" maxLength={120} name="name" required />
         <PublicFormSelect label="I am a" name="role" options={contactRoleOptions} required />
         <PublicFormField autoComplete="email" label="Email" maxLength={254} name="email" required type="email" />
-        <PublicFormField autoComplete="tel" label="Phone" maxLength={40} name="phone" type="tel" />
+        <PublicPhoneField label="Phone" name="phone" />
       </div>
 
       <div>

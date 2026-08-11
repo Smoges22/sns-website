@@ -8,7 +8,7 @@ import { HomeServiceAreaPreview } from "@/components/service-area";
 import { ServiceCard } from "@/components/service-card";
 import { FinalCta, PageShell, SectionContainer } from "@/components/section";
 import { ButtonLink, LineIcon } from "@/components/ui";
-import { absoluteUrl, createPageMetadata, site } from "@/lib/site";
+import { absoluteUrl, createPageMetadata, primaryServiceAreaSchema, site } from "@/lib/site";
 import { primaryServices, servicePath, supportingContexts } from "@/lib/services";
 
 export const metadata = createPageMetadata({
@@ -36,7 +36,7 @@ export default function HomePage() {
         "@id": `${absoluteUrl(servicePath(service))}#service`,
         name: service.title,
         provider: { "@id": `${site.url}/#organization` },
-        areaServed: { "@type": "State", name: "Washington" },
+        areaServed: primaryServiceAreaSchema,
         url: absoluteUrl(servicePath(service)),
       })),
       {
@@ -57,7 +57,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-b border-navy/10 bg-white px-5 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-teal sm:text-sm">Registered nurse services in Washington State</p>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-teal sm:text-sm">Registered nurse services in King County, Washington</p>
             <h1 className="text-balance mt-3 max-w-4xl font-display text-[2.2rem] font-bold leading-[1.07] tracking-[-0.038em] text-navy sm:text-[2.85rem] lg:text-[3.35rem] xl:text-[3.55rem]">Professional RN Assessments & Individualized Care Plans</h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-slate sm:text-lg sm:leading-8">Sosena Nursing Solutions provides professional RN assessments and individualized or negotiated care plans for adults entering or receiving care in Adult Family Homes.</p>
             <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-navy sm:text-base sm:leading-7">Serving AFH providers, referral professionals, hospitals, assisted living communities, and families. Services are provided by Sosena Mekuria, RN.</p>
@@ -65,7 +65,7 @@ export default function HomePage() {
               <ButtonLink href="/request-assessment">Request an Assessment</ButtonLink>
               <ButtonLink href="/services" variant="secondary">View RN Services</ButtonLink>
             </div>
-            <p className="mt-4 text-sm text-slate">Serving Washington State; availability is confirmed based on the service location.</p>
+            <p className="mt-4 text-sm text-slate">Primary service area: King County. Additional locations may be available based on location, scheduling, and clinical needs.</p>
           </div>
           <div className="relative mx-auto w-full max-w-[18rem] pb-7 pl-4 sm:max-w-[29rem] sm:pl-7 lg:pb-8">
             <div aria-hidden="true" className="absolute bottom-0 left-0 h-[82%] w-[86%] bg-[#EAF3F5]" />

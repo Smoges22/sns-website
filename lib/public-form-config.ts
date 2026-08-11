@@ -50,6 +50,7 @@ type StringFieldRule = {
   email?: boolean;
   kind: "string";
   maxLength: number;
+  phone?: boolean;
   required?: boolean;
 };
 
@@ -65,14 +66,14 @@ export const publicFormSchemas = {
     name: { kind: "string", maxLength: 120, required: true },
     role: { allowed: contactRoleOptions, kind: "string", maxLength: 120, required: true },
     email: { email: true, kind: "string", maxLength: 254, required: true },
-    phone: { kind: "string", maxLength: 40 },
+    phone: { kind: "string", maxLength: 40, phone: true },
     message: { kind: "string", maxLength: 1000, required: true },
   },
   assessment_request: {
     name: { kind: "string", maxLength: 120, required: true },
     organization: { kind: "string", maxLength: 160 },
     email: { email: true, kind: "string", maxLength: 254, required: true },
-    phone: { kind: "string", maxLength: 40, required: true },
+    phone: { kind: "string", maxLength: 40, phone: true, required: true },
     requesterType: { allowed: requesterOptions, kind: "string", maxLength: 120, required: true },
     service: { allowed: serviceOptions, kind: "string", maxLength: 120, required: true },
     context: { allowed: contextOptions, kind: "string", maxLength: 120 },
@@ -85,7 +86,7 @@ export const publicFormSchemas = {
     organization: { kind: "string", maxLength: 160, required: true },
     role: { kind: "string", maxLength: 120, required: true },
     email: { email: true, kind: "string", maxLength: 254, required: true },
-    phone: { kind: "string", maxLength: 40, required: true },
+    phone: { kind: "string", maxLength: 40, phone: true, required: true },
     currentSetting: { allowed: currentSettingOptions, kind: "string", maxLength: 120, required: true },
     referralContext: { allowed: referralContextOptions, kind: "string", maxLength: 160, required: true },
     service: { allowed: serviceOptions, kind: "string", maxLength: 120, required: true },

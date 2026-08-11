@@ -4,6 +4,7 @@ import {
   PublicFormConsent,
   PublicFormField,
   PublicFormHoneypot,
+  PublicPhoneField,
   PublicFormPrivacyNotice,
   PublicFormSection,
   PublicFormSelect,
@@ -40,7 +41,7 @@ export function ReferralForm() {
           <PublicFormField autoComplete="organization" label="Organization" maxLength={160} name="organization" required />
           <PublicFormField autoComplete="organization-title" label="Role" maxLength={120} name="role" required />
           <PublicFormField autoComplete="email" label="Email" maxLength={254} name="email" required type="email" />
-          <PublicFormField autoComplete="tel" label="Phone" maxLength={40} name="phone" required type="tel" />
+          <PublicPhoneField label="Phone" name="phone" required />
         </div>
       </PublicFormSection>
 

@@ -9,10 +9,16 @@ export const site = {
   primaryEmail: "info@sosenanursingsolutions.com",
   phone: "425-246-6220",
   provider: "Sosena Mekuria, RN",
-  serviceArea: "Washington State",
+  serviceArea: "King County, Washington",
+  additionalServiceArea: "Services outside King County may be available based on location, scheduling, and clinical needs.",
   descriptor: "Professional RN Assessments & Individualized / Negotiated Care Plans",
-  socialDescription: "Professional RN Assessments & Individualized / Negotiated Care Plans in Washington State",
+  socialDescription: "Professional RN Assessments & Individualized / Negotiated Care Plans in King County, Washington",
 };
+
+export const primaryServiceAreaSchema = {
+  "@type": "AdministrativeArea",
+  name: site.serviceArea,
+} as const;
 
 export const navItems = [
   { href: "/", label: "Home" },

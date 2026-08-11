@@ -4,6 +4,7 @@ import {
   type PublicFormFieldRule,
   type PublicFormType,
 } from "@/lib/public-form-config";
+import { normalizeUsPhoneNumber } from "@/lib/phone";
 
 export type NormalizedPublicFormPayload = Record<string, boolean | string>;
 
@@ -55,7 +56,13 @@ export function validatePublicFormPayload(formType: PublicFormType, input: unkno
     if (normalized.length > rule.maxLength) return { ok: false, reason: `${field} is too long.` };
     if (rule.email && normalized && !emailPattern.test(normalized)) return { ok: false, reason: `${field} is invalid.` };
     if (rule.allowed && normalized && !rule.allowed.includes(normalized)) return { ok: false, reason: `${field} is not an allowed value.` };
-    payload[field] = normalized;
+    if (rule.phone) {
+      const phone = normalizeUsPhoneNumber(normalized);
+      if (phone === null) return { ok: false, reason: `${field} is invalid.` };
+      payload[field] = phone;
+    } else {
+      payload[field] = normalized;
+    }
   }
 
   return { ok: true, payload };
