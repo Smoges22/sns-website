@@ -12,6 +12,8 @@ dist/
 *.jpg
 *.jpeg
 *.webp
+!app/icon.png
+!app/apple-icon.png
 !public/images/
 !public/images/**/
 !public/images/**/*.png

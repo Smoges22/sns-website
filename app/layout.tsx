@@ -14,16 +14,37 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Professional RN Assessments & Individualized Care Plans | Sosena Nursing Solutions",
+    default: "Professional RN Assessments & Individualized / Negotiated Care Plans | Sosena Nursing Solutions",
     template: "%s | Sosena Nursing Solutions",
   },
   description:
     "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, and families in Washington.",
   applicationName: site.name,
-  icons: {
-    icon: "/images/branding/sns-icon-64.png",
-    shortcut: "/images/branding/sns-icon-64.png",
-    apple: "/images/branding/sns-icon-64.png",
+  alternates: { canonical: "/" },
+  manifest: "/manifest.webmanifest",
+  openGraph: {
+    title: "Professional RN Assessments & Individualized / Negotiated Care Plans",
+    description:
+      "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, and families in Washington.",
+    url: site.url,
+    siteName: site.name,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/images/branding/sns-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Sosena Nursing Solutions — Professional RN Assessments and Individualized or Negotiated Care Plans",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Professional RN Assessments & Individualized / Negotiated Care Plans",
+    description:
+      "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes, care teams, and families in Washington.",
+    images: ["/images/branding/sns-og.png"],
   },
 };
 

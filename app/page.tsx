@@ -11,7 +11,7 @@ import { absoluteUrl, createPageMetadata, site } from "@/lib/site";
 import { primaryServices, servicePath, supportingContexts } from "@/lib/services";
 
 export const metadata = createPageMetadata({
-  title: "Professional RN Assessments & Individualized Care Plans",
+  title: "Professional RN Assessments & Individualized / Negotiated Care Plans",
   description:
     "Professional RN assessments and individualized or negotiated care plans for Adult Family Homes and care transitions in Washington.",
   path: "/",

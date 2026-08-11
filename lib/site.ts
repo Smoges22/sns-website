@@ -10,7 +10,7 @@ export const site = {
   phone: "425-246-6220",
   provider: "Sosena Mekuria, RN",
   serviceArea: "Washington State",
-  descriptor: "Professional RN Assessments & Individualized Care Plans",
+  descriptor: "Professional RN Assessments & Individualized / Negotiated Care Plans",
 };
 
 export const navItems = [
@@ -100,7 +100,7 @@ export function createPageMetadata({
           url: "/images/branding/sns-og.png",
           width: 1200,
           height: 630,
-          alt: "Sosena Nursing Solutions — RN Assessments and Individualized Care Plans",
+          alt: "Sosena Nursing Solutions — Professional RN Assessments and Individualized or Negotiated Care Plans",
         },
       ],
     },
