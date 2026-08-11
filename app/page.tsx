@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AudienceTabs } from "@/components/audience-tabs";
+import { FaqAccordion } from "@/components/faq-accordion";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { SampleDocumentsSection } from "@/components/sample-documents";
 import { HomeServiceAreaPreview } from "@/components/service-area";
@@ -18,7 +19,7 @@ export const metadata = createPageMetadata({
 
 const faqs = [
   ["Who can request an RN assessment?", "Adult Family Home providers, authorized referral or placement professionals, hospital care teams, assisted living communities, and families may contact SNS. Authorization is confirmed before clinical information is shared."],
-  ["When is an RN assessment needed for Adult Family Home placement?", "An assessment may be requested before admission to document current health, functional, cognitive, behavioral, medication, safety, and personal-care needs for the receiving provider’s review."],
+  ["When is an RN assessment needed for Adult Family Home placement?", "An assessment may be requested before admission to document health history, medications and allergies, cognition and communication, physical and behavioral needs, mobility and daily-living support, nutrition, safety, therapies, and emergency-evacuation needs for the receiving provider’s review."],
   ["Can a referral or placement professional coordinate an assessment?", "Yes. An authorized referral or placement professional may coordinate an assessment for a client preparing for an Adult Family Home transition."],
   ["Can SNS assess someone in a hospital or assisted living community?", "SNS can coordinate with an authorized hospital or assisted living contact based on the person’s needs, service location, access, and scheduling availability."],
   ["What information is needed to begin?", "Start with basic contact, location, reason for the request, and authorization information. SNS provides separate instructions when relevant clinical records are needed."],
@@ -54,7 +55,6 @@ export default function HomePage() {
     <PageShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema).replace(/</g, "\\u003c") }} />
       <section className="relative overflow-hidden border-b border-navy/10 bg-white px-5 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-        <span aria-hidden="true" className="absolute -right-24 top-10 h-72 w-72 rounded-full border border-teal/10" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-teal sm:text-sm">Registered nurse services in Washington State</p>
@@ -140,7 +140,7 @@ export default function HomePage() {
       </SectionContainer>
 
       <SectionContainer compact className="bg-soft" eyebrow="Frequently asked questions" title="Common questions about RN assessments">
-        <div className="grid max-w-6xl border-t border-navy/15 md:grid-cols-2 md:gap-x-10">{faqs.map(([question,answer]) => <details className="border-b border-navy/15" key={question}><summary className="relative cursor-pointer py-3 pr-12 text-[0.95rem] font-black text-navy transition-colors hover:text-teal focus-visible:text-teal sm:py-4 sm:text-lg">{question}</summary><p className="max-w-4xl pb-4 pr-10 leading-7 text-slate">{answer}</p></details>)}</div>
+        <FaqAccordion items={faqs} />
       </SectionContainer>
       <FinalCta compact />
     </PageShell>

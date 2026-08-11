@@ -10,19 +10,23 @@ Create one spreadsheet named **Sosena Nursing Solutions - Website Leads**. Creat
 
 ### Contact Leads
 
-`Timestamp`, `Submission ID`, `Name`, `Role / I Am A`, `Email`, `Phone`, `Message`, `Source Page`, `User Agent`, `Status`
+`Timestamp`, `Name`, `Role / I Am A`, `Email`, `Phone`, `Message`, `Status`, `Submission ID`
 
 ### Assessment Requests
 
-`Timestamp`, `Submission ID`, `Name`, `Organization / Facility`, `Role`, `Email`, `Phone`, `Primary Service`, `Reason / Timing`, `Preferred Timeline`, `Message / Additional Notes`, `Consent`, `Source Page`, `User Agent`, `Status`
+`Timestamp`, `Name`, `Organization / Facility`, `Role`, `Email`, `Phone`, `Primary Service`, `Reason / Timing`, `Preferred Timeline`, `Message / Additional Notes`, `Status`, `Consent`, `Submission ID`
 
 The current public assessment form has no service-location field, so none is added to this tab.
 
 ### Client Referrals
 
-`Timestamp`, `Submission ID`, `Referring Contact Name`, `Organization`, `Role`, `Email`, `Phone`, `Current Setting`, `Referral Context`, `Primary Service`, `Reason / Timing`, `Preferred Timeline`, `Service Location`, `Message / Referral Notes`, `Consent`, `Source Page`, `User Agent`, `Status`
+`Timestamp`, `Referring Contact Name`, `Organization`, `Role`, `Email`, `Phone`, `Current Setting`, `Referral Context`, `Primary Service`, `Reason / Timing`, `Preferred Timeline`, `Service Location`, `Message / Referral Notes`, `Status`, `Consent`, `Submission ID`
 
 Every new row starts with `New` in the Status column. SNS may later change it manually to `Contacted`, `Scheduled`, or `Closed`.
+
+`Submission ID` remains required for duplicate protection and should be hidden in the day-to-day Sheet view. `Consent` remains in Assessment Requests and Client Referrals as a useful record that the submitter acknowledged the public form's authorization and non-clinical-use boundary; it may also be hidden when Sosena does not need it in the operational view. Source Page and User Agent are no longer stored because they are not needed to manage a lead and would add redundant technical data or browser fingerprinting to the Sheet.
+
+The endpoint maps every value by its header name rather than assuming a fixed column position. It recognizes both the recommended layouts above and the legacy layouts that still contain `Source Page` and `User Agent`, so an existing Sheet can be cleaned up manually without shifting future values into the wrong columns. While legacy columns remain, new rows leave them blank.
 
 ## Manual Google setup
 
@@ -34,6 +38,8 @@ Every new row starts with `New` in the Status column. SNS may later change it ma
 6. Open **Project Settings → Script Properties** and add:
    - `SNS_SPREADSHEET_ID` = the spreadsheet ID from step 3
    - `SNS_FORMS_SHARED_SECRET` = a long, unique random secret generated with a password manager
+   - `SNS_LEAD_NOTIFICATION_EMAIL` = the email address that should receive new-lead alerts
+   - Optional: `SNS_LEADS_SHEET_URL` = the full private Google Sheets URL used by the email's **Open SNS Website Leads** link
 7. Choose **Deploy → New deployment → Web app**.
 8. Set **Execute as** to **Me**.
 9. Set **Who has access** to **Anyone**. The Apps Script still rejects submissions without the server-only shared secret.
@@ -54,6 +60,24 @@ Neither variable may use the `NEXT_PUBLIC_` prefix. Do not place either value in
 
 After changing the Apps Script later, use **Deploy → Manage deployments → Edit → New version** so the Web App runs the updated code.
 
+## Email notifications
+
+After a new lead is successfully appended and verified in its Sheet tab, the Apps Script attempts to send an operational email through `MailApp`. The notification uses only the non-clinical fields already accepted by the matching public form. It never includes the shared secret, user agent, attachments, clinical records, or additional form fields.
+
+Notification subjects are:
+
+- `New SNS Contact Lead — {Name}`
+- `New SNS Assessment Request — {Name}`
+- `New SNS Client Referral — {Organization or Referring Contact Name}`
+
+Set `SNS_LEAD_NOTIFICATION_EMAIL` under **Apps Script → Project Settings → Script Properties**. Do not add the recipient address to the tracked script. If `SNS_LEADS_SHEET_URL` is configured with a valid Google Sheets URL, the HTML email also includes an **Open SNS Website Leads** button. The button is omitted when the property is missing or invalid.
+
+The Contact notification uses the validated submitted email as its reply-to address. Assessment-request and professional-referral notifications do not override reply-to.
+
+Google Sheets remains the source of truth. Notification delivery happens only after the row is written, `SpreadsheetApp.flush()` completes, and the persisted submission ID is read back from the Sheet. A missing recipient property, exhausted MailApp quota, or email-send error does not remove the row and does not turn a successful website submission into an error. The script logs only a sanitized sent, skipped, or failed message containing the validated submission ID. Duplicate submission IDs return the existing generic success response without sending another email.
+
+Adding `MailApp` may prompt the Apps Script owner to reauthorize the project for the email-send scope (`https://www.googleapis.com/auth/script.send_mail`). Approve the requested send-only permission, then publish a new version through **Deploy → Manage deployments**. Do not change the Web App's existing execute-as or access settings.
+
 ## Safe test plan
 
 Use fictional, clearly labeled test information only. Never use a real resident name or clinical details.
@@ -66,6 +90,10 @@ Use fictional, clearly labeled test information only. Never use a real resident 
 6. In local developer tools only, populate the hidden `website` honeypot and submit; the endpoint should return generic success without adding a row.
 7. Submit a value beginning with `=`, `+`, `-`, or `@`; confirm the Sheet stores it as plain text rather than a formula.
 8. Double-click a submit button during a request; only one row should be created for the submission ID.
+9. With `SNS_LEAD_NOTIFICATION_EMAIL` configured, submit one fictional test through each public form. Confirm one `New` row and one matching email for each of **Contact Leads**, **Assessment Requests**, and **Client Referrals**.
+10. Confirm each notification subject, included non-clinical fields, submission ID, timestamp, and privacy footer. Confirm no secret, user agent, attachment, or clinical information appears.
+11. Resend an already-used submission ID directly to the Apps Script test endpoint; confirm no second row and no second notification are created.
+12. To test notification failure safely, temporarily set `SNS_LEAD_NOTIFICATION_EMAIL` to an invalid value in a non-production Apps Script deployment. Submit fictional data and confirm the row remains `New`, the website receives success, and the execution log contains only the sanitized notification-skipped message. Restore the property after the test.
 
 If `SNS_APPS_SCRIPT_URL` or `SNS_FORMS_SHARED_SECRET` is absent, the API logs a configuration message on the server and returns a generic retry message to the browser. It never reports fake success for a normal submission.
 
@@ -80,3 +108,21 @@ If `SNS_APPS_SCRIPT_URL` or `SNS_FORMS_SHARED_SECRET` is absent, the API logs a 
 - The endpoint never returns existing rows or spreadsheet contents.
 - The application does not log complete form payloads or message content.
 - No file upload or clinical-document field is supported.
+- Email notification failure never rolls back a persisted lead or asks the visitor to resubmit.
+- `MailApp.getRemainingDailyQuota()` is checked after persistence. Zero remaining quota skips the alert without blocking the lead.
+
+## One-time cleanup for the existing Google Sheet
+
+Do not run an automatic migration against the live Sheet. After the updated Apps Script has been reviewed and deployed as a new version, use this manual procedure during a quiet period:
+
+1. Make a full Google Sheets copy as a recoverable backup.
+2. Confirm the three tab names are still **Contact Leads**, **Assessment Requests**, and **Client Referrals**.
+3. Confirm every existing header is unique and that row values currently align with their headers before moving anything.
+4. Reorder each tab to the recommended header order documented above. Moving whole columns preserves the relationship between each header and its existing values.
+5. Delete the complete `Source Page` and `User Agent` columns from all three tabs. Do not delete `Submission ID`.
+6. Hide the `Submission ID` column in each tab. Optionally hide `Consent` in Assessment Requests and Client Referrals while retaining its values for audit reference.
+7. Freeze the header row and confirm `Status` remains visible in the operational portion of each tab.
+8. Submit one clearly fictional test through each public form. Verify the new row aligns with the correct headers, starts with `Status = New`, sends one matching notification, and does not recreate Source Page or User Agent.
+9. Repeat one test with the same submission ID through a non-production test path and confirm duplicate suppression still prevents a second row and email.
+
+The updated script accepts the legacy or recommended column order, but it deliberately refuses to write when a required header is missing, duplicated, or renamed. This fail-closed behavior protects existing rows from positional corruption.

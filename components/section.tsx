@@ -122,6 +122,24 @@ export function SplitPanel({ children, className = "" }: { children: ReactNode; 
   );
 }
 
+function StethoscopeWatermark() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="pointer-events-none absolute -right-20 -top-10 h-52 w-52 text-[#8EDCE2] opacity-[0.07] sm:-right-16 sm:-top-20 sm:h-80 sm:w-80 lg:-right-10 lg:-top-28 lg:h-[28rem] lg:w-[28rem]"
+      fill="none"
+      focusable="false"
+      viewBox="0 0 320 320"
+    >
+      <path d="M86 48v58c0 49 27 78 67 78s67-29 67-78V48" stroke="currentColor" strokeLinecap="round" strokeWidth="12" />
+      <path d="M62 45c0-14 11-25 25-25h8v49h-8c-14 0-25-10-25-24Zm196 0c0-14-11-25-25-25h-8v49h8c14 0 25-10 25-24Z" stroke="currentColor" strokeLinejoin="round" strokeWidth="10" />
+      <path d="M153 184v27c0 43 27 70 67 70 34 0 59-19 66-50" stroke="currentColor" strokeLinecap="round" strokeWidth="12" />
+      <circle cx="286" cy="207" r="25" stroke="currentColor" strokeWidth="11" />
+      <circle cx="286" cy="207" fill="currentColor" r="8" />
+    </svg>
+  );
+}
+
 export function PageHero({
   eyebrow,
   title,
@@ -139,9 +157,8 @@ export function PageHero({
 }) {
   return (
     <section className="relative overflow-hidden bg-[#173B60] px-5 py-8 text-white sm:px-6 sm:py-10 lg:px-8 lg:py-14">
-      <span aria-hidden="true" className="absolute -right-20 -top-32 h-80 w-80 rounded-full border border-white/10" />
-      <span aria-hidden="true" className="absolute -right-8 -top-16 h-56 w-56 rounded-full border border-aqua/20" />
-      <div className="mx-auto max-w-7xl">
+      <StethoscopeWatermark />
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid min-w-0 gap-6 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-14">
           <div className="min-w-0 max-w-4xl">
             <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm font-semibold text-[#BFE8EC]">
