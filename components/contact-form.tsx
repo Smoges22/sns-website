@@ -1,57 +1,35 @@
 "use client";
 
-import { FormEvent, useState } from "react";
 import {
   PublicFormField,
+  PublicFormHoneypot,
   PublicFormPrivacyNotice,
   PublicFormSelect,
+  PublicFormSubmissionStatus,
   publicFieldClass,
   publicFormCardClass,
 } from "@/components/public-form-ui";
+import { usePublicFormSubmit } from "@/components/use-public-form-submit";
 import { buttonVariants } from "@/components/ui";
-import { site } from "@/lib/site";
-
-const roleOptions = [
-  "Adult Family Home",
-  "Referral / Placement Professional",
-  "Hospital / Care Team",
-  "Assisted Living",
-  "Family",
-  "Other",
-] as const;
+import { contactRoleOptions, publicFormFieldNames } from "@/lib/public-form-config";
 
 export function ContactForm() {
-  const [status, setStatus] = useState("");
-
-  function prepareEmail(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (!form.reportValidity()) return;
-
-    const data = new FormData(form);
-    const body = [
-      `Name: ${data.get("name")}`,
-      `Email: ${data.get("email")}`,
-      `Phone: ${data.get("phone") || "Not provided"}`,
-      `Role: ${data.get("role")}`,
-      "",
-      "Brief non-clinical message:",
-      String(data.get("message")),
-    ].join("\n");
-
-    setStatus("Your email app should open with the message ready for you to review and send.");
-    window.location.href = `mailto:${site.primaryEmail}?subject=${encodeURIComponent("Website contact inquiry")}&body=${encodeURIComponent(body)}`;
-  }
+  const { handleSubmit, message, state } = usePublicFormSubmit({
+    fields: publicFormFieldNames.contact,
+    formType: "contact",
+    successMessage: "Thank you. Your message has been received. SNS will review your inquiry and follow up using the contact information you provided.",
+  });
 
   return (
-    <form className={`mt-6 ${publicFormCardClass}`} onSubmit={prepareEmail}>
+    <form aria-busy={state === "submitting"} className={`relative mt-6 ${publicFormCardClass}`} onSubmit={handleSubmit}>
+      <PublicFormHoneypot id="contact-website" />
       <p className="text-sm leading-6 text-slate"><span className="font-black text-navy">Required fields are marked *</span></p>
 
       <div className="grid gap-5 lg:grid-cols-2">
-        <PublicFormField autoComplete="name" label="Name" name="name" required />
-        <PublicFormSelect label="I am a" name="role" options={roleOptions} required />
-        <PublicFormField autoComplete="email" label="Email" name="email" required type="email" />
-        <PublicFormField autoComplete="tel" label="Phone" name="phone" type="tel" />
+        <PublicFormField autoComplete="name" label="Name" maxLength={120} name="name" required />
+        <PublicFormSelect label="I am a" name="role" options={contactRoleOptions} required />
+        <PublicFormField autoComplete="email" label="Email" maxLength={254} name="email" required type="email" />
+        <PublicFormField autoComplete="tel" label="Phone" maxLength={40} name="phone" type="tel" />
       </div>
 
       <div>
@@ -60,9 +38,8 @@ export function ContactForm() {
         <PublicFormPrivacyNotice id="contact-message-privacy" />
       </div>
 
-      <button className={`inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold transition-colors ${buttonVariants.primary}`} type="submit">Send Message</button>
-      <p className="text-xs leading-5 text-slate">This opens your email app so you can review the non-clinical message before sending it to SNS.</p>
-      {status ? <p className="text-sm font-bold text-green-700" role="status">{status}</p> : null}
+      <button className={`inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold transition-colors disabled:cursor-wait disabled:opacity-70 ${buttonVariants.primary}`} disabled={state === "submitting"} type="submit">{state === "submitting" ? "Sending..." : "Send Message"}</button>
+      <PublicFormSubmissionStatus message={message} state={state} />
     </form>
   );
 }

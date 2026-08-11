@@ -1,56 +1,40 @@
 "use client";
 
-import { FormEvent, useState } from "react";
 import {
   PublicFormField,
   PublicFormConsent,
+  PublicFormHoneypot,
   PublicFormPrivacyNotice,
   PublicFormSelect,
+  PublicFormSubmissionStatus,
   publicFieldClass,
   publicFormCardClass,
 } from "@/components/public-form-ui";
+import { usePublicFormSubmit } from "@/components/use-public-form-submit";
 import { buttonVariants } from "@/components/ui";
-import { site } from "@/lib/site";
-
-const requesterOptions = ["Adult Family Home", "Referral / Placement Professional", "Hospital / Care Team", "Assisted Living", "Family", "Other"] as const;
-const serviceOptions = ["RN Assessment", "Individualized / Negotiated Care Plan", "Assessment + Care Plan", "Not Sure"] as const;
-const contextOptions = ["New admission / placement", "Annual reassessment", "Significant change in needs", "Care-plan update", "90-day assessment / care-plan review", "Other / Not Sure"] as const;
+import { contextOptions, publicFormFieldNames, requesterOptions, serviceOptions } from "@/lib/public-form-config";
 
 export function RequestAssessmentForm() {
-  const [status, setStatus] = useState("");
-  function prepareEmail(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    const body = [
-      `Name: ${data.get("name")}`,
-      `Organization / Facility: ${data.get("organization") || "Not provided"}`,
-      `Email: ${data.get("email")}`,
-      `Phone: ${data.get("phone")}`,
-      `Requester type: ${data.get("requesterType")}`,
-      `Service needed: ${data.get("service")}`,
-      `Reason / timing: ${data.get("context") || "Not specified"}`,
-      `Preferred timeline: ${data.get("timeline") || "Not specified"}`,
-      "",
-      "Brief non-clinical message:",
-      String(data.get("message") || "Not provided"),
-    ].join("\n");
-    setStatus("Your email app should open with the request ready for you to review and send.");
-    window.location.href = `mailto:${site.primaryEmail}?subject=${encodeURIComponent("RN assessment request")}&body=${encodeURIComponent(body)}`;
-  }
+  const { handleSubmit, message, state } = usePublicFormSubmit({
+    booleanFields: ["consent"],
+    fields: publicFormFieldNames.assessment_request,
+    formType: "assessment_request",
+    successMessage: "Thank you. Your assessment request has been received. SNS will review the request and contact you regarding availability and next steps.",
+  });
+
   return (
-    <form className={publicFormCardClass} onSubmit={prepareEmail}>
+    <form aria-busy={state === "submitting"} className={`relative ${publicFormCardClass}`} onSubmit={handleSubmit}>
+      <PublicFormHoneypot id="assessment-website" />
       <p className="text-sm leading-6 text-slate"><span className="font-black text-navy">Required fields are marked *</span></p>
       <div className="grid gap-5 md:grid-cols-2">
-        <PublicFormField autoComplete="name" label="Name" name="name" required />
-        <PublicFormField autoComplete="organization" label="Organization / Facility" name="organization" />
-        <PublicFormField autoComplete="email" label="Email" name="email" required type="email" />
-        <PublicFormField autoComplete="tel" label="Phone" name="phone" required type="tel" />
+        <PublicFormField autoComplete="name" label="Name" maxLength={120} name="name" required />
+        <PublicFormField autoComplete="organization" label="Organization / Facility" maxLength={160} name="organization" />
+        <PublicFormField autoComplete="email" label="Email" maxLength={254} name="email" required type="email" />
+        <PublicFormField autoComplete="tel" label="Phone" maxLength={40} name="phone" required type="tel" />
         <PublicFormSelect label="I am a" name="requesterType" options={requesterOptions} required />
         <PublicFormSelect label="Service Needed" name="service" options={serviceOptions} required />
         <PublicFormSelect label="Reason / Timing" name="context" options={contextOptions} />
-        <PublicFormField label="Preferred Timeline" name="timeline" placeholder="For example: within two weeks" />
+        <PublicFormField label="Preferred Timeline" maxLength={120} name="timeline" placeholder="For example: within two weeks" />
       </div>
       <div>
         <label className="font-bold text-navy" htmlFor="request-message">Brief Message</label>
@@ -58,9 +42,8 @@ export function RequestAssessmentForm() {
         <PublicFormPrivacyNotice id="message-privacy" />
       </div>
       <PublicFormConsent name="consent">I consent to be contacted by SNS about this request and understand this public form is not for clinical records. *</PublicFormConsent>
-      <button className={`inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold transition-colors sm:w-fit ${buttonVariants.primary}`} type="submit">Prepare Email Request</button>
-      <p className="text-xs leading-5 text-slate">This opens your email app so you can review the non-clinical request before sending it to SNS.</p>
-      {status ? <p className="text-sm font-bold text-green-700" role="status">{status}</p> : null}
+      <button className={`inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-extrabold transition-colors disabled:cursor-wait disabled:opacity-70 sm:w-fit ${buttonVariants.primary}`} disabled={state === "submitting"} type="submit">{state === "submitting" ? "Submitting Request..." : "Submit Assessment Request"}</button>
+      <PublicFormSubmissionStatus message={message} state={state} />
     </form>
   );
 }

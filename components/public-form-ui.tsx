@@ -1,4 +1,6 @@
 import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
+import type { PublicFormSubmissionState } from "@/components/use-public-form-submit";
+import { site } from "@/lib/site";
 
 export const publicFormCardClass =
   "grid gap-5 rounded-[20px] border border-[#CCD9E1] border-t-[3px] border-t-navy bg-white p-5 shadow-[0_12px_34px_rgba(23,50,77,0.06)] sm:p-8";
@@ -52,6 +54,39 @@ export function PublicFormConsent({ children, name }: { children: ReactNode; nam
       <input className="mt-1 h-5 w-5 shrink-0 accent-navy" name={name} required type="checkbox" />
       <span>{children}</span>
     </label>
+  );
+}
+
+export function PublicFormHoneypot({ id }: { id: string }) {
+  return (
+    <div aria-hidden="true" className="absolute left-[-10000px] h-px w-px overflow-hidden">
+      <label htmlFor={id}>Website</label>
+      <input autoComplete="off" id={id} name="website" tabIndex={-1} type="text" />
+    </div>
+  );
+}
+
+export function PublicFormSubmissionStatus({
+  message,
+  state,
+}: {
+  message: string;
+  state: PublicFormSubmissionState;
+}) {
+  if (state !== "success" && state !== "error") return null;
+
+  return (
+    <div
+      className={`rounded-xl border p-4 text-sm font-semibold leading-6 ${state === "success" ? "border-green-700/20 bg-green-50 text-green-800" : "border-alert/25 bg-[#FFF8F8] text-alert"}`}
+      role={state === "error" ? "alert" : "status"}
+    >
+      <p>{message}</p>
+      {state === "error" ? (
+        <a className="mt-2 inline-flex font-extrabold underline underline-offset-4" href={`mailto:${site.primaryEmail}`}>
+          Prefer email instead?
+        </a>
+      ) : null}
+    </div>
   );
 }
 
